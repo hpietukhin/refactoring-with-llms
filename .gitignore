@@ -1,0 +1,28 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Java build output
+target/
+build/
+*.class
+
+# OS/editor
+.DS_Store
+.idea/
+*.iml
+.vscode/
+
+# Runtime artifacts
+*.log
+
+# Generated/runtime data
+data/
+
+# Vendored third-party code
+java/metrics/ck/
+detection/organic-standalone/
