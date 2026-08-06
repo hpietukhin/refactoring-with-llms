@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import cast
 
+from langgraph.errors import GraphRecursionError
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.state import CompiledStateGraph
 
@@ -81,9 +82,24 @@ def build_graph() -> CompiledStateGraph:
 composite_workflow = build_graph()
 
 
+COMPOSITE_RECURSION_LIMIT = 64
+
+
 def main(initial_state: CompositeWorkflowState | None = None) -> CompositeWorkflowState:
     """Run the composite workflow graph."""
-    result = composite_workflow.invoke(initial_state or {})
+    try:
+        result = composite_workflow.invoke(
+            initial_state or {},
+            config={"recursion_limit": COMPOSITE_RECURSION_LIMIT},
+        )
+    except GraphRecursionError:
+        return cast(
+            CompositeWorkflowState,
+            {
+                **(initial_state or {}),
+                "stop_reason": "recursion_limit",
+            },
+        )
     return cast(CompositeWorkflowState, result)
 
 

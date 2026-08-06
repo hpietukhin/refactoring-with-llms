@@ -1,0 +1,7 @@
+name: with-planning
+mode: whole-case
+max_model_calls: 20
+max_completion_tokens: 10000
+max_smell_iterations: 5
+system_instructions: >-
+  Plan and execute the complete smell-removal task across the selected scope.

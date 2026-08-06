@@ -8,20 +8,34 @@ from typing import Annotated, Literal, TypedDict
 from eliot import log_message
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage, ToolMessage
 from langchain_core.tools import BaseTool, tool
+from langgraph.errors import GraphRecursionError
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
+from langgraph.managed import RemainingSteps
 from langgraph.prebuilt import ToolNode
 
+from agents.java_test.diagnostics import format_verification_feedback
 from agents.java_test.tools import make_tools
+from agents.java_test.file_management import ApplyPatchTool, CreatePatchTool, VerifyPatchTool
 from detection.organic import OrganicDetector
-from openrouter_llm import chat_model, configured_model_name
+from openrouter_llm import (
+    OpenRouterAPIKeyError,
+    OpenRouterRequestError,
+    chat_model,
+    configured_model_name,
+    is_transient_openrouter_error,
+)
 from repository.repo import Repo
 from smell.smell import Smell
-from testing.surefire import parse_surefire_reports, run_maven_tests
+from testing.surefire import TestRunSummary, parse_surefire_reports, run_maven_tests
+from testing.test_selection import resolve_targeted_tests
+from agents.java_test.tool_logging import guarded_tool_call_logger, invoke_logged_tool
 from workflows.composite.models import CompositeWorkflowState
 from workflows.composite.nodes.detect import filter_smells_to_elements, resolve_smell_file
 
 MAX_REFACTOR_AGENT_TURNS = 12
+REFACTOR_RECURSION_LIMIT = 32
+REMAINING_STEPS_STOP_THRESHOLD = 4
 
 
 def _selected_smell(state: CompositeWorkflowState) -> Smell | None:
@@ -40,22 +54,88 @@ class RefactorAgentState(TypedDict, total=False):
     messages: Annotated[list[BaseMessage], add_messages]
     java_changes_made: bool
     agent_turns: int
+    patch_sequence_ok: bool
+    patch_stage: str
+    remaining_steps: RemainingSteps
+    tests_passed: bool
+    target_smell_remaining: bool
+
+
+def refactor_completion_feedback(state: RefactorAgentState) -> str | None:
+    """Return missing verification evidence for an attempted refactor."""
+    if not state.get("java_changes_made"):
+        return None
+    if state.get("patch_stage") != "verified":
+        return "The source edit has not passed patch verification. Fix or verify the patch."
+    if not state.get("tests_passed"):
+        return (
+            "Maven verification has not passed. Use the structured compiler or test "
+            "diagnostics, inspect the cited source context, and repair the edit."
+        )
+    if state.get("target_smell_remaining", True):
+        return (
+            "Tests pass, but the reported smell is still present or has not been "
+            "rechecked. Run detect_remaining_smells and continue the refactoring."
+        )
+    return None
+
+
+def refactor_task_for_smell(smell: Smell) -> str:
+    """Build the refactor task from the complete detected-smell context."""
+    location = smell.location
+    source_range = location.range
+    return (
+        "Remove this smell:\n"
+        f"type={smell.type}\n"
+        f"severity={smell.severity}\n"
+        f"file_path={smell.file_path}\n"
+        f"location_uri={location.uri}\n"
+        f"start_line={source_range.start.line + 1}\n"
+        f"start_character={source_range.start.character}\n"
+        f"end_line={source_range.end.line + 1}\n"
+        f"end_character={source_range.end.character}\n"
+        f"detected_by={smell.detected_by}\n"
+        f"commit_hash={smell.commit_hash}\n"
+    )
 
 
 def _build_refactor_tools(repo: Repo, elements: list[str], timeout: int) -> list[BaseTool]:
+    last_test_summary: TestRunSummary | None = None
+
     @tool
     def run_tests() -> str:
-        """Run the complete Maven test suite and return its result."""
-        summary = run_maven_tests(repo, clean=False, jacoco=False, timeout=float(timeout))
-        return (
-            f"success={summary.success} exit_code={summary.exit_code}\n"
-            f"stdout:\n{summary.stdout[-4000:]}\n"
-            f"stderr:\n{summary.stderr[-4000:]}"
+        """Run Maven tests relevant to changed files and return the result."""
+        nonlocal last_test_summary
+        changed = [
+            path.as_posix()
+            for path in repo.filter_java_edits(include_untracked=True)
+        ]
+        targeted = resolve_targeted_tests(repo.path, changed)
+        test_args: tuple[str, ...] = ()
+        if targeted:
+            test_args = (f"-Dtest={','.join(targeted)}",)
+            log_message(
+                message_type="refactor:targeted_tests",
+                tests=targeted,
+            )
+        last_test_summary = run_maven_tests(
+            repo, clean=False, jacoco=False, timeout=float(timeout), test_args=test_args,
+        )
+        command = f"mvn test -Dtest={','.join(targeted)}" if targeted else "mvn test"
+        return format_verification_feedback(
+            last_test_summary,
+            repo.path,
+            command,
         )
 
     @tool
     def read_test_reports() -> str:
         """Read Maven Surefire reports from the most recent test run."""
+        if last_test_summary is not None and not last_test_summary.success:
+            return (
+                "The latest Maven run failed. Existing Surefire XML files may be stale. "
+                "Use the structured diagnostics from run_tests as authoritative evidence."
+            )
         reports = parse_surefire_reports(repo.path)
         if not reports:
             return "No Maven Surefire reports found."
@@ -88,28 +168,33 @@ def _run_refactor_agent(
     timeout: int,
 ) -> list[str]:
     tools = _build_refactor_tools(repo, elements, timeout)
-    model = chat_model(model_name).bind_tools(tools)
+    create_patch_tool = next(tool for tool in tools if isinstance(tool, CreatePatchTool))
+    apply_patch_tool = next(tool for tool in tools if isinstance(tool, ApplyPatchTool))
+    verify_patch_tool = next(tool for tool in tools if isinstance(tool, VerifyPatchTool))
+    model_tools = [
+        tool
+        for tool in tools
+        if not isinstance(tool, (ApplyPatchTool, VerifyPatchTool))
+    ]
+    model = chat_model(model_name).bind_tools(model_tools)
     system = SystemMessage(
         content=(
             "You are a Java refactoring agent. Remove the reported code smell with a "
-            "minimal semantic refactoring. First inspect the target and use "
+            "minimal semantic refactoring. First inspect the reported line range and use "
             "find_symbol_references to understand all affected types. Read every file "
-            "you need before editing. You may edit, move, or delete multiple Java files. "
+            "you need before editing. Use read_file with the reported line range first, "
+            "then expand the range when needed. Use search_text to find assignments and "
+            "usages. Do not repeat identical tool calls. You may edit, move, or delete "
+            "multiple Java files. "
             "Do not make cosmetic-only changes to formatting, comments, or license headers. "
-            "After edits, run_tests and read_test_reports. Then call "
+            "For every source edit, execute create_patch, then apply_patch, then "
+            "verify_patch in that exact order. Each stage must succeed before the "
+            "next stage. After verification, run_tests and read_test_reports. Then call "
             "detect_remaining_smells. Do not finish until tests pass and the reported "
             "smell is gone, or tools show that no safe refactoring is possible."
         )
     )
-    task = HumanMessage(
-        content=(
-            f"Remove this smell:\n"
-            f"type={smell.type}\n"
-            f"severity={smell.severity}\n"
-            f"location={smell.file_path}:{smell.location.range.start.line + 1}\n"
-            f"target symbol={Path(smell.file_path).stem}\n"
-        )
-    )
+    task = HumanMessage(content=refactor_task_for_smell(smell))
     before = {path.as_posix() for path in repo.filter_java_edits(include_untracked=True)}
 
     def agent(state: RefactorAgentState) -> RefactorAgentState:
@@ -128,20 +213,30 @@ def _run_refactor_agent(
             )
         return {"messages": [response], "agent_turns": turns}
 
-    def route_after_agent(state: RefactorAgentState) -> Literal["tools", "end"]:
+    def route_after_agent(
+        state: RefactorAgentState,
+    ) -> Literal["tools", "evaluate_completion", "stop"]:
+        remaining_steps = state.get("remaining_steps")
+        if (
+            remaining_steps is not None
+            and remaining_steps <= REMAINING_STEPS_STOP_THRESHOLD
+        ):
+            return "stop"
         turns = int(state.get("agent_turns") or 0)
         if turns >= MAX_REFACTOR_AGENT_TURNS:
             log_message(
                 message_type="refactor:agent_turn_limit",
                 limit=MAX_REFACTOR_AGENT_TURNS,
             )
-            return "end"
+            return "stop"
         messages = state.get("messages") or []
         if messages and isinstance(messages[-1], AIMessage) and messages[-1].tool_calls:
             return "tools"
-        return "end"
+        if refactor_completion_feedback(state) is not None:
+            return "evaluate_completion"
+        return "stop"
 
-    tool_node = ToolNode(tools)
+    tool_node = ToolNode(tools, wrap_tool_call=guarded_tool_call_logger())
 
     def run_tools(state: RefactorAgentState) -> RefactorAgentState:
         result = tool_node.invoke(state)
@@ -151,53 +246,162 @@ def _run_refactor_agent(
             tool_messages = [
                 message for message in messages if isinstance(message, ToolMessage)
             ]
+        after = {path.as_posix() for path in repo.filter_java_edits(include_untracked=True)}
+        updates: RefactorAgentState = {
+            "messages": tool_messages,
+            "java_changes_made": after != before,
+        }
+        target_location = (
+            f"{smell.type}: {smell.file_path}:"
+            f"{smell.location.range.start.line + 1}"
+        )
         for message in tool_messages:
             log_message(
                 message_type="refactor:tool_result",
                 tool_name=message.name,
                 content=str(message.content)[-2000:],
             )
-        after = {path.as_posix() for path in repo.filter_java_edits(include_untracked=True)}
-        return {
-            "messages": tool_messages,
-            "java_changes_made": after != before,
-        }
+            if message.name == "run_tests":
+                updates["tests_passed"] = "success=True" in str(message.content)
+            if message.name == "detect_remaining_smells":
+                updates["target_smell_remaining"] = target_location in str(message.content)
+        return updates
 
-    def route_after_tools(state: RefactorAgentState) -> Literal["agent", "end"]:
+    def route_after_tools(
+        state: RefactorAgentState,
+    ) -> Literal["agent", "patch_sequence", "stop"]:
         messages = state.get("messages") or []
         latest_tool_names: list[str] = []
         for message in reversed(messages):
             if not isinstance(message, ToolMessage):
                 break
             latest_tool_names.append(message.name)
-        if "detect_remaining_smells" in latest_tool_names and state.get("java_changes_made"):
+        if (
+            "detect_remaining_smells" in latest_tool_names
+            and state.get("java_changes_made")
+            and state.get("tests_passed")
+            and not state.get("target_smell_remaining", True)
+        ):
             log_message(
                 message_type="refactor:agent_stopped_after_smell_detection",
                 tools=latest_tool_names,
             )
-            return "end"
+            return "stop"
+        if "create_patch" in latest_tool_names:
+            return "patch_sequence"
+        if state.get("patch_stage") == "verified":
+            return "agent"
         return "agent"
+
+    def apply_patch_stage(state: RefactorAgentState) -> RefactorAgentState:
+        patch_path = create_patch_tool.sequence.pending_patch()
+        if patch_path is None:
+            return {
+                "messages": [HumanMessage(content="Patch sequence failed: no pending patch.")],
+                "patch_sequence_ok": False,
+                "patch_stage": "failed",
+            }
+        relative_patch = patch_path.relative_to(repo.path).as_posix()
+        applied = invoke_logged_tool(
+            apply_patch_tool,
+            "apply_patch",
+            {"patch_path": relative_patch},
+        )
+        if not apply_patch_tool.sequence.is_applied(patch_path):
+            return {
+                "messages": [HumanMessage(content=str(applied))],
+                "patch_sequence_ok": False,
+                "patch_stage": "failed",
+            }
+        return {
+            "messages": [HumanMessage(content=str(applied))],
+            "patch_sequence_ok": True,
+            "patch_stage": "applied",
+        }
+
+    def verify_patch_stage(state: RefactorAgentState) -> RefactorAgentState:
+        patch_path = create_patch_tool.sequence.latest_patch()
+        if patch_path is None:
+            return {
+                "messages": [HumanMessage(content="Patch sequence failed: no created patch.")],
+                "patch_sequence_ok": False,
+                "patch_stage": "failed",
+            }
+        relative_patch = patch_path.relative_to(repo.path).as_posix()
+        verified = invoke_logged_tool(
+            verify_patch_tool,
+            "verify_patch",
+            {"patch_path": relative_patch},
+        )
+        return {
+            "messages": [HumanMessage(content=str(verified))],
+            "patch_sequence_ok": verify_patch_tool.sequence.is_verified(patch_path),
+            "patch_stage": (
+                "verified"
+                if verify_patch_tool.sequence.is_verified(patch_path)
+                else "failed"
+            ),
+        }
+
+    def route_after_apply(
+        state: RefactorAgentState,
+    ) -> Literal["verify_patch", "agent", "stop"]:
+        return "verify_patch" if state.get("patch_sequence_ok") else "agent"
+
+    def evaluate_completion(state: RefactorAgentState) -> RefactorAgentState:
+        feedback = refactor_completion_feedback(state)
+        if feedback is None:
+            return {}
+        return {"messages": [HumanMessage(content=feedback)]}
+
+    def stop(state: RefactorAgentState) -> RefactorAgentState:
+        log_message(
+            message_type="refactor:agent_stopped",
+            reason="progress_or_remaining_steps",
+            patch_stage=state.get("patch_stage"),
+        )
+        return {}
 
     graph = StateGraph(RefactorAgentState)
     graph.add_node("agent", agent)
     graph.add_node("tools", run_tools)
+    graph.add_node("apply_patch", apply_patch_stage)
+    graph.add_node("verify_patch", verify_patch_stage)
+    graph.add_node("evaluate_completion", evaluate_completion)
+    graph.add_node("stop", stop)
+    graph.add_edge("stop", END)
     graph.add_edge(START, "agent")
     graph.add_conditional_edges(
         "agent",
         route_after_agent,
-        {"tools": "tools", "end": END},
+        {
+            "tools": "tools",
+            "evaluate_completion": "evaluate_completion",
+            "stop": "stop",
+        },
     )
+    graph.add_edge("evaluate_completion", "agent")
     graph.add_conditional_edges(
         "tools",
         route_after_tools,
-        {"agent": "agent", "end": END},
+        {"agent": "agent", "patch_sequence": "apply_patch", "stop": "stop"},
     )
+    graph.add_conditional_edges(
+        "apply_patch",
+        route_after_apply,
+        {"verify_patch": "verify_patch", "agent": "agent", "stop": "stop"},
+    )
+    graph.add_edge("verify_patch", "agent")
     compiled = graph.compile()
 
-    compiled.invoke(
-        {"messages": [task]},
-        config={"recursion_limit": 32},
-    )
+    try:
+        compiled.invoke(
+            {"messages": [task]},
+            config={"recursion_limit": REFACTOR_RECURSION_LIMIT},
+        )
+    except GraphRecursionError as exc:
+        log_message(message_type="refactor:recursion_limit", exception=str(exc))
+        return []
     after = {path.as_posix() for path in repo.filter_java_edits(include_untracked=True)}
     return sorted(after - before)
 
@@ -221,17 +425,42 @@ def refactor_smell(state: CompositeWorkflowState) -> CompositeWorkflowState:
     model_name = state.get("model") or configured_model_name()
     try:
         repo = Repo(repo_path)
-        written = _run_refactor_agent(
-            repo,
-            smell,
-            elements=list(state.get("elements") or []),
-            model_name=model_name,
-            timeout=int(state.get("timeout") or 120),
-        )
+        before = {
+            path.as_posix()
+            for path in repo.filter_java_edits(include_untracked=True)
+        }
+        if state.get("use_pydantic"):
+            from agents.pydantic_deep.invoke import invoke_pydantic_deep_agent
+
+            invoke_pydantic_deep_agent(
+                repo,
+                smell=smell,
+                elements=list(state.get("elements") or []),
+                model_name=model_name,
+                timeout=int(state.get("timeout") or 120),
+                case_id=str(state.get("case_id") or smell.id),
+            )
+            after = {
+                path.as_posix()
+                for path in repo.filter_java_edits(include_untracked=True)
+            }
+            written = sorted(after - before)
+        else:
+            written = _run_refactor_agent(
+                repo,
+                smell,
+                elements=list(state.get("elements") or []),
+                model_name=model_name,
+                timeout=int(state.get("timeout") or 120),
+            )
         if not written:
             raise RuntimeError("Refactor agent completed without Java source changes")
     except Exception as exc:  # noqa: BLE001 - record failure in state
         log_message(message_type="refactor:failed", exception=str(exc))
+        if isinstance(exc, OpenRouterAPIKeyError):
+            raise
+        if is_transient_openrouter_error(exc):
+            raise OpenRouterRequestError(str(exc)) from exc
         retries = int(state.get("retries_used") or 0)
         return {"refactor_ok": False, "retries_used": retries + 1}
 
@@ -268,16 +497,15 @@ def replan_after_action(state: CompositeWorkflowState) -> CompositeWorkflowState
             "stop_reason": state.get("stop_reason") or "refactor_failed",
         }
 
-    before = len(state.get("smells") or [])
     detected = detect_smells(state)
     smells = list(detected.get("smells") or [])
     after = len(smells)
     step = int(state.get("step") or 0) + 1
     no_progress = int(state.get("no_progress") or 0)
-    if after >= before:
-        no_progress += 1
-    else:
+    if state.get("refactor_ok", False):
         no_progress = 0
+    else:
+        no_progress += 1
 
     stop_reason: str | None = None
     max_steps = int(state.get("max_steps") or 5)
@@ -301,6 +529,9 @@ def replan_after_action(state: CompositeWorkflowState) -> CompositeWorkflowState
 
 def continue_after_replan(state: CompositeWorkflowState) -> str:
     """Loop back for another step or end the workflow."""
+    remaining_steps = state.get("remaining_steps")
+    if remaining_steps is not None and remaining_steps <= REMAINING_STEPS_STOP_THRESHOLD:
+        return "end"
     if state.get("stop_reason"):
         return "end"
     if not state.get("smells"):

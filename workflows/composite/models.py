@@ -5,6 +5,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TypedDict
 
+from langgraph.managed import RemainingSteps
+
 from smell.smell import Smell
 
 
@@ -28,8 +30,11 @@ class CompositeWorkflowState(TypedDict, total=False):
     stop_reason: str | None
     step_logs: list[StepLog]
     no_progress: int
+    remaining_steps: RemainingSteps
     model: str
     timeout: int
+    case_id: str
+    use_pydantic: bool
     ck_classes: int | None
     ck_mean_cbo: float | None
     ck_mean_lcom: float | None
