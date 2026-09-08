@@ -1,0 +1,597 @@
+{
+  "accepted_by_type": {
+    "2": 1,
+    "5": 2,
+    "6": 2,
+    "3": 1
+  },
+  "accepted": [
+    {
+      "case_id": "Drugis Common:b72ec26c9ba9",
+      "project": "Drugis Common",
+      "elements": [
+        "org.drugis.common.threading.TaskUtil",
+        "org.drugis.common.threading.TaskUtil.isRunning(Task)",
+        "org.drugis.common.threading.TaskUtil.run(Task)",
+        "org.drugis.common.threading.TaskUtil.start(Task)",
+        "org.drugis.common.threading.TaskUtil.waitUntilReady(Task)"
+      ],
+      "start_commit": "ad2c8d07be208de22f61707ca64f5a4a04143d93",
+      "start_commit_order": 183,
+      "end_commit": "38091327be0c05b84fa0be863ee844ec698f7102",
+      "end_commit_order": 184,
+      "start_state": {
+        "smells_total": 1,
+        "elements_with_smell": 1,
+        "smell_types": [
+          "FeatureEnvy"
+        ],
+        "graph_distinct_smells": 1,
+        "graph_distinct_smell_types": [
+          "FeatureEnvy"
+        ]
+      },
+      "selection": {
+        "anchor": "org.drugis.common.threading.TaskUtil",
+        "developer": "me@joelkuiper.eu",
+        "refactorings": 2,
+        "ref_ids": [
+          "137dbff81aaae9adae56b0667be20857",
+          "ba1634ffc341a33648e4d7fae2ae8843"
+        ],
+        "ref_types": [
+          "Extract Method"
+        ],
+        "smells_after": 1,
+        "smell_delta": 0
+      },
+      "status": "passed",
+      "details": "baseline and runtime selection passed",
+      "baseline": {
+        "status": "passed",
+        "details": "baseline build/test passed",
+        "build_system": "maven",
+        "command": "mvn clean test",
+        "command_source": "default",
+        "exit_code": 0,
+        "tests_total": 157,
+        "tests_failed": 0,
+        "tests_errors": 0,
+        "patches_applied": false
+      },
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Complex Class",
+          "Feature Envy"
+        ],
+        "smell_type_count": 2,
+        "class_count": 2,
+        "classes": [
+          "org.drugis.common.threading.TaskUtil",
+          "org.drugis.common.threading.ThreadHandlerIT"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.drugis.common.threading.TaskUtil",
+          "org.drugis.common.threading.ThreadHandlerIT"
+        ]
+      }
+    },
+    {
+      "case_id": "Drugis Common:d16c384fa5a7",
+      "project": "Drugis Common",
+      "elements": [
+        "org.drugis.common.threading.status.TaskProgressModel.PhaseTaskListener",
+        "org.drugis.common.threading.status.TaskProgressModel.PhaseTaskListener.taskEvent(TaskEvent)",
+        "org.drugis.common.threading.status.TaskProgressModel.PhaseTaskListener.updatePhaseStatus(TaskEvent)",
+        "org.drugis.common.threading.status.TaskProgressModel.PhaseTaskListener.updateTaskStatus(TaskEvent)"
+      ],
+      "start_commit": "38091327be0c05b84fa0be863ee844ec698f7102",
+      "start_commit_order": 184,
+      "end_commit": "a9a083a437c6c0097e13dd1fe4a79939b19dc7fc",
+      "end_commit_order": 185,
+      "start_state": {
+        "smells_total": 2,
+        "elements_with_smell": 2,
+        "smell_types": [
+          "ComplexClass",
+          "FeatureEnvy"
+        ],
+        "graph_distinct_smells": 2,
+        "graph_distinct_smell_types": [
+          "ComplexClass",
+          "FeatureEnvy"
+        ]
+      },
+      "selection": {
+        "anchor": "org.drugis.common.threading.status.TaskProgressModel.PhaseTaskListener",
+        "developer": "me@joelkuiper.eu",
+        "refactorings": 2,
+        "ref_ids": [
+          "0e60c8d5b81c1b90b52c3f0aeed9ebe5",
+          "72c3d41f5e558432234066f2e74ca2f6"
+        ],
+        "ref_types": [
+          "Inline Method"
+        ],
+        "smells_after": 2,
+        "smell_delta": 0
+      },
+      "status": "passed",
+      "details": "baseline and runtime selection passed",
+      "baseline": {
+        "status": "passed",
+        "details": "baseline build/test passed",
+        "build_system": "maven",
+        "command": "mvn clean test",
+        "command_source": "default",
+        "exit_code": 0,
+        "tests_total": 157,
+        "tests_failed": 0,
+        "tests_errors": 0,
+        "patches_applied": false
+      },
+      "runtime": {
+        "smells_total": 20,
+        "smell_types": [
+          "Class Data Should Be Private",
+          "Complex Class",
+          "Feature Envy",
+          "Lazy Class",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 5,
+        "class_count": 3,
+        "classes": [
+          "org.drugis.common.JUnitUtil",
+          "org.drugis.common.threading.status.TaskProgressModel",
+          "org.drugis.common.threading.status.TaskProgressModelTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.drugis.common.JUnitUtil",
+          "org.drugis.common.threading.status.TaskProgressModel",
+          "org.drugis.common.threading.status.TaskProgressModelTest"
+        ]
+      }
+    },
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):6f71b9e80b59",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "elements": [
+        "com.brewtab.ircbot.applets.StatsApplet",
+        "com.brewtab.ircbot.applets.StatsApplet.bored(Channel,String)",
+        "com.brewtab.ircbot.applets.StatsApplet.last(Channel,String)",
+        "com.brewtab.ircbot.applets.StatsApplet.run(Channel,User,String,String,String)"
+      ],
+      "start_commit": "7499808a9350987dae8736560a632062f59d5423",
+      "start_commit_order": 83,
+      "end_commit": "dc87b06b7988e2f9aca0a2484004157fcede5d56",
+      "end_commit_order": 84,
+      "start_state": {
+        "smells_total": 1,
+        "elements_with_smell": 1,
+        "smell_types": [
+          "ComplexClass"
+        ],
+        "graph_distinct_smells": 1,
+        "graph_distinct_smell_types": [
+          "ComplexClass"
+        ]
+      },
+      "selection": {
+        "anchor": "com.brewtab.ircbot.applets.StatsApplet",
+        "developer": "cthunes@brewtab.com",
+        "refactorings": 2,
+        "ref_ids": [
+          "069403356276d8dad2d95d3abce93a0b",
+          "a21c0ae936df6d575a56907749e3cecd"
+        ],
+        "ref_types": [
+          "Extract Method"
+        ],
+        "smells_after": 3,
+        "smell_delta": 2
+      },
+      "status": "passed",
+      "details": "baseline and runtime selection passed",
+      "baseline": {
+        "status": "passed",
+        "details": "baseline build/test passed",
+        "build_system": "maven",
+        "command": "mvn clean test",
+        "command_source": "default",
+        "exit_code": 0,
+        "tests_total": 17,
+        "tests_failed": 0,
+        "tests_errors": 0,
+        "patches_applied": false
+      },
+      "runtime": {
+        "smells_total": 15,
+        "smell_types": [
+          "Brain Method",
+          "Complex Class",
+          "Feature Envy",
+          "Intensive Coupling",
+          "Long Method",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 6,
+        "class_count": 4,
+        "classes": [
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCLogger",
+          "com.brewtab.irclog.IRCStatistics"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCLogger",
+          "com.brewtab.irclog.IRCStatistics"
+        ]
+      }
+    },
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):a2bbe44a883b",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "elements": [
+        "com.brewtab.irc.client.ClientFactory",
+        "com.brewtab.irc.impl.ClientImpl"
+      ],
+      "start_commit": "e1768f83ef8b4c940ef2e3cce00f91245bf9bbdd",
+      "start_commit_order": 72,
+      "end_commit": "9cf696ad4f0099d7baa6baa26db9db14da8806be",
+      "end_commit_order": 73,
+      "start_state": {
+        "smells_total": 1,
+        "elements_with_smell": 1,
+        "smell_types": [
+          "LazyClass"
+        ],
+        "graph_distinct_smells": 1,
+        "graph_distinct_smell_types": [
+          "LazyClass"
+        ]
+      },
+      "selection": {
+        "anchor": "com.brewtab.irc.client.ClientFactory",
+        "developer": "cthunes@brewtab.com",
+        "refactorings": 2,
+        "ref_ids": [
+          "0c7326941fbffa25cc05b1871bffc07e",
+          "3553481149db942a6ddd744309a8ff8e"
+        ],
+        "ref_types": [
+          "Move Attribute"
+        ],
+        "smells_after": 1,
+        "smell_delta": 0
+      },
+      "status": "passed",
+      "details": "baseline and runtime selection passed",
+      "baseline": {
+        "status": "passed",
+        "details": "baseline build/test passed",
+        "build_system": "maven",
+        "command": "mvn clean test",
+        "command_source": "default",
+        "exit_code": 0,
+        "tests_total": 17,
+        "tests_failed": 0,
+        "tests_errors": 0,
+        "patches_applied": false
+      },
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Brain Method",
+          "Complex Class",
+          "Feature Envy",
+          "Lazy Class",
+          "Long Method",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 6,
+        "class_count": 5,
+        "classes": [
+          "com.brewtab.irc.client.ClientFactory",
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.BashApplet",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCStatistics"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "com.brewtab.irc.client.ClientFactory",
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.BashApplet",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCStatistics"
+        ]
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:3b7222e9b466",
+      "project": "PhiCode Philib",
+      "elements": [
+        "ch.bind.philib.msg.vm.PubSubVMTest",
+        "ch.bind.philib.msg.vm.PubSubVMTest.asyncMessages()",
+        "ch.bind.philib.msg.vm.PubSubVMTest.asyncMessagesTwoSubscribers()",
+        "ch.bind.philib.msg.vm.PubSubVMTest.emptyPublish()",
+        "ch.bind.philib.msg.vm.PubSubVMTest.publishToTwoSubscribers()",
+        "ch.bind.philib.msg.vm.PubSubVMTest.ring()",
+        "ch.bind.philib.msg.vm.PubSubVMTest.standardPublish()",
+        "ch.bind.philib.msg.vm.PubSubVMTest.syncEmptyPublish()",
+        "ch.bind.philib.msg.vm.PubSubVMTest.syncMessagesTwoSubscribers()"
+      ],
+      "start_commit": "a132ad528a176bc7ba6082999c270549e7956c23",
+      "start_commit_order": 748,
+      "end_commit": "a3552e5191b78bf528cf3b0f74dda8067710eaea",
+      "end_commit_order": 749,
+      "start_state": {
+        "smells_total": 3,
+        "elements_with_smell": 3,
+        "smell_types": [
+          "ClassDataShouldBePrivate",
+          "FeatureEnvy"
+        ],
+        "graph_distinct_smells": 3,
+        "graph_distinct_smell_types": [
+          "ClassDataShouldBePrivate",
+          "FeatureEnvy"
+        ]
+      },
+      "selection": {
+        "anchor": "ch.bind.philib.msg.vm.PubSubVMTest",
+        "developer": "philipp@bind.ch",
+        "refactorings": 4,
+        "ref_ids": [
+          "2fc9f611b4b90f9d77e0c3ea8f6648f8",
+          "6949f761ed4501ef4646e37bc828e5d3",
+          "78baacb3bdf02ecc9a538af5ddec5f17",
+          "9df370dfb6ca2486a1809275dc27aa67"
+        ],
+        "ref_types": [
+          "Rename Method"
+        ],
+        "smells_after": 2,
+        "smell_delta": 1
+      },
+      "status": "passed",
+      "details": "baseline and runtime selection passed",
+      "baseline": {
+        "status": "passed",
+        "details": "baseline build/test passed",
+        "build_system": "maven",
+        "command": "mvn clean test",
+        "command_source": "default",
+        "exit_code": 0,
+        "tests_total": 362,
+        "tests_failed": 0,
+        "tests_errors": 0,
+        "patches_applied": false
+      },
+      "runtime": {
+        "smells_total": 15,
+        "smell_types": [
+          "Class Data Should Be Private",
+          "Feature Envy",
+          "Lazy Class",
+          "Long Method",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 5,
+        "class_count": 2,
+        "classes": [
+          "ch.bind.philib.msg.Subscription",
+          "ch.bind.philib.msg.vm.PubSubVMTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "ch.bind.philib.msg.Subscription",
+          "ch.bind.philib.msg.vm.PubSubVMTest"
+        ]
+      }
+    },
+    {
+      "case_id": "Tap4j:4413ab35b400",
+      "project": "Tap4j",
+      "elements": [
+        "org.tap4j.model.BailOut",
+        "org.tap4j.model.Footer",
+        "org.tap4j.model.Header",
+        "org.tap4j.model.Plan",
+        "org.tap4j.model.TapElement"
+      ],
+      "start_commit": "fb2451c64b4d78d1db062eac6695dab2fe1af2a2",
+      "start_commit_order": 85,
+      "end_commit": "f444bc29badff0d0302872b7d6d262410426b366",
+      "end_commit_order": 86,
+      "start_state": {
+        "smells_total": 1,
+        "elements_with_smell": 1,
+        "smell_types": [
+          "LazyClass"
+        ],
+        "graph_distinct_smells": 1,
+        "graph_distinct_smell_types": [
+          "LazyClass"
+        ]
+      },
+      "selection": {
+        "anchor": "org.tap4j.model.TapElement",
+        "developer": "jakub.podlesak@oracle.com",
+        "refactorings": 4,
+        "ref_ids": [
+          "011259bf3fe73640c1631208a78f8fe0",
+          "6f56832987a3c9383798de388ec61fa1",
+          "7f83e9c346ea816f127087a9f38c596e",
+          "b482d412e25a42a3c761dad462807638"
+        ],
+        "ref_types": [
+          "Move Attribute"
+        ],
+        "smells_after": 1,
+        "smell_delta": 0
+      },
+      "status": "passed",
+      "details": "baseline and runtime selection passed",
+      "baseline": {
+        "status": "passed",
+        "details": "baseline build/test passed",
+        "build_system": "maven",
+        "command": "mvn clean test",
+        "command_source": "default",
+        "exit_code": 0,
+        "tests_total": 160,
+        "tests_failed": 0,
+        "tests_errors": 0,
+        "patches_applied": false
+      },
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Feature Envy",
+          "Long Method",
+          "Message Chains"
+        ],
+        "smell_type_count": 3,
+        "class_count": 3,
+        "classes": [
+          "org.tap4j.consumer.TestTap13Consumer",
+          "org.tap4j.model.BailOut",
+          "org.tap4j.producer.TestTap13YamlProducer"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.tap4j.consumer.TestTap13Consumer",
+          "org.tap4j.model.BailOut",
+          "org.tap4j.producer.TestTap13YamlProducer"
+        ]
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "case_id": "Alfred MPI:c6fc763649db",
+      "project": "Alfred MPI",
+      "start_commit": "c02c91bbd05e6d556df9b90943476d06560d339c",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "runtime_type_count": 0,
+      "runtime_smells": null
+    },
+    {
+      "case_id": "Drugis Common:07f541ab8a79",
+      "project": "Drugis Common",
+      "start_commit": "0b468c832cd43e5fb627d6f077ff36c08edc1b7c",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "runtime_type_count": 0,
+      "runtime_smells": null
+    },
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):f8bdbd87e7da",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "start_commit": "9e4692a6ebda7f61a447831c74f1eabf5f5a1450",
+      "reason": "toolchain_fail",
+      "details": "No Java build system detected in /Users/havriil.pietukhin/uni/masterThesis/revamp/temp/eval_repos/runtime-organic/c2nes_ircbot",
+      "runtime_type_count": 0,
+      "runtime_smells": null
+    },
+    {
+      "case_id": "Passsafe:97e3c3ffe159",
+      "project": "Passsafe",
+      "start_commit": "602ef67def806c4eb7c764e5963160b89aca7605",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "runtime_type_count": 0,
+      "runtime_smells": null
+    },
+    {
+      "case_id": "PhiCode Philib:76559b540d11",
+      "project": "PhiCode Philib",
+      "start_commit": "c74faab2b72f3d28e18672df1b245ca2d489a8d6",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "runtime_type_count": 0,
+      "runtime_smells": null
+    },
+    {
+      "case_id": "PhiCode Philib:a28b73a42446",
+      "project": "PhiCode Philib",
+      "start_commit": "a0d5f9401296e5bf2fb379198657ddca232b5d4e",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "runtime_type_count": 0,
+      "runtime_smells": null
+    },
+    {
+      "case_id": "PhiCode Philib:952c8f61e520",
+      "project": "PhiCode Philib",
+      "start_commit": "d09bfcd84388cfea46ae241b237d19478646650a",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "runtime_type_count": 0,
+      "runtime_smells": null
+    },
+    {
+      "case_id": "PhiCode Philib:0af1a5112b8a",
+      "project": "PhiCode Philib",
+      "start_commit": "48174588095cafb110c2b34b116c4169e787e350",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "runtime_type_count": 0,
+      "runtime_smells": null
+    },
+    {
+      "case_id": "PhiCode Philib:fa9d27c229dd",
+      "project": "PhiCode Philib",
+      "start_commit": "b20ef95301d47957129d4c2e21c91f67873799f1",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "runtime_type_count": 0,
+      "runtime_smells": null
+    },
+    {
+      "case_id": "Tap4j:7706f1f1c0df",
+      "project": "Tap4j",
+      "start_commit": "fb2451c64b4d78d1db062eac6695dab2fe1af2a2",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "runtime_type_count": 0,
+      "runtime_smells": null
+    },
+    {
+      "case_id": "Whydah - UserAdminService:e376a0a66a32",
+      "project": "Whydah - UserAdminService",
+      "start_commit": "a1481805f02668626f33e588ed02a459c47c78f9",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "runtime_type_count": 0,
+      "runtime_smells": null
+    },
+    {
+      "case_id": "Whydah - UserAdminService:ead0b7f23e07",
+      "project": "Whydah - UserAdminService",
+      "start_commit": "41e59cf559bcfa0292db1bc523f2ae6ff065390f",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "runtime_type_count": 0,
+      "runtime_smells": null
+    },
+    {
+      "case_id": "Whydah - UserAdminService:499fef180771",
+      "project": "Whydah - UserAdminService",
+      "start_commit": "f7d28f896dbbb655aae5207dce720001a27f4360",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "runtime_type_count": 0,
+      "runtime_smells": null
+    }
+  ]
+}

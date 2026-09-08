@@ -1,4 +1,4 @@
-"""Tests for CK metrics MavenRunner and CSV report parsing."""
+"""Tests for CK metrics GradleRunner and CSV report parsing."""
 
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ from java.metrics.ck_reports import (
     parse_ck_method_csv,
     run_ck_metrics,
 )
-from java.metrics.runner import MavenRunner
+from java.metrics.runner import GradleRunner
 from repository.repo import Repo
 
 
@@ -64,7 +64,7 @@ def test_run_ck_metrics_uses_runner(tmp_path: Path, monkeypatch: pytest.MonkeyPa
     (out / "method.csv").write_text(_METHOD_CSV, encoding="utf-8")
 
     def fake_collect(
-        self: MavenRunner,
+        self: GradleRunner,
         output_dir: str | Path,
         *,
         use_jars: bool = False,
@@ -86,7 +86,7 @@ def test_run_ck_metrics_uses_runner(tmp_path: Path, monkeypatch: pytest.MonkeyPa
         assert Path(output_dir) == out
         return subprocess.CompletedProcess(["java", "-jar", "ck.jar"], 0, stdout="ok", stderr="")
 
-    monkeypatch.setattr("java.metrics.runner.MavenRunner.collect", fake_collect)
+    monkeypatch.setattr("java.metrics.runner.GradleRunner.collect", fake_collect)
     summary = run_ck_metrics(repo, output_dir=out, ensure_package=False)
     assert summary.success
     assert summary.totals.classes == 2
@@ -101,6 +101,6 @@ def test_maven_runner_fat_jar_missing(tmp_path: Path) -> None:
     ck_dir = tmp_path / "ck-tool"
     ck_dir.mkdir()
     (ck_dir / "pom.xml").write_text("<project></project>\n", encoding="utf-8")
-    runner = MavenRunner(repo, ck_dir=ck_dir)
+    runner = GradleRunner(repo, ck_dir=ck_dir)
     with pytest.raises(RuntimeError, match="fat jar not found"):
         runner.fat_jar()

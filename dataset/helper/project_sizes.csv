@@ -1,0 +1,66 @@
+project,repo_url,clone_path,size_kib,size_mib,clone_status,clone_details
+ArgoUML,,,0,0.0,skip_no_url,Neo4j project has no repository URL
+Dynamic Collections,https://github.com/jnape/Dynamic-Collections,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/jnape_Dynamic-Collections,0,0.0,clone_fail,"Cmd('git') failed due to: exit code(128)
+  cmdline: git clone -v --depth=1 -- https://github.com/jnape/Dynamic-Collections /Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/jnape_Dynamic-Collections
+  stderr: 'Cloning into '/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/jnape_Dynamic-Collections'...
+remote: Repository not found.
+fatal: repository 'https://github.com/jnape/Dynamic-Collections/' not found
+'"
+JBoss Xerces,,,0,0.0,skip_no_url,Neo4j project has no repository URL
+Market-monitor,https://github.com/localstorm/market-monitor,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/localstorm_market-monitor,0,0.0,clone_fail,"Cmd('git') failed due to: exit code(128)
+  cmdline: git clone -v --depth=1 -- https://github.com/localstorm/market-monitor /Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/localstorm_market-monitor
+  stderr: 'Cloning into '/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/localstorm_market-monitor'...
+remote: Repository not found.
+fatal: repository 'https://github.com/localstorm/market-monitor/' not found
+'"
+Media Magpie,https://github.com/rwe17/MediaMagpie,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/rwe17_MediaMagpie,0,0.0,clone_fail,"Cmd('git') failed due to: exit code(128)
+  cmdline: git clone -v --depth=1 -- https://github.com/rwe17/MediaMagpie /Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/rwe17_MediaMagpie
+  stderr: 'Cloning into '/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/rwe17_MediaMagpie'...
+remote: Repository not found.
+fatal: repository 'https://github.com/rwe17/MediaMagpie/' not found
+'"
+JARA,https://github.com/moobid/JARA,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/moobid_JARA,80,0.1,cloned,checkout present
+Android Bootstrap,https://github.com/AndroidBootstrap/android-bootstrap,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/AndroidBootstrap_android-bootstrap,128,0.1,cloned,checkout present
+Elasticsearch Transport Thrift,https://github.com/elasticsearch/elasticsearch-transport-thrift,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/elasticsearch_elasticsearch-transport-thrift,364,0.4,cloned,checkout present
+OpenConext-crunche,https://github.com/OpenConext/OpenConext-cruncher,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/OpenConext_OpenConext-cruncher,496,0.5,cloned,checkout present
+Lyra,https://github.com/jhalterman/lyra,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/jhalterman_lyra,560,0.5,cloned,checkout present
+GitHub Pull Request Builder,https://github.com/mdelapenya/ghprb-plugin,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/mdelapenya_ghprb-plugin,892,0.9,cloned,checkout present
+Orhanobut Logger,https://github.com/orhanobut/logger,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/orhanobut_logger,972,0.9,cloned,checkout present
+Pusher Java Client,https://github.com/pusher/pusher-java-client,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/pusher_pusher-java-client,1028,1.0,cloned,checkout present
+IRC Bot (c2nes/ircbot),https://github.com/c2nes/ircbot,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/c2nes_ircbot,1120,1.1,cloned,checkout present
+Passsafe,https://github.com/iweinzierl/passsafe,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/iweinzierl_passsafe,1312,1.3,cloned,checkout present
+Alfred MPI,https://github.com/furio/alfred-mpi,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/furio_alfred-mpi,1368,1.3,cloned,checkout present
+Whydah - UserAdminService,https://github.com/altran/Whydah-UserAdminService,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/altran_Whydah-UserAdminService,2392,2.3,cloned,checkout present
+Drugis Common,https://github.com/gertvv/drugis-common,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/gertvv_drugis-common,2784,2.7,cloned,checkout present
+PhiCode Philib,https://github.com/PhiCode/philib,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/PhiCode_philib,3788,3.7,cloned,checkout present
+Dagger,https://github.com/square/dagger,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/square_dagger,4260,4.2,cloned,checkout present
+Tap4j,https://github.com/tupilabs/tap4j,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/tupilabs_tap4j,5016,4.9,cloned,checkout present
+JUnit4,https://github.com/junit-team/junit4,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/junit-team_junit4,5396,5.3,cloned,checkout present
+Netflix SimianArmy,https://github.com/Netflix/SimianArmy,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/Netflix_SimianArmy,5552,5.4,cloned,checkout present
+Netflix Hystrix,https://github.com/Netflix/Hystrix,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/Netflix_Hystrix,5680,5.5,cloned,checkout present
+JBoss Ballroom,https://github.com/hal/ballroom,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/hal_ballroom,6884,6.7,cloned,checkout present
+Facebook SDK for Android,https://github.com/facebook/facebook-android-sdk,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/facebook_facebook-android-sdk,9432,9.2,cloned,checkout present
+Retrofit,https://github.com/square/retrofit,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/square_retrofit,10436,10.2,cloned,checkout present
+Google I/O Sched App,https://github.com/google/iosched,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/google_iosched,10468,10.2,cloned,checkout present
+OkHttp,https://github.com/square/okhttp,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/square_okhttp,12244,12.0,cloned,checkout present
+PhilJay MPAndroidChart,https://github.com/PhilJay/MPAndroidChart,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/PhilJay_MPAndroidChart,15504,15.1,cloned,checkout present
+Realm Java,https://github.com/realm/realm-java,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/realm_realm-java,18400,18.0,cloned,checkout present
+Apache Ant,https://github.com/apache/ant,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/apache_ant,28676,28.0,cloned,checkout present
+WhatsUp (MarvinBellmann),https://github.com/MarvinBellmann/WhatsUp,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/MarvinBellmann_WhatsUp,45896,44.8,cloned,checkout present
+Bublag Confetti,https://github.com/bublag/confetti,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/bublag_confetti,46100,45.0,cloned,checkout present
+Apache Tomcat,https://github.com/apache/tomcat,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/apache_tomcat,56152,54.8,cloned,checkout present
+Mayhem and Hell,https://github.com/alvyxaz/mayhem-and-hell,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/alvyxaz_mayhem-and-hell,58868,57.5,cloned,checkout present
+Apache Dubbo,https://github.com/alibaba/dubbo,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/alibaba_dubbo,67836,66.2,cloned,checkout present
+Sen Word-Builder,https://github.com/Sen-Word-Builder/Word-Builder,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/Sen-Word-Builder_Word-Builder,71268,69.6,cloned,checkout present
+Spring Boot,https://github.com/spring-projects/spring-boot,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/spring-projects_spring-boot,81328,79.4,cloned,checkout present
+TUBAME Migration Tool,https://github.com/TUBAME/migration-tool,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/TUBAME_migration-tool,81744,79.8,cloned,checkout present
+Apache Derby,https://github.com/apache/derby,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/apache_derby,101756,99.4,cloned,checkout present
+Spring Framework,https://github.com/spring-projects/spring-framework,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/spring-projects_spring-framework,103784,101.4,cloned,checkout present
+Containing,https://github.com/robertdj20/Containing,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/robertdj20_Containing,110008,107.4,cloned,checkout present
+Facebook Fresco,https://github.com/facebook/fresco,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/facebook_fresco,122328,119.5,cloned,checkout present
+Achilles,https://github.com/doanduyhai/Achilles,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/doanduyhai_Achilles,147040,143.6,cloned,checkout present
+Google J2ObjC,https://github.com/google/j2objc,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/google_j2objc,169024,165.1,cloned,checkout present
+Presto DB,https://github.com/prestodb/presto,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/prestodb_presto,185744,181.4,cloned,checkout present
+LeakCanary,https://github.com/square/leakcanary,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/square_leakcanary,267044,260.8,cloned,checkout present
+Ikasan,https://github.com/ikasanEIP/ikasan,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/ikasanEIP_ikasan,343748,335.7,cloned,checkout present
+Elasticsearch,https://github.com/elastic/elasticsearch,/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/elastic_elasticsearch,696224,679.9,cloned,checkout present

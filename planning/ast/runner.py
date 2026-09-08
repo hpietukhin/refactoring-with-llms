@@ -15,7 +15,7 @@ from planning.ast.models import AstIndex
 from repository.repo import Repo
 
 
-class MavenRunner:
+class GradleRunner:
     """Package the Spoon tool and index one Java checkout."""
 
     def __init__(
@@ -31,13 +31,13 @@ class MavenRunner:
         self.timeout = timeout
 
     def _find_executable(self) -> str:
-        wrapper = self.tool_dir / ("mvnw.cmd" if os.name == "nt" else "mvnw")
+        wrapper = self.tool_dir / ("gradlew.bat" if os.name == "nt" else "gradlew")
         if wrapper.is_file():
             return str(wrapper)
-        return which("mvn") or "mvn"
+        return which("gradle") or "gradle"
 
     def run(self, *args: str) -> subprocess.CompletedProcess[str]:
-        """Run Maven against the Spoon tool project."""
+        """Run Gradle against the Spoon tool project."""
         command = [self.executable, *(str(arg) for arg in args)]
         try:
             with java_env(
@@ -58,16 +58,16 @@ class MavenRunner:
             ) from exc
 
     def package(self) -> subprocess.CompletedProcess[str]:
-        """Build the Spoon fat JAR with Maven."""
-        if not (self.tool_dir / "pom.xml").is_file():
+        """Build the Spoon fat JAR with Gradle."""
+        if not (self.tool_dir / "build.gradle.kts").is_file():
             raise RuntimeError(
-                f"Spoon Maven project is missing: {self.tool_dir / 'pom.xml'}"
+                f"Spoon Gradle project is missing: {self.tool_dir / 'build.gradle.kts'}"
             )
-        return self.run("-q", "package", "-DskipTests")
+        return self.run("shadowJar", "-q")
 
     def fat_jar(self) -> Path:
         """Return the packaged Spoon indexer JAR."""
-        return self.tool_dir / "target" / "spoon-ast-indexer.jar"
+        return self.tool_dir / "build" / "libs" / "spoon-ast-indexer.jar"
 
     def inspect(self) -> AstIndex:
         """Build an AST index for the current project state."""

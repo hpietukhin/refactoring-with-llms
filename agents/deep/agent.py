@@ -2,9 +2,15 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from eliot import log_message
 from langchain.messages import HumanMessage
-from langchain.agents.middleware import ModelCallLimitMiddleware, ToolCallLimitMiddleware
+from langchain.agents.middleware import (
+    ModelCallLimitMiddleware,
+    TodoListMiddleware,
+    ToolCallLimitMiddleware,
+)
 from langchain_core.tools import BaseTool, tool
 from langgraph.checkpoint.memory import InMemorySaver
 
@@ -13,10 +19,12 @@ from agents.java_test.diagnostics import format_verification_feedback
 from agents.deep.context_usage import ContextUsageMiddleware
 from agents.deep.paths import virtual_path
 from agents.deep.verification import VerificationMiddleware
+from config import ROOT
 from detection.organic import OrganicDetector
 from openrouter_llm import chat_model
 from repository.repo import Repo
-from testing.surefire import run_maven_tests
+from smell.smell import SMELL_ADVICE_PATHS
+from testing.surefire import gradle_test_command, run_gradle_tests
 from testing.test_selection import resolve_targeted_tests
 from workflows.composite.nodes.detect import filter_smells_to_elements
 
@@ -32,12 +40,17 @@ CONTEXT_WINDOW_TOKENS = 262_144
 
 
 TOOL_WORKFLOW = """\
+At the start of the task, use `write_todos` to create one todo for each reported
+smell. Work on only the in-progress todo, and mark it completed only after the
+automatic verification confirms that smell no longer remains.
+
 Use tools in this order:
-1. Read the reported source range with `read_file`.
-2. If more context is necessary, use `glob` to locate files or `grep` to locate
+1. Read the in-progress smell's `advice_path` with `read_smell_advice`.
+2. Read the reported source range for the in-progress smell with `read_file`.
+3. If more context is necessary, use `glob` to locate files or `grep` to locate
    text, then read only the relevant ranges.
-3. Make one minimal source change with `edit_file` or `write_file`.
-4. Inspect the automatic verification appended to that tool result before making
+4. Make one minimal source change with `edit_file` or `write_file`.
+5. Inspect the automatic verification appended to that tool result before making
    another change.
 
 After every successful source edit, middleware automatically runs Maven
@@ -51,17 +64,24 @@ and this task must not use `task` delegation.
 """
 
 
-def build_system_prompt(system_instructions: str) -> str:
+def build_system_prompt(system_instructions: str, *, java_source: str | None = None) -> str:
     """Build the deep-agent system prompt for Java smell refactoring.
 
     Tool schemas provide individual tool descriptions; this prompt specifies their
     required workflow.
     """
+    java_version_instruction = (
+        f"This project compiles Java source at level {java_source}. Do not use language "
+        f"features introduced after Java {java_source.removeprefix('1.')}.\n\n"
+        if java_source
+        else ""
+    )
     return (
         "You are an expert coding assistant operating inside deepagents, a coding "
         "agent harness. Your only objective is refactoring Java code to fix code "
         "smells. Automatic verification runs after each source edit. You must ensure "
         "that all tests pass and that every targeted code smell is fixed.\n\n"
+        f"{java_version_instruction}"
         f"Guidelines:\n{GUIDELINES}\n"
         f"Tool workflow:\n{TOOL_WORKFLOW}\n"
         f"Profile instructions:\n{system_instructions}"
@@ -75,6 +95,15 @@ def _build_validation_tools(
     *,
     model_name: str,
 ) -> list[BaseTool]:
+    advice_paths = frozenset(str(path) for path in SMELL_ADVICE_PATHS.values())
+
+    @tool
+    def read_smell_advice(advice_path: str) -> str:
+        """Read bundled refactoring guidance for one reported code smell."""
+        if advice_path not in advice_paths:
+            return f"Unknown smell advice path: {advice_path}"
+        return (ROOT / Path(advice_path)).read_text(encoding="utf-8")
+
     @tool
     def run_tests() -> str:
         """Run Maven tests relevant to changed Java files and return diagnostics."""
@@ -87,14 +116,14 @@ def _build_validation_tools(
         if targeted:
             test_args = (f"-Dtest={','.join(targeted)}",)
             log_message(message_type="deep:targeted_tests", tests=targeted)
-        summary = run_maven_tests(
+        summary = run_gradle_tests(
             repo,
             clean=False,
             jacoco=False,
             timeout=float(timeout),
             test_args=test_args,
         )
-        command = f"mvn test -Dtest={','.join(targeted)}" if targeted else "mvn test"
+        command = gradle_test_command(extra=test_args)
         return format_verification_feedback(summary, repo.path, command)
 
     @tool
@@ -131,7 +160,12 @@ def _build_validation_tools(
             for item in filtered
         )
 
-    return [run_tests, run_java_test_analysis, detect_remaining_smells]
+    return [
+        read_smell_advice,
+        run_tests,
+        run_java_test_analysis,
+        detect_remaining_smells,
+    ]
 
 
 def build_deep_agent(
@@ -141,19 +175,23 @@ def build_deep_agent(
     model_name: str,
     timeout: int,
     system_instructions: str,
-    max_completion_tokens: int,
+    java_source: str | None = None,
     max_model_calls: int = 20,
 ) -> object:
     """Create a deep agent with deterministic verification after source edits."""
-    verification = VerificationMiddleware(repo, elements=elements, timeout=timeout)
+    verification = VerificationMiddleware(
+        repo,
+        elements=elements,
+        timeout=timeout,
+    )
     return _create_deep_agent(
         repo,
         elements=elements,
         model_name=model_name,
         timeout=timeout,
         max_model_calls=max_model_calls,
-        max_completion_tokens=max_completion_tokens,
         system_instructions=system_instructions,
+        java_source=java_source,
         verification=verification,
     )
 
@@ -165,8 +203,8 @@ def _create_deep_agent(
     model_name: str,
     timeout: int,
     max_model_calls: int,
-    max_completion_tokens: int,
     system_instructions: str,
+    java_source: str | None,
     verification: VerificationMiddleware,
 ) -> object:
     """Create a deep agent with a caller-owned verification middleware."""
@@ -179,7 +217,7 @@ def _create_deep_agent(
         timeout,
         model_name=model_name,
     )
-    model = chat_model(model_name, max_completion_tokens=max_completion_tokens)
+    model = chat_model(model_name)
     context_usage = ContextUsageMiddleware(
         model,
         context_window_tokens=CONTEXT_WINDOW_TOKENS,
@@ -187,8 +225,9 @@ def _create_deep_agent(
     return create_deep_agent(
         model=model,
         tools=validation_tools,
-        system_prompt=build_system_prompt(system_instructions),
+        system_prompt=build_system_prompt(system_instructions, java_source=java_source),
         middleware=[
+            TodoListMiddleware(system_prompt=""),
             context_usage,
             verification,
             ModelCallLimitMiddleware(run_limit=max_model_calls, exit_behavior="end"),

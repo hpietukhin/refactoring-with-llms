@@ -1,11 +1,11 @@
 """CK metrics report parsing and collection.
 
 Public API is methods only: ``parse_ck_class_csv``, ``parse_ck_method_csv``,
-and ``run_ck_metrics``. Uses ``MavenRunner`` for packaging/running CK; CSV
+and ``run_ck_metrics``. Uses ``GradleRunner`` for packaging/running CK; CSV
 parsing and Eliot logging stay here.
 
 Named ``ck_reports`` (not ``ck``) so it does not collide with the vendored
-``java/metrics/ck`` Maven project directory.
+``java/metrics/ck`` Gradle project directory.
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ from typing import Sequence
 from eliot import log_message
 
 from config import data_scratch_dir
-from java.metrics.runner import MavenRunner
+from java.metrics.runner import GradleRunner
 from repository.repo import Repo
 
 _CLASS_CSV = "class.csv"
@@ -243,8 +243,8 @@ def run_ck_metrics(
     ignored_directories: Sequence[str] = (),
     ensure_package: bool = True,
 ) -> MetricsSummary:
-    """Run CK through ``MavenRunner``, parse CSVs, and log aggregate metrics."""
-    runner = MavenRunner(repo, timeout=timeout)
+    """Run CK through ``GradleRunner``, parse CSVs, and log aggregate metrics."""
+    runner = GradleRunner(repo, timeout=timeout)
     keep_output = output_dir is not None
     out = (
         Path(output_dir)

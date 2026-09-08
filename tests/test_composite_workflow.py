@@ -17,7 +17,11 @@ from smell.smell import Smell
 from workflows.composite.graph import build_graph
 from workflows.composite.models import CompositeWorkflowState
 from workflows.composite.nodes.planner import action_route, planner
-from workflows.composite.nodes.refactor import continue_after_replan
+from workflows.composite.nodes.refactor import (
+    RefactorAgentState,
+    continue_after_replan,
+    refactor_completion_feedback,
+)
 from workflows.composite.nodes.verify import route_after_java_tests
 
 AST_INDEX = AstIndex(
@@ -156,6 +160,44 @@ def test_continue_after_replan(state: dict[str, object], expected: str) -> None:
 def test_build_graph_compiles() -> None:
     graph = build_graph()
     assert graph is not None
+
+
+@pytest.mark.parametrize(
+    ("state", "expected_fragment"),
+    [
+        (
+            {"java_changes_made": True, "patch_stage": "verified", "tests_passed": False},
+            "Maven verification has not passed",
+        ),
+        (
+            {
+                "java_changes_made": True,
+                "patch_stage": "verified",
+                "tests_passed": True,
+                "target_smell_remaining": True,
+            },
+            "reported smell is still present",
+        ),
+        (
+            {
+                "java_changes_made": True,
+                "patch_stage": "verified",
+                "tests_passed": True,
+                "target_smell_remaining": False,
+            },
+            None,
+        ),
+    ],
+)
+def test_refactor_completion_requires_evidence(
+    state: dict[str, object],
+    expected_fragment: str | None,
+) -> None:
+    feedback = refactor_completion_feedback(cast(RefactorAgentState, state))
+    if expected_fragment is None:
+        assert feedback is None
+    else:
+        assert expected_fragment in feedback
 
 
 def test_routing_subgraph_with_stubs() -> None:

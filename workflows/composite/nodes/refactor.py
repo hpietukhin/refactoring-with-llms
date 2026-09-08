@@ -27,7 +27,7 @@ from openrouter_llm import (
 )
 from repository.repo import Repo
 from smell.smell import Smell
-from testing.surefire import TestRunSummary, parse_surefire_reports, run_maven_tests
+from testing.surefire import TestRunSummary, gradle_test_command, parse_surefire_reports, run_gradle_tests
 from testing.test_selection import resolve_targeted_tests
 from agents.java_test.tool_logging import guarded_tool_call_logger, invoke_logged_tool
 from workflows.composite.models import CompositeWorkflowState
@@ -118,10 +118,10 @@ def _build_refactor_tools(repo: Repo, elements: list[str], timeout: int) -> list
                 message_type="refactor:targeted_tests",
                 tests=targeted,
             )
-        last_test_summary = run_maven_tests(
+        last_test_summary = run_gradle_tests(
             repo, clean=False, jacoco=False, timeout=float(timeout), test_args=test_args,
         )
-        command = f"mvn test -Dtest={','.join(targeted)}" if targeted else "mvn test"
+        command = gradle_test_command(extra=test_args)
         return format_verification_feedback(
             last_test_summary,
             repo.path,

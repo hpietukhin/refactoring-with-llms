@@ -4,8 +4,9 @@ from __future__ import annotations
 
 from lsprotocol.types import Location, Position, Range
 
+from config import ROOT
 from planning.rules import LONG_METHOD
-from smell import Smell, path_to_uri
+from smell import SMELL_ADVICE_PATHS, Smell, path_to_uri
 
 
 def _location(
@@ -38,6 +39,37 @@ def test_constructor_builds_hashlib_id() -> None:
     assert smell.file_path == "/tmp/Foo.java"
     assert smell.location.range.start.line == 41  # LSP is 0-indexed
     assert smell.severity_score == 3
+    assert smell.advice == SMELL_ADVICE_PATHS[LONG_METHOD]
+
+
+def test_to_dict_serializes_all_smell_fields() -> None:
+    smell = Smell(
+        type=LONG_METHOD,
+        location=_location("/tmp/Foo.java", 42, end_line=50),
+        severity="HIGH",
+        detected_by="ORGANIC",
+        commit_hash="abc123",
+    )
+
+    assert smell.to_dict() == {
+        "type": LONG_METHOD,
+        "location": {
+            "uri": "file:///tmp/Foo.java",
+            "range": {
+                "start": {"line": 41, "character": 0},
+                "end": {"line": 49, "character": 0},
+            },
+        },
+        "severity": "HIGH",
+        "detected_by": "ORGANIC",
+        "commit_hash": "abc123",
+        "advice": "agents/deep/smells/long-method.md",
+        "id": smell.id,
+    }
+
+
+def test_every_smell_advice_path_exists() -> None:
+    assert all((ROOT / path).is_file() for path in SMELL_ADVICE_PATHS.values())
 
 
 def test_same_fields_share_stable_id_and_dedupe_in_frozenset() -> None:

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import heapq
+import os
 from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
@@ -13,10 +14,11 @@ from eliot import log_message
 from config import planning_config
 from planning.ast.models import AstIndex
 from planning.ast.relations import AstRelations
-from planning.ast.runner import MavenRunner
+from planning.ast.runner import GradleRunner
 from planning.graph import transitions
 from planning.organic_rules import organic_rules
 from planning.rules import PlanningSmell, Rule, SmellType, State
+from planning.state import state_from_smells
 from repository.repo import Repo
 from smell.smell import Smell
 
@@ -91,36 +93,6 @@ def best_first_smell_plan(
     return list(best_path)
 
 
-def state_from_smells(
-    smells: Sequence[Smell],
-    ast_index: AstIndex,
-    repo_path: Path,
-) -> State:
-    """Project detector findings onto a canonical instance-level state."""
-    state: list[PlanningSmell] = []
-    for smell in smells:
-        line = smell.location.range.start.line + 1
-        element = ast_index.element_at(
-            smell.file_path,
-            line,
-            repo_path,
-        )
-        state.append(
-            PlanningSmell(
-                element_id=(
-                    element.id
-                    if element is not None
-                    else f"unresolved:{smell.id}"
-                ),
-                line=line,
-                type=smell.type,
-                id=smell.id,
-                severity=smell.severity_score,
-            )
-        )
-    return tuple(sorted(state))
-
-
 @runtime_checkable
 class PlannerProtocol(Protocol):
     """Select the next concrete smell to resolve."""
@@ -130,7 +102,7 @@ class PlannerProtocol(Protocol):
         smells: Sequence[Smell],
         repo_path: Path,
     ) -> Smell | None:
-        """Return the next smell, or ``None`` when no improving plan exists."""
+        """Return the next smell, or ``None`` when no smells remain."""
         ...
 
 
@@ -155,7 +127,7 @@ class PriorityPlanner:
         index = (
             self.ast_index
             if self.ast_index is not None
-            else MavenRunner(Repo(repo_path)).inspect()
+            else GradleRunner(Repo(repo_path)).inspect()
         )
         path = best_first_smell_plan(
             state_from_smells(smells, index, repo_path),
@@ -186,14 +158,25 @@ class NoPriorityPlanner:
 
 def planner_from_config() -> PlannerProtocol:
     """Build the planner named by ``[planning].planner``."""
-    name = str(planning_config()["planner"])
-    if name == "priority":
-        return PriorityPlanner()
-    if name == "no_priority":
-        return NoPriorityPlanner()
-    raise ValueError(
-        f"Unsupported planning.planner={name!r}; expected 'priority' or 'no_priority'"
-    )
+    name = os.environ.get("PLANNING_PLANNER", str(planning_config()["planner"]))
+    match name:
+        case "bfs":
+            return PriorityPlanner()
+        case "none":
+            return NoPriorityPlanner()
+        case "greedy":
+            from planning.greedy import GreedyPlanner
+
+            return GreedyPlanner()
+        case "topo":
+            from planning.topo import TopoPlanner
+
+            return TopoPlanner()
+        case _:
+            raise ValueError(
+                f"Unsupported planning.planner={name!r}; "
+                "expected 'none', 'bfs', 'greedy', or 'topo'"
+            )
 
 
 def pick_next_smell(
@@ -205,3 +188,15 @@ def pick_next_smell(
     """Select the next concrete smell with the configured planner."""
     active = planner if planner is not None else planner_from_config()
     return active.plan_next_smell(smells, Path(repo_path).expanduser().resolve())
+
+
+__all__ = [
+    "NoPriorityPlanner",
+    "PlannerProtocol",
+    "PriorityPlanner",
+    "best_first_smell_plan",
+    "pick_next_smell",
+    "planner_from_config",
+    "smell_burden",
+    "state_from_smells",
+]

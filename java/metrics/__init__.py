@@ -9,11 +9,11 @@ from java.metrics.ck_reports import (
     parse_ck_method_csv,
     run_ck_metrics,
 )
-from java.metrics.runner import MavenRunner
+from java.metrics.runner import GradleRunner
 
 __all__ = [
     "ClassMetrics",
-    "MavenRunner",
+    "GradleRunner",
     "MethodMetrics",
     "MetricsSummary",
     "MetricsTotals",

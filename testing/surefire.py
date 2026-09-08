@@ -1,26 +1,33 @@
-"""Maven Surefire report parsing and test execution.
+"""JUnit test report parsing and Gradle test execution.
 
-Public API is methods only: ``parse_surefire_reports`` and ``run_maven_tests``.
-Uses ``MavenRunner`` for the Maven invocation; report parsing stays here.
+Public API is methods only: ``parse_surefire_reports`` and ``run_gradle_tests``.
+Uses ``GradleRunner`` for the Gradle invocation; report parsing stays here.
 """
 
 from __future__ import annotations
 
+import re
 import xml.etree.ElementTree as ET
 from collections import Counter
 from dataclasses import dataclass, field
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Literal
 
 from eliot import log_message
 
-from java.runner import MavenRunner
+from java.runner import (
+    GRADLE_FAILED_ONLY_ARGS,
+    GradleRunner,
+)
 from repository.repo import Repo
 
 type TestStatus = Literal["PASS", "FAIL", "ERROR", "SKIPPED"]
-type BuildSystem = Literal["maven"]
+type BuildSystem = Literal["maven", "gradle"]
 
 _SUREFIRE_REPORT_DIR = "target/surefire-reports"
+_GRADLE_TEST_RESULTS_GLOB = "**/build/test-results/**/TEST-*.xml"
+_SUREFIRE_HTML_NAMES = ("surefire-report.html", "surefire.html")
 _XML_TAG_TO_STATUS: dict[str, TestStatus] = {
     "failure": "FAIL",
     "error": "ERROR",
@@ -30,7 +37,7 @@ _XML_TAG_TO_STATUS: dict[str, TestStatus] = {
 
 @dataclass(slots=True)
 class TestResult:
-    """One Surefire testcase outcome."""
+    """One JUnit testcase outcome."""
 
     __test__ = False
 
@@ -58,7 +65,7 @@ class TestCounts:
 
 @dataclass(slots=True)
 class TestRunSummary:
-    """Summary of one Maven test invocation with parsed Surefire results."""
+    """Summary of one Gradle test invocation with parsed JUnit results."""
 
     __test__ = False
 
@@ -114,7 +121,7 @@ def _summary_from_process(
     project: Path,
     result: object,
     *,
-    build_system: BuildSystem = "maven",
+    build_system: BuildSystem = "gradle",
 ) -> TestRunSummary:
     exit_code = int(getattr(result, "returncode", -1))
     stdout = str(getattr(result, "stdout", "") or "")
@@ -131,45 +138,103 @@ def _summary_from_process(
 
 
 def parse_surefire_reports(project_path: Path) -> list[TestResult]:
-    """Parse Maven Surefire ``TEST-*.xml`` reports under the project."""
-    report_dirs: list[Path] = []
-    direct = project_path / _SUREFIRE_REPORT_DIR
-    if direct.is_dir():
-        report_dirs.append(direct)
-
-    excluded = {".git", ".mvn", "target", "node_modules"}
-    for child in sorted(project_path.iterdir()):
-        if not child.is_dir() or child.name in excluded:
-            continue
-        module_reports = child / _SUREFIRE_REPORT_DIR
-        if module_reports.is_dir():
-            report_dirs.append(module_reports)
-
-    if not report_dirs:
-        report_dirs = sorted(project_path.glob(f"**/{_SUREFIRE_REPORT_DIR}"))
+    """Parse JUnit ``TEST-*.xml`` reports from Gradle or leftover Surefire dirs."""
+    xml_files: list[Path] = []
+    xml_files.extend(project_path.glob(_GRADLE_TEST_RESULTS_GLOB))
+    xml_files.extend(project_path.glob(f"**/{_SUREFIRE_REPORT_DIR}/TEST-*.xml"))
 
     results: list[TestResult] = []
     seen: set[Path] = set()
-    for report_dir in report_dirs:
-        resolved = report_dir.resolve()
+    for xml_file in xml_files:
+        resolved = xml_file.resolve()
         if resolved in seen:
             continue
         seen.add(resolved)
-        for xml_file in report_dir.glob("TEST-*.xml"):
-            try:
-                root = ET.parse(xml_file).getroot()
-            except ET.ParseError as exc:
-                log_message(
-                    message_type="surefire:malformed",
-                    path=str(xml_file),
-                    exception=str(exc),
-                )
-                continue
-            results.extend(_extract_test_result(tc) for tc in root.findall("testcase"))
+        try:
+            root = ET.parse(xml_file).getroot()
+        except ET.ParseError as exc:
+            log_message(
+                message_type="surefire:malformed",
+                path=str(xml_file),
+                exception=str(exc),
+            )
+            continue
+        results.extend(_extract_test_result(tc) for tc in root.findall("testcase"))
     return results
 
 
-def run_maven_tests(
+class _HtmlTextExtractor(HTMLParser):
+    """Collect visible text from a leftover Surefire HTML report."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._chunks: list[str] = []
+        self._skip = False
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        del attrs
+        if tag in {"script", "style"}:
+            self._skip = True
+        if tag in {"p", "tr", "h1", "h2", "h3", "li", "br", "div"}:
+            self._chunks.append("\n")
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag in {"script", "style"}:
+            self._skip = False
+        if tag in {"p", "tr", "h1", "h2", "h3", "li", "div"}:
+            self._chunks.append("\n")
+
+    def handle_data(self, data: str) -> None:
+        if not self._skip:
+            self._chunks.append(data)
+
+    def text(self) -> str:
+        collapsed = re.sub(r"[ \t]+", " ", "".join(self._chunks))
+        return re.sub(r"\n{3,}", "\n\n", collapsed).strip()
+
+
+def surefire_failure_report_text(project_path: Path) -> str | None:
+    """Return text of leftover Surefire HTML reports, if any exist."""
+    reports: list[Path] = []
+    seen: set[Path] = set()
+    for html_name in _SUREFIRE_HTML_NAMES:
+        for html_file in project_path.glob(f"**/{html_name}"):
+            if "target" not in html_file.parts:
+                continue
+            resolved = html_file.resolve()
+            if resolved in seen:
+                continue
+            seen.add(resolved)
+            reports.append(html_file)
+    if not reports:
+        return None
+    chunks: list[str] = []
+    for html_file in sorted(reports):
+        try:
+            raw = html_file.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        extractor = _HtmlTextExtractor()
+        extractor.feed(raw)
+        text = extractor.text()
+        if text:
+            chunks.append(text)
+    if not chunks:
+        return None
+    return "\n\n".join(chunks)
+
+
+def gradle_test_command(*, clean: bool = False, extra: tuple[str, ...] = ()) -> str:
+    """Return the Gradle test command with failure-only logging."""
+    parts = ["./gradlew", *GRADLE_FAILED_ONLY_ARGS]
+    if clean:
+        parts.append("clean")
+    parts.append("test")
+    parts.extend(extra)
+    return " ".join(parts)
+
+
+def run_gradle_tests(
     repo: Repo,
     *,
     clean: bool = True,
@@ -177,13 +242,13 @@ def run_maven_tests(
     test_args: tuple[str, ...] = (),
     jacoco: bool = False,
 ) -> TestRunSummary:
-    """Run Maven tests through ``MavenRunner`` and parse Surefire reports."""
-    runner = MavenRunner(repo, timeout=timeout)
+    """Run Gradle tests through ``GradleRunner`` and parse JUnit XML reports."""
+    runner = GradleRunner(repo, timeout=timeout)
     try:
         process = runner.test(clean=clean, jacoco=jacoco, test_args=test_args)
     except (OSError, RuntimeError) as exc:
         return TestRunSummary(
-            build_system="maven",
+            build_system="gradle",
             exit_code=-1,
             stderr=str(exc),
         )
@@ -197,5 +262,7 @@ __all__ = [
     "TestCounts",
     "TestRunSummary",
     "parse_surefire_reports",
-    "run_maven_tests",
+    "run_gradle_tests",
+    "surefire_failure_report_text",
+    "gradle_test_command",
 ]

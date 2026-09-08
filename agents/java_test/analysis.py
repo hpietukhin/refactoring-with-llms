@@ -1,4 +1,4 @@
-"""Deterministic Maven verification with bounded LangGraph repair."""
+"""Deterministic Gradle verification with bounded LangGraph repair."""
 
 from __future__ import annotations
 
@@ -11,15 +11,21 @@ from agents.java_test.models import (
     RepairResult,
 )
 from config import settings
+from detection.java_version import detect_project_java_version
 from openrouter_llm import configured_model_name
 from repository.repo import Repo
-from testing.surefire import run_maven_tests
+from testing.surefire import gradle_test_command, run_gradle_tests
 
 
 def detect_build_system(project_path: str | Path) -> BuildSystem | None:
-    """Return ``maven`` when ``pom.xml`` exists."""
-    if (Path(project_path) / "pom.xml").is_file():
-        return "maven"
+    """Return ``gradle`` when a POM or Gradle build file exists."""
+    path = Path(project_path)
+    if (
+        (path / "pom.xml").is_file()
+        or (path / "build.gradle").is_file()
+        or (path / "build.gradle.kts").is_file()
+    ):
+        return "gradle"
     return None
 
 
@@ -67,7 +73,7 @@ def run_java_test_analysis(
     code_agent_timeout: int | None = None,
     target_files: list[str] | None = None,
 ) -> dict[str, object]:
-    """Detect Maven, run tests, and invoke bounded repair when tests fail."""
+    """Convert Maven projects if needed, run Gradle tests, and repair on failure."""
     if code_agent_model is None:
         code_agent_model = llm_repair_model
 
@@ -81,15 +87,14 @@ def run_java_test_analysis(
         ).to_dict()
 
     repo = _open_repo(project_path)
+    detect_project_java_version(repo.path)
     test_args: tuple[str, ...] = ()
-    command = "mvn clean test" if clean else "mvn test"
+    command = gradle_test_command(clean=clean)
     command_source = "default"
     if target_files:
-        # Targeted runs still execute the full suite unless callers pass
-        # explicit -Dtest filters; keep default Maven test for v1.
         command_source = "default"
 
-    summary = run_maven_tests(
+    summary = run_gradle_tests(
         repo,
         clean=clean,
         timeout=float(timeout),
@@ -108,7 +113,7 @@ def run_java_test_analysis(
 
     code_agent_result = RepairResult().to_dict()
     pre_code_agent_exit_code: int | None = None
-    if not summary.success:
+    if not summary.success and repair_cfg.max_attempts > 0:
         from agents.java_test.repair import repair_checkout
 
         pre_code_agent_exit_code = summary.exit_code
@@ -122,7 +127,7 @@ def run_java_test_analysis(
             max_attempts=repair_cfg.max_attempts,
         )
         if code_agent_result.get("applied"):
-            summary = run_maven_tests(
+            summary = run_gradle_tests(
                 repo,
                 clean=clean,
                 timeout=float(timeout),

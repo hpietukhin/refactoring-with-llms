@@ -2,8 +2,10 @@
 
 JSONL is the offline/reproducible experiment input (one case per line).
 Neo4j is the live Composite Refactorings 2020 graph used to inspect cases.
+Case generation from Neo4j lives in ``dataset.generation``.
 Smell instances come from a detector run against a ``Repo`` checkout.
-Connection settings come from ``config.toml`` via ``config.neo4j_config``.
+Neo4j connection settings come from ``config.toml`` via ``config.neo4j_config``;
+the password comes from ``NEO4J_PASSWORD`` in the environment.
 """
 
 from __future__ import annotations
@@ -17,7 +19,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from config import ROOT, dataset_config, neo4j_config
+from config import ROOT, dataset_config, neo4j_config, neo4j_password
 from detection.organic import OrganicDetector
 from repository.repo import Repo
 from smell.smell import Smell
@@ -60,13 +62,14 @@ class CaseRecord:
     end_commit: str | None = None
     end_commit_order: int | None = None
     start_state: dict[str, Any] = field(default_factory=dict)
-    range_metadata: dict[str, Any] = field(default_factory=dict)
+    selection: dict[str, Any] = field(default_factory=dict)
     raw: dict[str, Any] = field(default_factory=dict, repr=False)
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> CaseRecord:
         start_commit = data.get("start_commit", data.get("start_commit_hash"))
         end_commit = data.get("end_commit", data.get("end_commit_hash"))
+        selection_raw = data.get("selection") or data.get("range_metadata") or {}
         return cls(
             case_id=str(data["case_id"]),
             project=str(data["project"]),
@@ -77,7 +80,7 @@ class CaseRecord:
             end_commit=str(end_commit) if end_commit else None,
             end_commit_order=data.get("end_commit_order"),
             start_state=dict(data.get("start_state") or {}),
-            range_metadata=dict(data.get("range_metadata") or {}),
+            selection=dict(selection_raw),
             raw=dict(data),
         )
 
@@ -97,9 +100,18 @@ class CaseRecord:
             payload["end_commit_order"] = self.end_commit_order
         if self.start_state:
             payload["start_state"] = self.start_state
-        if self.range_metadata:
-            payload["range_metadata"] = self.range_metadata
+        if self.selection:
+            payload["selection"] = self.selection
         return payload
+
+    @property
+    def java_source(self) -> str | None:
+        """Return the Java source level recorded during case verification."""
+        verification = self.raw.get("verification")
+        if not isinstance(verification, dict):
+            return None
+        source = verification.get("java_source")
+        return source if isinstance(source, str) else None
 
 
 class Dataset:
@@ -116,9 +128,18 @@ class Dataset:
 
         self.uri = str(neo4j_cfg["uri"]).rstrip("/")
         self.user = str(neo4j_cfg["user"])
-        self.password = str(neo4j_cfg["password"])
         self.timeout_seconds = float(neo4j_cfg["timeout_seconds"])
         self._cypher_url = f"{self.uri}{neo4j_cfg['cypher_path']}"
+
+    @classmethod
+    def from_manifest(cls, manifest_path: Path | str) -> Dataset:
+        """Load cases from an explicit JSONL manifest path."""
+        path = Path(manifest_path)
+        if not path.is_absolute():
+            path = ROOT / path
+        dataset = cls()
+        dataset.manifest_path = path
+        return dataset
 
     def iter_cases(self) -> Iterator[CaseRecord]:
         """Yield typed cases from the JSONL manifest."""
@@ -232,7 +253,7 @@ class Dataset:
 
     def _open(self, request: urllib.request.Request):
         password_manager = urllib.request.HTTPPasswordMgrWithDefaultRealm()
-        password_manager.add_password(None, self.uri, self.user, self.password)
+        password_manager.add_password(None, self.uri, self.user, neo4j_password())
         auth_handler = urllib.request.HTTPBasicAuthHandler(password_manager)
         opener = urllib.request.build_opener(auth_handler)
         return opener.open(request, timeout=self.timeout_seconds)

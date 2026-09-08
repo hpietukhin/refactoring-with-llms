@@ -1,0 +1,618 @@
+{
+  "generated_at": "2026-08-09T19:56:51.942707Z",
+  "filters": {
+    "requested_projects": [
+      "Bublag Confetti",
+      "GitHub Pull Request Builder",
+      "IRC Bot (c2nes/ircbot)",
+      "Ikasan",
+      "Passsafe"
+    ],
+    "projects": [
+      "Bublag Confetti",
+      "GitHub Pull Request Builder",
+      "IRC Bot (c2nes/ircbot)",
+      "Ikasan",
+      "Passsafe"
+    ],
+    "blocked_projects": {},
+    "limit_per_project": 5,
+    "max_elements_per_case": null,
+    "max_smells_per_case": null,
+    "elements_count": null,
+    "runtime_min_smells": 15,
+    "runtime_max_smells": 20,
+    "runtime_type_quotas": {
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2
+    },
+    "max_runtime_classes": 10,
+    "requires_baseline_verification": true
+  },
+  "summary": {
+    "draft_cases": 30,
+    "accepted": 2,
+    "rejected": 28,
+    "accepted_by_runtime_type_count": {
+      "6": 2
+    },
+    "quotas_filled": false
+  },
+  "accepted_cases": [
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):358b21bb264e",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "start_commit": "7499808a9350987dae8736560a632062f59d5423",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 15,
+        "smell_types": [
+          "Brain Method",
+          "Complex Class",
+          "Feature Envy",
+          "Intensive Coupling",
+          "Long Method",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 6,
+        "class_count": 4,
+        "classes": [
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCLogger",
+          "com.brewtab.irclog.IRCStatistics"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCLogger",
+          "com.brewtab.irclog.IRCStatistics"
+        ]
+      }
+    },
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):091c08525c3b",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "start_commit": "e1768f83ef8b4c940ef2e3cce00f91245bf9bbdd",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Brain Method",
+          "Complex Class",
+          "Feature Envy",
+          "Lazy Class",
+          "Long Method",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 6,
+        "class_count": 5,
+        "classes": [
+          "com.brewtab.irc.client.ClientFactory",
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.BashApplet",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCStatistics"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "com.brewtab.irc.client.ClientFactory",
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.BashApplet",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCStatistics"
+        ]
+      }
+    }
+  ],
+  "rejected_cases": [
+    {
+      "case_id": "Bublag Confetti:e042847bd9f9",
+      "project": "Bublag Confetti",
+      "start_commit": "ddb227e8fae70b0c3b9effcb580aa498c7e5d189",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/bublag/confetti",
+        "project": "Bublag Confetti",
+        "start_commit_order": 93,
+        "end_commit_order": 95,
+        "commit_count": 3,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "GitHub Pull Request Builder:c24d9e4253e3",
+      "project": "GitHub Pull Request Builder",
+      "start_commit": "fd2316493fd9a2873eefba821a919973d1954476",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/mdelapenya/ghprb-plugin",
+        "project": "GitHub Pull Request Builder",
+        "start_commit_order": 384,
+        "end_commit_order": 385,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "GitHub Pull Request Builder:01cdc1946ecb",
+      "project": "GitHub Pull Request Builder",
+      "start_commit": "f2ae2050b1a3453c003660b202d612b3590273b4",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/mdelapenya/ghprb-plugin",
+        "project": "GitHub Pull Request Builder",
+        "start_commit_order": 144,
+        "end_commit_order": 145,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):f8bdbd87e7da",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "start_commit": "9e4692a6ebda7f61a447831c74f1eabf5f5a1450",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 18 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/c2nes/ircbot",
+        "project": "IRC Bot (c2nes/ircbot)",
+        "start_commit_order": 18,
+        "end_commit_order": 19,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 18,
+        "first_non_maven_hash": "9e4692a6ebda7f61a447831c74f1eabf5f5a1450",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Ikasan:91307cee90a8",
+      "project": "Ikasan",
+      "start_commit": "494c806c803d99e204cc214eca7f9beba8ce7106",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type SourceScheduledFlowTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 2039,
+        "end_commit_order": 2040,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:15646f35a6e4",
+      "project": "Ikasan",
+      "start_commit": "b5223695895a996909be0f069ee0b6c1f9353737",
+      "reason": "toolchain_fail",
+      "details": "No Java build system detected in /Users/havriil.pietukhin/uni/masterThesis/revamp/temp/eval_repos/runtime-organic/ikasanEIP_ikasan",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 706,
+        "end_commit_order": 707,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:ec5064466c88",
+      "project": "Ikasan",
+      "start_commit": "8bb42ce7a9c7bccaa41478fa54becf2d2b79a6eb",
+      "reason": "toolchain_fail",
+      "details": "No Java build system detected in /Users/havriil.pietukhin/uni/masterThesis/revamp/temp/eval_repos/runtime-organic/ikasanEIP_ikasan",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 622,
+        "end_commit_order": 623,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:a19de9f8fafa",
+      "project": "Ikasan",
+      "start_commit": "f61000714637dbef1d17c95c276482a3f625c7e5",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type SourceScheduledFlowTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 1936,
+        "end_commit_order": 1937,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:d7f006953981",
+      "project": "Ikasan",
+      "start_commit": "eee41d0efc78191834b365e6eb3a5be865c56c8c",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 152,
+        "end_commit_order": 153,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:1d27758ab1d2",
+      "project": "Ikasan",
+      "start_commit": "cd3290354fc9de9884883629ccb89fe4ffb7e160",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 82,
+        "end_commit_order": 84,
+        "commit_count": 3,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:a8346782376e",
+      "project": "Ikasan",
+      "start_commit": "8bb42ce7a9c7bccaa41478fa54becf2d2b79a6eb",
+      "reason": "toolchain_fail",
+      "details": "No Java build system detected in /Users/havriil.pietukhin/uni/masterThesis/revamp/temp/eval_repos/runtime-organic/ikasanEIP_ikasan",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 622,
+        "end_commit_order": 623,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:a669a8c65f9e",
+      "project": "Ikasan",
+      "start_commit": "6cdb8337a806a35a13ae9f1448bf994e86512772",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 92,
+        "end_commit_order": 93,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:fb8b32c61d96",
+      "project": "Ikasan",
+      "start_commit": "ff04c7e280dc3a5738dda1c46392070122e64a89",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type RandomWordPayloadProvider is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 970,
+        "end_commit_order": 971,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:b3bde8841468",
+      "project": "Ikasan",
+      "start_commit": "4444f54f3d047edcd425dd319e0c61f38a3fd6da",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type PayloadToStringConverter is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 1712,
+        "end_commit_order": 1715,
+        "commit_count": 4,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:d93e03488961",
+      "project": "Ikasan",
+      "start_commit": "01c3e92075bd82b933945084bf634ed6caf2c2fe",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 100,
+        "end_commit_order": 101,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:fd809b112525",
+      "project": "Ikasan",
+      "start_commit": "37db1513f6564c582797c9e73cace6345ff1ec49",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type SourceScheduledFlowTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 1828,
+        "end_commit_order": 1831,
+        "commit_count": 4,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:650cfc48f9c9",
+      "project": "Ikasan",
+      "start_commit": "a09e8dc5799b0023269f98786096c8b891f065e1",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type PayloadToStringConverter is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 1587,
+        "end_commit_order": 1588,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:a30d1ff8fca9",
+      "project": "Ikasan",
+      "start_commit": "73154c0c7dc572cafaf07a20fe99dc633e7d2770",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type RandomWordPayloadProvider is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 969,
+        "end_commit_order": 970,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:184253e50a53",
+      "project": "Ikasan",
+      "start_commit": "d1f7a6262340772abe750e03547e983f9e6ac171",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type RandomWordPayloadProvider is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 563,
+        "end_commit_order": 564,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:434a3ab2298e",
+      "project": "Ikasan",
+      "start_commit": "f61000714637dbef1d17c95c276482a3f625c7e5",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type SourceScheduledFlowTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 1936,
+        "end_commit_order": 1937,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:bd8ac4b29afc",
+      "project": "Ikasan",
+      "start_commit": "b7245ba9b9d8f3d691e56bc28c8016aa6a8c7dfe",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type RandomWordPayloadProvider is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 1007,
+        "end_commit_order": 1008,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:b066fe357e7f",
+      "project": "Ikasan",
+      "start_commit": "a0b16104d09c867ce8197ee308f56225def88d68",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 1314,
+        "end_commit_order": 1315,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:32a0a65c0c95",
+      "project": "Ikasan",
+      "start_commit": "1446e41a68660a0bca35ae6b0872567198366763",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 1303,
+        "end_commit_order": 1306,
+        "commit_count": 4,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:09201f6c8cf4",
+      "project": "Ikasan",
+      "start_commit": "1446e41a68660a0bca35ae6b0872567198366763",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 1303,
+        "end_commit_order": 1306,
+        "commit_count": 4,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:c70419eccae4",
+      "project": "Ikasan",
+      "start_commit": "8504141ad9913a5fa10de65e199b29d1207f35ce",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type WordDictionaryTransformer is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 734,
+        "end_commit_order": 736,
+        "commit_count": 3,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:c429a3140da2",
+      "project": "Ikasan",
+      "start_commit": "47861070b7a80b87b5d7818cbb77444112059a71",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type SourceScheduledFlowTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 1858,
+        "end_commit_order": 1863,
+        "commit_count": 6,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Ikasan:832c492acb04",
+      "project": "Ikasan",
+      "start_commit": "e0387d31cdc5d4766da8d8d23bf6dcbe2239b1b2",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type SourceScheduledFlowTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/ikasanEIP/ikasan",
+        "project": "Ikasan",
+        "start_commit_order": 1846,
+        "end_commit_order": 1847,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Passsafe:97e3c3ffe159",
+      "project": "Passsafe",
+      "start_commit": "602ef67def806c4eb7c764e5963160b89aca7605",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/iweinzierl/passsafe",
+        "project": "Passsafe",
+        "start_commit_order": 117,
+        "end_commit_order": 118,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,554 @@
+{
+  "generated_at": "2026-08-09T19:03:47.126224Z",
+  "filters": {
+    "requested_projects": [
+      "JUnit4",
+      "Lyra",
+      "PhiCode Philib",
+      "Tap4j"
+    ],
+    "projects": [
+      "JUnit4",
+      "Lyra",
+      "PhiCode Philib",
+      "Tap4j"
+    ],
+    "blocked_projects": {},
+    "limit_per_project": 5,
+    "max_elements_per_case": null,
+    "max_smells_per_case": null,
+    "elements_count": null,
+    "runtime_min_smells": 15,
+    "runtime_max_smells": 20,
+    "runtime_type_quotas": {
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2
+    },
+    "max_runtime_classes": 10,
+    "requires_baseline_verification": false
+  },
+  "summary": {
+    "draft_cases": 25,
+    "accepted": 10,
+    "rejected": 12,
+    "accepted_by_runtime_type_count": {
+      "4": 2,
+      "2": 2,
+      "5": 2,
+      "6": 2,
+      "3": 2
+    },
+    "quotas_filled": true
+  },
+  "accepted_cases": [
+    {
+      "case_id": "JUnit4:0db62cbefe67",
+      "project": "JUnit4",
+      "start_commit": "48af7e797dbefa1fc47e80394c7f74ef87c3c7ab",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Class Data Should Be Private",
+          "Feature Envy",
+          "Long Parameter List",
+          "Message Chains"
+        ],
+        "smell_type_count": 4,
+        "class_count": 3,
+        "classes": [
+          "org.junit.Assert",
+          "org.junit.runners.ParentRunner",
+          "org.junit.tests.experimental.theories.runner.UnsuccessfulWithDataPointFields"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.junit.Assert",
+          "org.junit.runners.ParentRunner",
+          "org.junit.tests.experimental.theories.runner.UnsuccessfulWithDataPointFields"
+        ]
+      }
+    },
+    {
+      "case_id": "JUnit4:07f823509bb7",
+      "project": "JUnit4",
+      "start_commit": "52e93b4fe3c4133118f33635ea8517a13ff05321",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 15,
+        "smell_types": [
+          "Class Data Should Be Private",
+          "Lazy Class"
+        ],
+        "smell_type_count": 2,
+        "class_count": 2,
+        "classes": [
+          "org.junit.runners.model.TestClass",
+          "org.junit.tests.experimental.rules.RuleFieldValidatorTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.junit.runners.model.TestClass",
+          "org.junit.tests.experimental.rules.RuleFieldValidatorTest"
+        ]
+      }
+    },
+    {
+      "case_id": "JUnit4:64519a293ba0",
+      "project": "JUnit4",
+      "start_commit": "1768d08d029dc3bf1ab88e26df0a9b40ae61227f",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 15,
+        "smell_types": [
+          "Complex Class",
+          "Lazy Class",
+          "Long Method",
+          "Long Parameter List",
+          "Refused Bequest"
+        ],
+        "smell_type_count": 5,
+        "class_count": 4,
+        "classes": [
+          "org.junit.Assert",
+          "org.junit.internal.runners.statements.FailOnTimeout",
+          "org.junit.runners.BlockJUnit4ClassRunner",
+          "org.junit.tests.running.methods.TestMethodTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.junit.Assert",
+          "org.junit.internal.runners.statements.FailOnTimeout",
+          "org.junit.runners.BlockJUnit4ClassRunner",
+          "org.junit.tests.running.methods.TestMethodTest"
+        ]
+      }
+    },
+    {
+      "case_id": "JUnit4:0f220ce86a22",
+      "project": "JUnit4",
+      "start_commit": "308768863b78f3a6345e25d7f9d35892c2de5a01",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 18,
+        "smell_types": [
+          "Class Data Should Be Private",
+          "Feature Envy",
+          "Lazy Class",
+          "Message Chains"
+        ],
+        "smell_type_count": 4,
+        "class_count": 3,
+        "classes": [
+          "org.junit.runners.BlockJUnit4ClassRunner",
+          "org.junit.tests.experimental.categories.CategoryTest",
+          "org.junit.tests.experimental.categories.SuiteBuilderTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.junit.runners.BlockJUnit4ClassRunner",
+          "org.junit.tests.experimental.categories.CategoryTest",
+          "org.junit.tests.experimental.categories.SuiteBuilderTest"
+        ]
+      }
+    },
+    {
+      "case_id": "JUnit4:8e6fd00bad61",
+      "project": "JUnit4",
+      "start_commit": "96af9a2a520a40404971968ee14a183d0aed1c4b",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 15,
+        "smell_types": [
+          "Class Data Should Be Private",
+          "Complex Class",
+          "Feature Envy",
+          "Long Parameter List",
+          "Message Chains"
+        ],
+        "smell_type_count": 5,
+        "class_count": 3,
+        "classes": [
+          "org.junit.experimental.categories.Categories",
+          "org.junit.runners.ParentRunner",
+          "org.junit.tests.experimental.theories.runner.UnsuccessfulWithDataPointFields"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.junit.experimental.categories.Categories",
+          "org.junit.runners.ParentRunner",
+          "org.junit.tests.experimental.theories.runner.UnsuccessfulWithDataPointFields"
+        ]
+      }
+    },
+    {
+      "case_id": "JUnit4:d145a09c9dbb",
+      "project": "JUnit4",
+      "start_commit": "4041354a3a7629b74970e0624b7564736c20e1e3",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 20,
+        "smell_types": [
+          "Class Data Should Be Private",
+          "Feature Envy",
+          "Lazy Class",
+          "Long Parameter List",
+          "Message Chains",
+          "Refused Bequest"
+        ],
+        "smell_type_count": 6,
+        "class_count": 4,
+        "classes": [
+          "org.junit.Assert",
+          "org.junit.runners.BlockJUnit4ClassRunner",
+          "org.junit.tests.experimental.categories.SuiteBuilderTest",
+          "org.junit.tests.running.methods.TestMethodTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.junit.Assert",
+          "org.junit.runners.BlockJUnit4ClassRunner",
+          "org.junit.tests.experimental.categories.SuiteBuilderTest",
+          "org.junit.tests.running.methods.TestMethodTest"
+        ]
+      }
+    },
+    {
+      "case_id": "JUnit4:cec947916fd1",
+      "project": "JUnit4",
+      "start_commit": "8ff0b44e3fb0c1c56a1dc6290c3b6828a5a8f9bf",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 18,
+        "smell_types": [
+          "Feature Envy",
+          "Lazy Class",
+          "Refused Bequest"
+        ],
+        "smell_type_count": 3,
+        "class_count": 4,
+        "classes": [
+          "org.junit.runners.BlockJUnit4ClassRunner",
+          "org.junit.tests.experimental.categories.CategoryTest",
+          "org.junit.tests.running.methods.ParameterizedTestMethodTest",
+          "org.junit.tests.running.methods.TestMethodTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.junit.runners.BlockJUnit4ClassRunner",
+          "org.junit.tests.experimental.categories.CategoryTest",
+          "org.junit.tests.running.methods.ParameterizedTestMethodTest",
+          "org.junit.tests.running.methods.TestMethodTest"
+        ]
+      }
+    },
+    {
+      "case_id": "JUnit4:09df596913de",
+      "project": "JUnit4",
+      "start_commit": "8672a83f51b183c756649a423b908271c894b8df",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Class Data Should Be Private",
+          "Feature Envy",
+          "Message Chains"
+        ],
+        "smell_type_count": 3,
+        "class_count": 3,
+        "classes": [
+          "org.junit.runners.Parameterized",
+          "org.junit.runners.ParentRunner",
+          "org.junit.tests.running.classes.ParameterizedTestTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.junit.runners.Parameterized",
+          "org.junit.runners.ParentRunner",
+          "org.junit.tests.running.classes.ParameterizedTestTest"
+        ]
+      }
+    },
+    {
+      "case_id": "JUnit4:521ce86ddd69",
+      "project": "JUnit4",
+      "start_commit": "dfaf332b4df0d98293ac135e5abf9de6a2623b14",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 20,
+        "smell_types": [
+          "Feature Envy",
+          "Intensive Coupling",
+          "Lazy Class",
+          "Long Parameter List",
+          "Message Chains",
+          "Refused Bequest"
+        ],
+        "smell_type_count": 6,
+        "class_count": 4,
+        "classes": [
+          "junit.framework.TestSuite",
+          "org.junit.Assert",
+          "org.junit.internal.MethodSorterTest",
+          "org.junit.tests.running.methods.AnnotationTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "junit.framework.TestSuite",
+          "org.junit.Assert",
+          "org.junit.internal.MethodSorterTest",
+          "org.junit.tests.running.methods.AnnotationTest"
+        ]
+      }
+    },
+    {
+      "case_id": "Lyra:814e7ea1c2f1",
+      "project": "Lyra",
+      "start_commit": "3f49cbffff020134239962f1001b168c43c58acb",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 18,
+        "smell_types": [
+          "Feature Envy",
+          "Message Chains"
+        ],
+        "smell_type_count": 2,
+        "class_count": 4,
+        "classes": [
+          "net.jodah.lyra.internal.AbstractFunctionalTest",
+          "net.jodah.lyra.internal.ChannelRecoveryTest",
+          "net.jodah.lyra.internal.ConnectionFactoryInvocationTest",
+          "net.jodah.lyra.internal.ConnectionInvocationTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "net.jodah.lyra.internal.AbstractFunctionalTest",
+          "net.jodah.lyra.internal.ChannelRecoveryTest",
+          "net.jodah.lyra.internal.ConnectionFactoryInvocationTest",
+          "net.jodah.lyra.internal.ConnectionInvocationTest"
+        ]
+      }
+    }
+  ],
+  "rejected_cases": [
+    {
+      "case_id": "JUnit4:1875bdf74403",
+      "project": "JUnit4",
+      "start_commit": "d3b3a19c78435ef6b0d1c8832bcdb1a8d5ed6a4e",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 108 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 108,
+        "end_commit_order": 109,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 108,
+        "first_non_maven_hash": "d3b3a19c78435ef6b0d1c8832bcdb1a8d5ed6a4e",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:074f8ce352a0",
+      "project": "JUnit4",
+      "start_commit": "870289f3272917f312de6902b8b6bdc43552d4b7",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 751 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 751,
+        "end_commit_order": 753,
+        "commit_count": 3,
+        "all_maven": false,
+        "first_non_maven_order": 751,
+        "first_non_maven_hash": "870289f3272917f312de6902b8b6bdc43552d4b7",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:8b85b29cfa7d",
+      "project": "JUnit4",
+      "start_commit": "752727de89a6bab731f49597c7ec3858ebb3e0a3",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 375 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 375,
+        "end_commit_order": 376,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 375,
+        "first_non_maven_hash": "752727de89a6bab731f49597c7ec3858ebb3e0a3",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:cee652cd8ed0",
+      "project": "JUnit4",
+      "start_commit": "f268f458843fc84e83c244a5c271cc71386eb1cf",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 6 uses unknown",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 6,
+        "end_commit_order": 7,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 6,
+        "first_non_maven_hash": "f268f458843fc84e83c244a5c271cc71386eb1cf",
+        "first_non_maven_primary": "unknown"
+      }
+    },
+    {
+      "case_id": "JUnit4:d5821d01e761",
+      "project": "JUnit4",
+      "start_commit": "039f6e8164fbe51fbbbf4b75ae025850c8cc158f",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 97 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 97,
+        "end_commit_order": 98,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 97,
+        "first_non_maven_hash": "039f6e8164fbe51fbbbf4b75ae025850c8cc158f",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:72e3758b6474",
+      "project": "JUnit4",
+      "start_commit": "d2dce1b179fc6481e4ee4534738924fa59088c13",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 124 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 124,
+        "end_commit_order": 125,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 124,
+        "first_non_maven_hash": "d2dce1b179fc6481e4ee4534738924fa59088c13",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:61a5c0d3399b",
+      "project": "JUnit4",
+      "start_commit": "0d6cd750d53486f01f12ddfee8657d94b5940574",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 331 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 331,
+        "end_commit_order": 332,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 331,
+        "first_non_maven_hash": "0d6cd750d53486f01f12ddfee8657d94b5940574",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:c7e9827e78a6",
+      "project": "JUnit4",
+      "start_commit": "2a6d6365c593149da094d7512028a2d008ea6cff",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 336 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 336,
+        "end_commit_order": 337,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 336,
+        "first_non_maven_hash": "2a6d6365c593149da094d7512028a2d008ea6cff",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:6172c4d6738d",
+      "project": "JUnit4",
+      "start_commit": "8088946a72634d8d6f91db157f4cbe9a2931d4ea",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 662 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 662,
+        "end_commit_order": 663,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 662,
+        "first_non_maven_hash": "8088946a72634d8d6f91db157f4cbe9a2931d4ea",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:29468a0ed8a0",
+      "project": "JUnit4",
+      "start_commit": "d3e86b059db787af5c0d58ddf3f69af5b42865b8",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 746 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 746,
+        "end_commit_order": 747,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 746,
+        "first_non_maven_hash": "d3e86b059db787af5c0d58ddf3f69af5b42865b8",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:1fa671790187",
+      "project": "JUnit4",
+      "start_commit": "979e8abbe974e8847668f5887403da78a6165ebc",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 423 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 423,
+        "end_commit_order": 424,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 423,
+        "first_non_maven_hash": "979e8abbe974e8847668f5887403da78a6165ebc",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:c5ddeef60b00",
+      "project": "JUnit4",
+      "start_commit": "c5ece65fe537092b9552f0efcca8a1e144ca4182",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 438 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 438,
+        "end_commit_order": 439,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 438,
+        "first_non_maven_hash": "c5ece65fe537092b9552f0efcca8a1e144ca4182",
+        "first_non_maven_primary": "ant"
+      }
+    }
+  ]
+}

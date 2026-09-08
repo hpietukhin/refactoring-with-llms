@@ -1,0 +1,1405 @@
+{
+  "generated_at": "2026-08-09T19:25:13.180364Z",
+  "filters": {
+    "requested_projects": [
+      "Achilles"
+    ],
+    "projects": [
+      "Achilles"
+    ],
+    "blocked_projects": {},
+    "limit_per_project": 5,
+    "max_elements_per_case": null,
+    "max_smells_per_case": null,
+    "elements_count": null,
+    "runtime_min_smells": 15,
+    "runtime_max_smells": 20,
+    "runtime_type_quotas": {
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2
+    },
+    "max_runtime_classes": 10,
+    "requires_baseline_verification": true
+  },
+  "summary": {
+    "draft_cases": 76,
+    "accepted": 0,
+    "rejected": 76,
+    "accepted_by_runtime_type_count": {},
+    "quotas_filled": false
+  },
+  "accepted_cases": [],
+  "rejected_cases": [
+    {
+      "case_id": "Achilles:fc7fecac46ed",
+      "project": "Achilles",
+      "start_commit": "6d20d6f9d483232f8106893680ecfe74ed9589a8",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 401,
+        "end_commit_order": 406,
+        "commit_count": 6,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:62b81cbfc35c",
+      "project": "Achilles",
+      "start_commit": "4801f993f010cdc5acf95994df2eb5c869985d73",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 424,
+        "end_commit_order": 480,
+        "commit_count": 57,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:481548aa8c94",
+      "project": "Achilles",
+      "start_commit": "373dbd65393af41ec7c6d0285e9fda01a099c1f3",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type EmOperationsIT is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 532,
+        "end_commit_order": 555,
+        "commit_count": 24,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:7ec388cf4e32",
+      "project": "Achilles",
+      "start_commit": "9b6d9b15f889cb0025c4f1b17c08cb850d84d983",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 400,
+        "end_commit_order": 401,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:63f7a780e0c4",
+      "project": "Achilles",
+      "start_commit": "c3e3868f03af81460637e69db56a4602eefaabb6",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 314,
+        "end_commit_order": 315,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:56d2912fcc6d",
+      "project": "Achilles",
+      "start_commit": "077361f914cebf0ce625f776dad4da4b192fcbc7",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 21,
+        "end_commit_order": 25,
+        "commit_count": 5,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:801921c58767",
+      "project": "Achilles",
+      "start_commit": "067bc4cbd2910cafd06e9c0e8d655f9d6e16ed40",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 26,
+        "end_commit_order": 27,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:571805ea0235",
+      "project": "Achilles",
+      "start_commit": "81da310a9655b0e4a2c3506e877bca9264c7bdf2",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 282,
+        "end_commit_order": 283,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:03a99769a7ec",
+      "project": "Achilles",
+      "start_commit": "78d011f533dedc716c94e35d59b5d260fe8375fb",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 31,
+        "end_commit_order": 32,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:1b105cac7e7b",
+      "project": "Achilles",
+      "start_commit": "0dd54bd9e15a0f85457cfb407421898f4ee65025",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 325,
+        "end_commit_order": 326,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:6942e4d6433e",
+      "project": "Achilles",
+      "start_commit": "28753eecc8338a925c987ccf5a577931ffa0f0b1",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 262,
+        "end_commit_order": 263,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:5defdf8238a3",
+      "project": "Achilles",
+      "start_commit": "429c142097888b459a68d55836506d79609c1aa1",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 270,
+        "end_commit_order": 271,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:5b98aaf96ca1",
+      "project": "Achilles",
+      "start_commit": "ca6589a91aab4a2cda2626c9c3c02356f3c08967",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 18,
+        "end_commit_order": 19,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:aa40e46edd8b",
+      "project": "Achilles",
+      "start_commit": "c2795b058146c5008e13f308e69b056d9bedc737",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 313,
+        "end_commit_order": 314,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:a3d609329019",
+      "project": "Achilles",
+      "start_commit": "067bc4cbd2910cafd06e9c0e8d655f9d6e16ed40",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 26,
+        "end_commit_order": 27,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:fc223cbfc66e",
+      "project": "Achilles",
+      "start_commit": "067bc4cbd2910cafd06e9c0e8d655f9d6e16ed40",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 26,
+        "end_commit_order": 27,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:988dab94a45a",
+      "project": "Achilles",
+      "start_commit": "fa01911ac04626ee655ebd4295d268ec93647890",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 867,
+        "end_commit_order": 868,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:718a8d12a33f",
+      "project": "Achilles",
+      "start_commit": "6ba5d4cef473b44fc677ab71e53b9db6df3cb7db",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type EntityMetaTestBuilder is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 554,
+        "end_commit_order": 555,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:8edf7c941b67",
+      "project": "Achilles",
+      "start_commit": "8a75a80e3957aa9df467a8fa17b06e5639d870c1",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 348,
+        "end_commit_order": 349,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:bcf244af3167",
+      "project": "Achilles",
+      "start_commit": "9fe70ef3fa06dfbde9c5745744d461a800edb69c",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 239,
+        "end_commit_order": 240,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:2a884f809248",
+      "project": "Achilles",
+      "start_commit": "eba73b4a51fe49a6457abaae0dd42e6f6bf72c04",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 252,
+        "end_commit_order": 253,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:dfbe7403128e",
+      "project": "Achilles",
+      "start_commit": "35b747124ae0b9400dec2e31be5f83e0046e3e19",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 731,
+        "end_commit_order": 732,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:87daa8e18b9d",
+      "project": "Achilles",
+      "start_commit": "7fae2895988e67cf09fbcc64293f85339d9f5d2a",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 362,
+        "end_commit_order": 363,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:4e1f10977c8d",
+      "project": "Achilles",
+      "start_commit": "16b640aefd349a8a8318e7849b98fbbbc7d5082e",
+      "reason": "test_fail",
+      "details": "tests failed: failed=6 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 16,
+        "end_commit_order": 17,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:0e1b52cc7f7d",
+      "project": "Achilles",
+      "start_commit": "429c142097888b459a68d55836506d79609c1aa1",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 270,
+        "end_commit_order": 271,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:957ef5828166",
+      "project": "Achilles",
+      "start_commit": "e0f6d8a3a1498985c4ce658e9834076f1d7c0ce2",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 940,
+        "end_commit_order": 941,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:17cc23994f35",
+      "project": "Achilles",
+      "start_commit": "cd7e60a825489c79cd63d329333b250895ccf247",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 25,
+        "end_commit_order": 26,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:6821cfabb14e",
+      "project": "Achilles",
+      "start_commit": "35b747124ae0b9400dec2e31be5f83e0046e3e19",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 731,
+        "end_commit_order": 732,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:a48ac580adbb",
+      "project": "Achilles",
+      "start_commit": "0d94339b0667cbe467664e8270f5168051d96d5d",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 144,
+        "end_commit_order": 145,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:050250b748bf",
+      "project": "Achilles",
+      "start_commit": "dd45ba5ec78b7f09a689b88c660be8ecd3b45872",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type EmOperationsIT is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 501,
+        "end_commit_order": 502,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:1601cd154d93",
+      "project": "Achilles",
+      "start_commit": "5d2af221afa54868d6777aadbf6f726e0c879e42",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 773,
+        "end_commit_order": 774,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:17d347a4ad77",
+      "project": "Achilles",
+      "start_commit": "904c545a76d567ebece90187c9914aaec53a8938",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 966,
+        "end_commit_order": 968,
+        "commit_count": 3,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:eaa47acfa2de",
+      "project": "Achilles",
+      "start_commit": "5235275ce0c37b675cfdb6cbb05bdda53036c565",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 368,
+        "end_commit_order": 369,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:241117e90ad0",
+      "project": "Achilles",
+      "start_commit": "5acd0315d1f4b9716d793038017435a7fa571931",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type EmOperationsIT is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 460,
+        "end_commit_order": 461,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:0bfe684c491a",
+      "project": "Achilles",
+      "start_commit": "9fe70ef3fa06dfbde9c5745744d461a800edb69c",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 239,
+        "end_commit_order": 240,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:4a4e587e68b4",
+      "project": "Achilles",
+      "start_commit": "6d20d6f9d483232f8106893680ecfe74ed9589a8",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 401,
+        "end_commit_order": 406,
+        "commit_count": 6,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:efed8c38672d",
+      "project": "Achilles",
+      "start_commit": "5262e68839c91b664cc7be1805fb93bc8d539b60",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 818,
+        "end_commit_order": 819,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:0b6c08cbd7b6",
+      "project": "Achilles",
+      "start_commit": "f2689f9e149e04107899c8a355b9e7a6e605e6f7",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 1009,
+        "end_commit_order": 1010,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:61785130bd4d",
+      "project": "Achilles",
+      "start_commit": "5d2af221afa54868d6777aadbf6f726e0c879e42",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 773,
+        "end_commit_order": 774,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:747f9d373fb0",
+      "project": "Achilles",
+      "start_commit": "429c142097888b459a68d55836506d79609c1aa1",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 270,
+        "end_commit_order": 271,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:e8a547ab0736",
+      "project": "Achilles",
+      "start_commit": "112e8458d256917b082b1e802b7524fa13bbe1d2",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 559,
+        "end_commit_order": 560,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:9996f4ce3aeb",
+      "project": "Achilles",
+      "start_commit": "307709ef6b43fd000fc14a37422bfa3a85870dc2",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 339,
+        "end_commit_order": 360,
+        "commit_count": 22,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:83c45d7c06a0",
+      "project": "Achilles",
+      "start_commit": "dab49cb43ec23818923c6f21d8cd12ba2918f41e",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 811,
+        "end_commit_order": 812,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:0d84fd33e1eb",
+      "project": "Achilles",
+      "start_commit": "697a91f707f6f0a65362bb2ba7324844a813b6f1",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 1046,
+        "end_commit_order": 1047,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:4f83f8fb99a0",
+      "project": "Achilles",
+      "start_commit": "476f7ca6dbd3068ba4db37be214ff6891d1cf3c1",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 146,
+        "end_commit_order": 147,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:deb9a881af93",
+      "project": "Achilles",
+      "start_commit": "476f7ca6dbd3068ba4db37be214ff6891d1cf3c1",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=168",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 146,
+        "end_commit_order": 147,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:30b333a957b2",
+      "project": "Achilles",
+      "start_commit": "476f7ca6dbd3068ba4db37be214ff6891d1cf3c1",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=168",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 146,
+        "end_commit_order": 147,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:ff9032da8a00",
+      "project": "Achilles",
+      "start_commit": "476f7ca6dbd3068ba4db37be214ff6891d1cf3c1",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=168",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 146,
+        "end_commit_order": 147,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:f879e234acc1",
+      "project": "Achilles",
+      "start_commit": "739f6da61b567b42e679873d2f32bf633da8ac48",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=168",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 139,
+        "end_commit_order": 140,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:7638bc1272e0",
+      "project": "Achilles",
+      "start_commit": "e04fe08e69d99c26df8e292e3bddda9b764effb8",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 415,
+        "end_commit_order": 416,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:ed83b4b2c59e",
+      "project": "Achilles",
+      "start_commit": "6d20d6f9d483232f8106893680ecfe74ed9589a8",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 401,
+        "end_commit_order": 406,
+        "commit_count": 6,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:c1f9aefab9d3",
+      "project": "Achilles",
+      "start_commit": "3eca3647a31665f7857e8ac89cbddefc35c53148",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 287,
+        "end_commit_order": 288,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:b74478537b86",
+      "project": "Achilles",
+      "start_commit": "8c9552038c74024730f2c2b187709d8ad3a9fce4",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 197,
+        "end_commit_order": 198,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:1cce75917439",
+      "project": "Achilles",
+      "start_commit": "6d20d6f9d483232f8106893680ecfe74ed9589a8",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 401,
+        "end_commit_order": 406,
+        "commit_count": 6,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:7f058e36dfb8",
+      "project": "Achilles",
+      "start_commit": "fa01911ac04626ee655ebd4295d268ec93647890",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 867,
+        "end_commit_order": 868,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:5612ab20518c",
+      "project": "Achilles",
+      "start_commit": "5d2af221afa54868d6777aadbf6f726e0c879e42",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 773,
+        "end_commit_order": 774,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:e3212a61b833",
+      "project": "Achilles",
+      "start_commit": "727feb74b9a1d1ce1ee49dcb40693431f955ea4e",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 709,
+        "end_commit_order": 710,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:0bdd707698aa",
+      "project": "Achilles",
+      "start_commit": "fdff371f9219af128712222df8d73b7657b92d4b",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 643,
+        "end_commit_order": 644,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:f86309b0e19e",
+      "project": "Achilles",
+      "start_commit": "c1b283a044d2b3d2190a9ffece6252411fbe49c7",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AchillesConfig is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 1056,
+        "end_commit_order": 1057,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:367ff16571fb",
+      "project": "Achilles",
+      "start_commit": "e0f6d8a3a1498985c4ce658e9834076f1d7c0ce2",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 940,
+        "end_commit_order": 941,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:240b0ff95f5d",
+      "project": "Achilles",
+      "start_commit": "4a4be64e86ae8629e5ad47770afd06d9a632157d",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AchillesConfig is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 1077,
+        "end_commit_order": 1078,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:a2c02f94fb9c",
+      "project": "Achilles",
+      "start_commit": "69b390c595869fdfab38cd3fcf0cf5d082c3e583",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 790,
+        "end_commit_order": 791,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:45cb7fc10b91",
+      "project": "Achilles",
+      "start_commit": "69b390c595869fdfab38cd3fcf0cf5d082c3e583",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 790,
+        "end_commit_order": 791,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:44b6d811598e",
+      "project": "Achilles",
+      "start_commit": "ff97016cd6e03c2d5ca267dfa47afbc97cf8326c",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 411,
+        "end_commit_order": 413,
+        "commit_count": 3,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:a13f6dc9de97",
+      "project": "Achilles",
+      "start_commit": "64ed8b7b19946b08da650686d6c50e90a51aced2",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 558,
+        "end_commit_order": 560,
+        "commit_count": 3,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:b7e6a54ad9d2",
+      "project": "Achilles",
+      "start_commit": "d66cf323996a6e7c2a374d3e231709c100989c39",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 589,
+        "end_commit_order": 590,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:7e627be060dc",
+      "project": "Achilles",
+      "start_commit": "5d2af221afa54868d6777aadbf6f726e0c879e42",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 773,
+        "end_commit_order": 774,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:63786356bf7e",
+      "project": "Achilles",
+      "start_commit": "5d2af221afa54868d6777aadbf6f726e0c879e42",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 773,
+        "end_commit_order": 774,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:5476c4f86233",
+      "project": "Achilles",
+      "start_commit": "5d2af221afa54868d6777aadbf6f726e0c879e42",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type User is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 773,
+        "end_commit_order": 774,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:a423e157fff9",
+      "project": "Achilles",
+      "start_commit": "753ef4bb3e324afdb00feb7157e6cd3ca0e82319",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 14,
+        "end_commit_order": 15,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:cc7374783b55",
+      "project": "Achilles",
+      "start_commit": "8c9552038c74024730f2c2b187709d8ad3a9fce4",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=174",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 197,
+        "end_commit_order": 198,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:fd168dfe3423",
+      "project": "Achilles",
+      "start_commit": "3abed1feb8b8c220368b044dc8037b0721bcb526",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 358,
+        "end_commit_order": 359,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:fa1816edf307",
+      "project": "Achilles",
+      "start_commit": "db8ec87456f4eeea9609f41a318f0fd089929eb7",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 412,
+        "end_commit_order": 414,
+        "commit_count": 3,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:146497458b92",
+      "project": "Achilles",
+      "start_commit": "7b08feec98c596889c67b6530f7b3cde9875a4ed",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type EmOperationsIT is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 500,
+        "end_commit_order": 502,
+        "commit_count": 3,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:e4c6d837f023",
+      "project": "Achilles",
+      "start_commit": "dd45ba5ec78b7f09a689b88c660be8ecd3b45872",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type EmOperationsIT is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 501,
+        "end_commit_order": 502,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:efb45a620c4c",
+      "project": "Achilles",
+      "start_commit": "cac739babafdc571808daf4b6c2abc4b41784c8d",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 3,
+        "end_commit_order": 5,
+        "commit_count": 3,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    }
+  ]
+}

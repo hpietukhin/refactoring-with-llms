@@ -10,7 +10,7 @@ from __future__ import annotations
 import hashlib
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Literal
+from typing import Final, Literal
 from urllib.parse import unquote, urlparse
 
 from lsprotocol.types import Location, Position, Range
@@ -19,6 +19,49 @@ from planning.rules import SmellType
 
 type Severity = Literal["LOW", "MEDIUM", "HIGH"]
 type DetectorType = Literal["ORGANIC", "SONARQUBE"]
+
+ADVICE_DIR: Final = Path("agents/deep/smells")
+SMELL_ADVICE_PATHS: Final[dict[SmellType, Path]] = {
+    "Long Method": ADVICE_DIR / "long-method.md",
+    "Large Class": ADVICE_DIR / "large-class.md",
+    "Long Parameter List": ADVICE_DIR / "long-parameter-list.md",
+    "Duplicated Code": ADVICE_DIR / "duplicated-code.md",
+    "Divergent Change": ADVICE_DIR / "divergent-change.md",
+    "Shotgun Surgery": ADVICE_DIR / "shotgun-surgery.md",
+    "Feature Envy": ADVICE_DIR / "feature-envy.md",
+    "Data Clumps": ADVICE_DIR / "data-clump.md",
+    "Primitive Obsession": ADVICE_DIR / "primitive-obsession.md",
+    "Switch Statement": ADVICE_DIR / "switch-statement.md",
+    "Parallel Inheritance Hierarchies": ADVICE_DIR
+    / "parallel-inheritance-hierarchies.md",
+    "Lazy Class": ADVICE_DIR / "lazy-element.md",
+    "Speculative Generality": ADVICE_DIR / "speculative-generality.md",
+    "Temporary Field": ADVICE_DIR / "temporary-field.md",
+    "Message Chains": ADVICE_DIR / "message-chain.md",
+    "Middle Man": ADVICE_DIR / "middle-man.md",
+    "Inappropriate Intimacy": ADVICE_DIR / "inappropriate-intimacy.md",
+    "Alternative Classes with Different Interfaces": ADVICE_DIR
+    / "alternative-classes-with-different-interfaces.md",
+    "Incomplete Library Class": ADVICE_DIR / "incomplete-library-class.md",
+    "Data Class": ADVICE_DIR / "data-class.md",
+    "Refused Bequest": ADVICE_DIR / "refused-bequest.md",
+    "Comments": ADVICE_DIR / "comments.md",
+    "Complex Method": ADVICE_DIR / "complex-method.md",
+    "Conditional Complexity": ADVICE_DIR / "conditional-complexity.md",
+    "God Class": ADVICE_DIR / "god-class.md",
+    "Bad Class Content": ADVICE_DIR / "bad-class-content.md",
+    "Bad Inheritance": ADVICE_DIR / "bad-inheritance.md",
+    "Needless Part": ADVICE_DIR / "needless-part.md",
+    "Duplicated Conditions": ADVICE_DIR / "duplicated-conditions.md",
+    "Print Statements": ADVICE_DIR / "print-statements.md",
+    "Complex Class": ADVICE_DIR / "complex-class.md",
+    "Spaghetti Code": ADVICE_DIR / "spaghetti-code.md",
+    "Class Data Should Be Private": ADVICE_DIR / "class-data-should-be-private.md",
+    "Brain Method": ADVICE_DIR / "brain-method.md",
+    "Brain Class": ADVICE_DIR / "brain-class.md",
+    "Intensive Coupling": ADVICE_DIR / "intensive-coupling.md",
+    "Dispersed Coupling": ADVICE_DIR / "dispersed-coupling.md",
+}
 
 
 def path_to_uri(file_path: str) -> str:
@@ -78,9 +121,11 @@ class Smell:
     severity: Severity
     detected_by: DetectorType
     commit_hash: str | None = None
+    advice: Path = field(init=False)
     id: str = field(init=False)
 
     def __post_init__(self) -> None:
+        object.__setattr__(self, "advice", SMELL_ADVICE_PATHS[self.type])
         object.__setattr__(self, "id", _identity_digest(self))
 
     @classmethod
@@ -115,6 +160,31 @@ class Smell:
     def __hash__(self) -> int:
         return int(_identity_digest(self)[:16], 16)
 
+    def to_dict(self) -> dict[str, object]:
+        """Return a JSON-serializable representation of this smell."""
+        source_range = self.location.range
+        return {
+            "type": self.type,
+            "location": {
+                "uri": self.location.uri,
+                "range": {
+                    "start": {
+                        "line": source_range.start.line,
+                        "character": source_range.start.character,
+                    },
+                    "end": {
+                        "line": source_range.end.line,
+                        "character": source_range.end.character,
+                    },
+                },
+            },
+            "severity": self.severity,
+            "detected_by": self.detected_by,
+            "commit_hash": self.commit_hash,
+            "advice": str(self.advice),
+            "id": self.id,
+        }
+
     @property
     def file_path(self) -> str:
         return uri_to_path(self.location.uri)
@@ -131,6 +201,8 @@ class Smell:
 __all__ = [
     "Severity",
     "DetectorType",
+    "ADVICE_DIR",
+    "SMELL_ADVICE_PATHS",
     "Smell",
     "path_to_uri",
     "uri_to_path",

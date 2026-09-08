@@ -7,7 +7,11 @@ include_untracked = false
 
 [planning]
 default_transition_cost = 1.0
-planner = "no_priority"
+# none = detector/FIFO order
+# greedy = max positive side-effects (NZ ignored)
+# topo = scored topo sorts over pos/neg/unspecified AST-local preference edges
+# bfs = best-first search over full dependency rules (incl. NZ)
+planner = "greedy"
 locality = "none"
 token_budget = 200000
 
@@ -28,7 +32,6 @@ manifest = "dataset/manifest.jsonl"
 [neo4j]
 uri = "http://127.0.0.1:7474"
 user = "neo4j"
-password = "boil2.eat"
 timeout_seconds = 30
 startup_timeout_seconds = 120
 cypher_path = "/db/data/cypher"
@@ -45,16 +48,24 @@ elements = ""
 root = "experiments"
 output_dir = "data/experiments/output"
 
+[pi]
+worktrees_dir = "experiments/pi/worktrees"
+output_dir = "data/pi"
+
 [langgraph]
-model = "mistralai/codestral-2508"
+# Provider prefixes: "ollama/..." for local, "cerebras/..." for Cerebras, bare id for OpenRouter.
+model = "qwen/qwen3.7-flash"
+# The rubric grader needs reliable structured output, so it runs on a stronger model.
+grader_model = "openai/gpt-4.1-mini"
 temperature = 0.0
+reasoning_effort = "high"
 timeout_seconds = 120
+# Per-HTTP-request budget for chat model calls; the provider SDK default is 600s.
+request_timeout_seconds = 180
+request_max_retries = 2
 max_steps = 5
 repair_step_limit = 4
 repair_max_attempts = 3
-
-[openrouter]
-api_key = "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"
 
 [testing]
 root = "testing"

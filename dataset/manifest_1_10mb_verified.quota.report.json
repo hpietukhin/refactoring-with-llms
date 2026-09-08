@@ -1,0 +1,65 @@
+{
+  "config": "1_10mb_verified",
+  "quotas": {
+    "2": 2,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 2
+  },
+  "remaining": {
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 1,
+    "6": 0
+  },
+  "accepted": 9,
+  "cases": [
+    {
+      "case_id": "Drugis Common:bcbdecd601d0",
+      "project": "Drugis Common",
+      "type_count": 2
+    },
+    {
+      "case_id": "Drugis Common:6cd5f088448e",
+      "project": "Drugis Common",
+      "type_count": 5
+    },
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):358b21bb264e",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "type_count": 6
+    },
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):091c08525c3b",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "type_count": 6
+    },
+    {
+      "case_id": "Retrofit:b62103194cbb",
+      "project": "Retrofit",
+      "type_count": 4
+    },
+    {
+      "case_id": "Tap4j:462ab4c8c308",
+      "project": "Tap4j",
+      "type_count": 3
+    },
+    {
+      "case_id": "Drugis Common:d3fedf0fc5d4",
+      "project": "Drugis Common",
+      "type_count": 3
+    },
+    {
+      "case_id": "Tap4j:5350df6a42ad",
+      "project": "Tap4j",
+      "type_count": 4
+    },
+    {
+      "case_id": "Tap4j:9f784dce9bc8",
+      "project": "Tap4j",
+      "type_count": 2
+    }
+  ]
+}

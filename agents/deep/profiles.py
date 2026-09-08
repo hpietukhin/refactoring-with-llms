@@ -19,8 +19,6 @@ class DeepAgentProfile(BaseModel):
     name: str
     mode: Literal["sequential", "whole-case"]
     max_model_calls: int = Field(gt=0)
-    max_completion_tokens: int = Field(gt=0)
-    max_smell_iterations: int = Field(gt=0)
     system_instructions: str
 
 

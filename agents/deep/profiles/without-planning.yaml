@@ -1,9 +1,6 @@
 name: without-planning
 mode: sequential
-max_model_calls: 12
-max_completion_tokens: 10000
-max_smell_iterations: 5
+max_model_calls: 60
 system_instructions: >-
-  Handle only the selected smell. Do not create a cross-smell plan, delegate
-  work, or inspect unrelated smells. Complete the selected smell or report why
-  no safe refactoring is possible.
+  Create and maintain a todo for every reported smell. Complete one smell before
+  moving to the next. Do not delegate work.

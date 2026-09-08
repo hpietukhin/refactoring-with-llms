@@ -1,7 +1,9 @@
 """Smell domain types."""
 
 from smell.smell import (
+    ADVICE_DIR,
     DetectorType,
+    SMELL_ADVICE_PATHS,
     Severity,
     Smell,
     path_to_uri,
@@ -9,7 +11,9 @@ from smell.smell import (
 )
 
 __all__ = [
+    "ADVICE_DIR",
     "DetectorType",
+    "SMELL_ADVICE_PATHS",
     "Severity",
     "Smell",
     "path_to_uri",

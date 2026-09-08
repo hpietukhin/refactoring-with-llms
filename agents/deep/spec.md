@@ -20,7 +20,7 @@ result = agent.invoke(
             "targeted code smell is fixed" - here agent will get 
         ),
     },
-    config={"configurable": {"case_id": "range:PhiCode Philib:649b775c08bf"}}, - here will be case_id from experiments.main
+    config={"configurable": {"case_id": "PhiCode Philib:3b7222e9b466"}}, - here will be case_id from experiments.main
 )
 print(result["messages"][-1].text)
 in rubric middleware use this tools:

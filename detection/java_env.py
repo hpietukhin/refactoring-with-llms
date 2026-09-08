@@ -4,13 +4,28 @@ from __future__ import annotations
 
 import os
 import re
+import sys
 from collections.abc import Iterator, Sequence
 from contextlib import contextmanager
 from pathlib import Path
+from xml.etree import ElementTree
 
 from config import ROOT, settings
 
-_LEGACY_COMPILER_SOURCES = frozenset({"1.5", "1.6", "1.7", "1.8", "5", "6", "7", "8"})
+_MAVEN_PROPERTY = re.compile(r"\$\{([^}]+)\}")
+
+
+def _background_macos_java(env: dict[str, str]) -> dict[str, str]:
+    """Mark JVM subprocesses as background utilities on macOS."""
+    if sys.platform != "darwin":
+        return env
+    option = "-Dapple.awt.UIElement=true"
+    options = env.get("JAVA_TOOL_OPTIONS", "").split()
+    if option in options:
+        return env
+    updated = dict(env)
+    updated["JAVA_TOOL_OPTIONS"] = " ".join((*options, option))
+    return updated
 
 
 def _java_version(*search_paths: Path) -> str | None:
@@ -23,8 +38,13 @@ def _java_version(*search_paths: Path) -> str | None:
     return None
 
 
+def sdkman_java_home(version: str) -> Path:
+    """Return the SDKMAN install path for ``version``."""
+    return Path.home() / ".sdkman" / "candidates" / "java" / version
+
+
 def _apply_sdkman_java(env: dict[str, str], version: str) -> dict[str, str]:
-    java_home = Path.home() / ".sdkman" / "candidates" / "java" / version
+    java_home = sdkman_java_home(version)
     if not java_home.is_dir():
         return env
     updated = dict(env)
@@ -34,17 +54,55 @@ def _apply_sdkman_java(env: dict[str, str], version: str) -> dict[str, str]:
 
 
 def maven_compiler_source(project: Path) -> str | None:
-    """Read ``<source>`` from the project root ``pom.xml`` when present."""
+    """Read and resolve the Maven compiler source from the project POM."""
     pom = project / "pom.xml"
     if not pom.is_file():
         return None
-    text = pom.read_text(encoding="utf-8", errors="replace")
-    match = re.search(r"<source>([^<]+)</source>", text)
-    return match.group(1).strip() if match else None
+    try:
+        root = ElementTree.parse(pom).getroot()
+    except ElementTree.ParseError:
+        return None
+
+    properties: dict[str, str] = {}
+    for element in root.iter():
+        if element.tag.rsplit("}", 1)[-1] != "properties":
+            continue
+        for property_element in element:
+            name = property_element.tag.rsplit("}", 1)[-1]
+            value = (property_element.text or "").strip()
+            if value:
+                properties[name] = value
+
+    for property_name in ("maven.compiler.release", "maven.compiler.source", "java.version"):
+        source = properties.get(property_name)
+        if source:
+            return _resolve_maven_properties(source, properties)
+
+    for element in root.iter():
+        if element.tag.rsplit("}", 1)[-1] != "source":
+            continue
+        source = (element.text or "").strip()
+        if source:
+            return _resolve_maven_properties(source, properties)
+    return None
+
+
+def _resolve_maven_properties(source: str, properties: dict[str, str]) -> str:
+    """Resolve Maven ``${property}`` references using POM properties."""
+    resolved = source
+    for _ in range(len(properties) + 1):
+        match = _MAVEN_PROPERTY.search(resolved)
+        if match is None:
+            break
+        value = properties.get(match.group(1))
+        if value is None:
+            break
+        resolved = resolved[: match.start()] + value + resolved[match.end() :]
+    return resolved.strip()
 
 
 def legacy_sdkman_java(cfg: dict[str, object] | None = None) -> str:
-    """Return the configured SDKMAN Java version for legacy Maven projects."""
+    """Return the fallback SDKMAN Java when no installed JDK can compile a source."""
     java_cfg = (cfg or settings)["java"]
     return str(java_cfg.get("legacy_sdkman_java", "8.0.442-amzn"))
 
@@ -52,7 +110,7 @@ def legacy_sdkman_java(cfg: dict[str, object] | None = None) -> str:
 @contextmanager
 def java_env(search_paths: Sequence[Path] | None = None) -> Iterator[dict[str, str]]:
     """Yield a subprocess env that prefers the Java pinned in ``.sdkmanrc``."""
-    env = dict(os.environ)
+    env = _background_macos_java(dict(os.environ))
     paths = tuple(search_paths) if search_paths is not None else (ROOT / ".sdkmanrc",)
     version = _java_version(*paths)
     if version is None:
@@ -63,11 +121,13 @@ def java_env(search_paths: Sequence[Path] | None = None) -> Iterator[dict[str, s
 
 
 @contextmanager
-def java_env_for_maven(project: Path) -> Iterator[dict[str, str]]:
-    """Pick a JDK that can compile the Maven project under ``project``."""
-    source = maven_compiler_source(project)
-    if source in _LEGACY_COMPILER_SOURCES:
-        yield _apply_sdkman_java(dict(os.environ), legacy_sdkman_java())
-        return
-    with java_env((project / ".sdkmanrc", ROOT / ".sdkmanrc")) as env:
+def java_env_for_project(project: Path) -> Iterator[dict[str, str]]:
+    """Run Gradle on the repo JDK. Compile JDK is selected by toolchains.
+
+    ``JAVA_HOME`` always comes from the repository ``.sdkmanrc``. The
+    toolchain init script reads the case source level and either uses
+    ``--release`` on this JDK or a second JDK that Gradle finds in SDKMAN.
+    """
+    del project
+    with java_env((ROOT / ".sdkmanrc",)) as env:
         yield env

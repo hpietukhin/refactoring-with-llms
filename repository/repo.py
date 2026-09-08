@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 
+import subprocess
 from pathlib import Path
 
 from git import BadName, Repo as GitRepo
+from uuid6 import uuid7
 
 from config import ROOT, resolve_path, settings
 
 type BuildSystem = "maven"
+GIT_COMMAND_TIMEOUT_SECONDS = 10
 
 
 def repo_slug(repo_url: str) -> str:
@@ -25,8 +28,8 @@ def worktrees_root(cfg: dict[str, object] | None = None) -> Path:
 
 
 def worktree_path(repo_url: str, cfg: dict[str, object] | None = None) -> Path:
-    """Return the on-disk checkout path for ``repo_url``."""
-    return worktrees_root(cfg) / repo_slug(repo_url)
+    """Return a unique on-disk checkout path for one experiment run."""
+    return worktrees_root(cfg) / f"{repo_slug(repo_url)}_{uuid7()}"
 
 
 class Repo:
@@ -78,10 +81,33 @@ class Repo:
 
     def changed_files(self, *, include_untracked: bool = False) -> tuple[Path, ...]:
         """Return changed paths relative to the checkout root."""
-        paths = {Path(item.a_path) for item in self.git_repo.index.diff(None)}
-        paths.update(Path(item.a_path) for item in self.git_repo.index.diff("HEAD"))
-        if include_untracked:
-            paths.update(Path(path) for path in self.git_repo.untracked_files)
+        try:
+            result = subprocess.run(
+                ["git", "status", "--short", "--untracked-files=all"],
+                cwd=self.path,
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=GIT_COMMAND_TIMEOUT_SECONDS,
+            )
+        except (OSError, subprocess.SubprocessError) as exc:
+            raise RuntimeError(f"git status failed for {self.path}: {exc}") from exc
+        if result.returncode != 0:
+            raise RuntimeError(
+                f"git status failed for {self.path}: {result.stderr.strip()}"
+            )
+
+        paths: set[Path] = set()
+        for line in result.stdout.splitlines():
+            if len(line) < 4:
+                continue
+            status = line[:2]
+            if status == "??" and not include_untracked:
+                continue
+            path = line[3:]
+            if " -> " in path:
+                path = path.rsplit(" -> ", maxsplit=1)[-1]
+            paths.add(Path(path))
         return tuple(sorted(paths))
 
     def filter_java_edits(self, *, include_untracked: bool = False) -> tuple[Path, ...]:

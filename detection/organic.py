@@ -3,13 +3,17 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import tempfile
+from dataclasses import replace
 from pathlib import Path
 from typing import ClassVar
 
 from config import ROOT, data_scratch_dir, settings
 from detection.java_env import java_env
+from java.organic_feedback import OrganicFeedback
+from java.organic_types import OrganicScope
 import planning.rules as rules
 from planning.organic_smells import ORGANIC_RULE_MAP
 from planning.rules import SmellType
@@ -20,6 +24,53 @@ class OrganicDetector:
     """Map Organic detection rules and run the organic-standalone Gradle CLI."""
 
     RULE_MAP = ORGANIC_RULE_MAP
+    RELEVANT_METRICS: ClassVar[dict[str, tuple[str, ...]]] = {
+        "ClassDataShouldBePrivate": ("PublicFieldCount",),
+        "ComplexClass": ("WeightedMethodCount",),
+        "FeatureEnvy": (
+            "CouplingIntensity",
+            "CouplingDispersion",
+            "NumberOfAccessedVariables",
+        ),
+        "GodClass": ("ClassLinesOfCode", "TightClassCohesion"),
+        "LazyClass": ("ClassLinesOfCode",),
+        "LongMethod": ("MethodLinesOfCode",),
+        "LongParameterList": ("ParameterCount",),
+        "MessageChain": ("MaxCallChain",),
+        "RefusedBequest": ("OverrideRatio",),
+        "SpeculativeGenerality": ("IsAbstract",),
+        "DispersedCoupling": (
+            "CouplingIntensity",
+            "CouplingDispersion",
+            "ChangingClasses",
+        ),
+        "IntensiveCoupling": (
+            "CouplingIntensity",
+            "CouplingDispersion",
+            "ChangingClasses",
+        ),
+        "BrainClass": (
+            "WeightedMethodCount",
+            "TightClassCohesion",
+            "ClassLinesOfCode",
+        ),
+        "ShotgunSurgery": ("ChangingMethods", "ChangingClasses"),
+        "BrainMethod": (
+            "MethodLinesOfCode",
+            "CyclomaticComplexity",
+            "MaxNesting",
+            "NumberOfAccessedVariables",
+        ),
+        "DataClass": (
+            "WeighOfClass",
+            "PublicFieldCount",
+            "NumberOfAccessorMethods",
+            "WeightedMethodCount",
+        ),
+    }
+    RELATED_OWNER_PATTERN: ClassVar[re.Pattern[str]] = re.compile(
+        r"^CALLS_TO_(?P<owner>.+?)\s*[><=]"
+    )
 
     HIGH_SEVERITY: ClassVar[frozenset[SmellType]] = frozenset(
         {
@@ -57,6 +108,21 @@ class OrganicDetector:
         commit_hash: str | None = None,
     ) -> list[Smell]:
         """Run Organic on ``source_path`` and return mapped ``Smell`` instances."""
+        return [
+            feedback.smell
+            for feedback in self.detect_feedback(
+                source_path,
+                commit_hash=commit_hash,
+            )
+        ]
+
+    def detect_feedback(
+        self,
+        source_path: Path,
+        *,
+        commit_hash: str | None = None,
+    ) -> list[OrganicFeedback]:
+        """Run Organic and retain its useful owner, reason, and metric context."""
         source = Path(source_path).expanduser().resolve()
         gradlew = self.organic_dir / "gradlew"
         if not gradlew.is_file():
@@ -84,6 +150,11 @@ class OrganicDetector:
                     ROOT / ".sdkmanrc",
                 )
             ) as env:
+                env = dict(env)
+                java_options = env.get("JAVA_TOOL_OPTIONS", "").split()
+                headless_option = "-Djava.awt.headless=true"
+                if headless_option not in java_options:
+                    env["JAVA_TOOL_OPTIONS"] = " ".join((*java_options, headless_option))
                 result = subprocess.run(
                     command,
                     cwd=self.organic_dir,
@@ -101,7 +172,11 @@ class OrganicDetector:
             if not output_path.exists() or output_path.stat().st_size == 0:
                 return []
             raw = json.loads(output_path.read_text(encoding="utf-8"))
-            return self._parse(raw, commit_hash=commit_hash)
+            if not isinstance(raw, list) or not all(
+                isinstance(entry, dict) for entry in raw
+            ):
+                raise RuntimeError("Organic output root must be a list of objects")
+            return self._parse_feedback(raw, commit_hash=commit_hash)
         except subprocess.TimeoutExpired as exc:
             raise RuntimeError(f"Organic timed out after {self.timeout}s") from exc
         except json.JSONDecodeError as exc:
@@ -115,23 +190,85 @@ class OrganicDetector:
         *,
         commit_hash: str | None = None,
     ) -> list[Smell]:
-        smells: list[Smell] = []
+        return [
+            feedback.smell
+            for feedback in self._parse_feedback(raw, commit_hash=commit_hash)
+        ]
+
+    def _parse_feedback(
+        self,
+        raw: list[dict[str, object]],
+        *,
+        commit_hash: str | None = None,
+    ) -> list[OrganicFeedback]:
+        feedback: list[OrganicFeedback] = []
         for class_entry in raw:
             file_path = self._file_path(class_entry)
+            class_owner = self._owner(class_entry)
+            class_metrics = self._metrics(class_entry)
             for entry in class_entry.get("smells") or []:
                 if isinstance(entry, dict):
-                    smells.append(
-                        self._smell(entry, file_path, commit_hash=commit_hash)
+                    feedback.append(
+                        self._feedback(
+                            entry,
+                            file_path,
+                            owner=class_owner,
+                            scope=OrganicScope.CLASS,
+                            metrics=class_metrics,
+                            commit_hash=commit_hash,
+                        )
                     )
             for method in class_entry.get("methods") or []:
                 if not isinstance(method, dict):
                     continue
+                method_owner = self._owner(method)
+                scope = self._method_scope(class_owner, method_owner)
+                method_metrics = self._metrics(method)
                 for entry in method.get("smells") or []:
                     if isinstance(entry, dict):
-                        smells.append(
-                            self._smell(entry, file_path, commit_hash=commit_hash)
+                        feedback.append(
+                            self._feedback(
+                                entry,
+                                file_path,
+                                owner=method_owner,
+                                scope=scope,
+                                metrics=method_metrics,
+                                commit_hash=commit_hash,
+                            )
                         )
-        return smells
+        return self._mark_nested_overlaps(feedback)
+
+    def _owner(self, entry: dict[str, object]) -> str:
+        owner = entry.get("fullyQualifiedName")
+        return owner if isinstance(owner, str) else ""
+
+    def _metrics(
+        self,
+        entry: dict[str, object],
+    ) -> dict[str, float | None]:
+        raw_metrics = entry.get("metricsValues")
+        if not isinstance(raw_metrics, dict):
+            return {}
+        metrics: dict[str, float | None] = {}
+        for name, value in raw_metrics.items():
+            if not isinstance(name, str):
+                continue
+            if value is None:
+                metrics[name] = None
+            elif isinstance(value, (int, float)) and not isinstance(value, bool):
+                metrics[name] = float(value)
+        return metrics
+
+    def _method_scope(
+        self,
+        class_owner: str,
+        method_owner: str,
+    ) -> OrganicScope:
+        class_name = class_owner.rsplit(".", maxsplit=1)[-1]
+        method_name = method_owner.rsplit(".", maxsplit=1)[-1]
+        if class_name and method_name == class_name:
+            return OrganicScope.CONSTRUCTOR
+        return OrganicScope.METHOD
 
     def _file_path(self, class_entry: dict[str, object]) -> str:
         source_file = class_entry.get("sourceFile")
@@ -143,6 +280,38 @@ class OrganicDetector:
         if isinstance(fqn, str) and fqn:
             return fqn.replace(".", "/") + ".java"
         return ""
+
+    def _feedback(
+        self,
+        entry: dict[str, object],
+        file_path: str,
+        *,
+        owner: str,
+        scope: OrganicScope,
+        metrics: dict[str, float | None],
+        commit_hash: str | None = None,
+    ) -> OrganicFeedback:
+        name = entry.get("name")
+        if not isinstance(name, str) or not name:
+            raise ValueError(f"Organic smell entry has no name: {entry!r}")
+        reason_raw = entry.get("reason")
+        reason = reason_raw if isinstance(reason_raw, str) and reason_raw else None
+        relevant_metrics = tuple(
+            (metric_name, metrics[metric_name])
+            for metric_name in self.RELEVANT_METRICS.get(name, ())
+            if metric_name in metrics
+        )
+        related_owner = None
+        if reason and (match := self.RELATED_OWNER_PATTERN.match(reason)):
+            related_owner = match.group("owner").strip()
+        return OrganicFeedback(
+            smell=self._smell(entry, file_path, commit_hash=commit_hash),
+            owner=owner,
+            scope=scope,
+            reason=reason,
+            relevant_metrics=relevant_metrics,
+            related_owner=related_owner,
+        )
 
     def _smell(
         self,
@@ -166,4 +335,59 @@ class OrganicDetector:
             severity="HIGH" if smell_type in self.HIGH_SEVERITY else "MEDIUM",
             detected_by="ORGANIC",
             commit_hash=commit_hash,
+        )
+
+    def _mark_nested_overlaps(
+        self,
+        feedback: list[OrganicFeedback],
+    ) -> list[OrganicFeedback]:
+        marked: list[OrganicFeedback] = []
+        class_feedback = [
+            item for item in feedback if item.scope is OrganicScope.CLASS
+        ]
+        for item in feedback:
+            nested = [
+                candidate
+                for candidate in class_feedback
+                if self._is_nested_match(item, candidate)
+            ]
+            if not nested:
+                marked.append(item)
+                continue
+            immediate = [
+                candidate
+                for candidate in nested
+                if not any(
+                    other.owner != candidate.owner
+                    and candidate.owner.startswith(f"{other.owner}.")
+                    for other in nested
+                )
+            ]
+            marked.append(
+                replace(
+                    item,
+                    nested_overlap=True,
+                    nested_owners=tuple(candidate.owner for candidate in immediate),
+                )
+            )
+        return marked
+
+    def _is_nested_match(
+        self,
+        outer: OrganicFeedback,
+        inner: OrganicFeedback,
+    ) -> bool:
+        if outer.scope is not OrganicScope.CLASS or inner.scope is not OrganicScope.CLASS:
+            return False
+        if outer.smell.type != inner.smell.type:
+            return False
+        if outer.smell.file_path != inner.smell.file_path:
+            return False
+        if not inner.owner.startswith(f"{outer.owner}."):
+            return False
+        outer_range = outer.smell.location.range
+        inner_range = inner.smell.location.range
+        return (
+            outer_range.start.line < inner_range.start.line
+            and outer_range.end.line > inner_range.end.line
         )

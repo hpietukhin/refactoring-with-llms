@@ -1,0 +1,66 @@
+# Manifest generation profile: Neo4j composite cases from 1–10 MiB repositories.
+
+[generation]
+name = "1_10mb_verified"
+output = "dataset/manifest_1_10mb_verified.jsonl"
+report = ""
+ready_repos_csv = "dataset/helper/projects_1_10mb.csv"
+repo_cache_root = "temp/eval_repos"
+timeout_seconds = 300
+skip_baseline_verification = false
+fail_if_quotas_unfilled = true
+enrich_java_after_generation = true
+
+[projects]
+names = [
+  "Alfred MPI",
+  "Dagger",
+  "Drugis Common",
+  "Facebook SDK for Android",
+  "IRC Bot (c2nes/ircbot)",
+  "JBoss Ballroom",
+  "JUnit4",
+  "Netflix Hystrix",
+  "Netflix SimianArmy",
+  "Passsafe",
+  "PhiCode Philib",
+  "Pusher Java Client",
+  "Retrofit",
+  "Tap4j",
+  "Whydah - UserAdminService",
+]
+
+[projects.blocked]
+OkHttp = "excluded: historical compatibility/patch target"
+
+[selection]
+limit_per_project = 20
+min_ref_count = 2
+max_ref_count = 20
+min_elements = 2
+max_elements = 10
+outlier_percentile = 0.95
+min_elements_with_smell = 1
+
+[runtime]
+min_smells = 15
+max_smells = 20
+max_classes = 10
+
+[runtime.type_quotas]
+2 = 2
+3 = 2
+4 = 2
+5 = 2
+6 = 2
+
+[neo4j]
+uri = "http://127.0.0.1:7474"
+user = "neo4j"
+
+[size_filter]
+min_mib = 1.0
+max_mib = 10.5
+
+[extras]
+graph_fallback_projects = ["Pusher Java Client"]

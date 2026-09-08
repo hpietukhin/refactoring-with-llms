@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from eliot import log_message
 
 from config import langgraph_model, settings
@@ -37,7 +39,18 @@ def repo_checkout(state: CompositeWorkflowState) -> CompositeWorkflowState:
     """Clone the case repository when needed and move it to the start commit."""
     current_commit = _require_str(state, "current_commit")
     repo_url = _require_str(state, "repo_url")
-    repo = Repo.for_experiment(repo_url, current_commit)
+    configured_path = str(settings["git"]["repo_path"])
+    repo_path = state.get("repo_path")
+    checkout_path = (
+        Path(repo_path)
+        if isinstance(repo_path, str) and repo_path != configured_path
+        else None
+    )
+    repo = Repo.for_experiment(
+        repo_url,
+        current_commit,
+        checkout_path=checkout_path,
+    )
     log_message(
         message_type="repo_checkout:ready",
         commit=current_commit[:12],

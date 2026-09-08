@@ -1,0 +1,513 @@
+{
+  "generated_at": "2026-08-10T06:45:37.288165Z",
+  "filters": {
+    "config_name": "1_5mb_verified",
+    "requested_projects": [
+      "Alfred MPI",
+      "Dagger",
+      "Drugis Common",
+      "IRC Bot (c2nes/ircbot)",
+      "Passsafe",
+      "PhiCode Philib",
+      "Pusher Java Client",
+      "Tap4j",
+      "Whydah - UserAdminService"
+    ],
+    "projects": [
+      "Alfred MPI",
+      "Dagger",
+      "Drugis Common",
+      "IRC Bot (c2nes/ircbot)",
+      "Passsafe",
+      "PhiCode Philib",
+      "Pusher Java Client",
+      "Tap4j",
+      "Whydah - UserAdminService"
+    ],
+    "blocked_projects": {},
+    "graph_fallback_projects": [
+      "Pusher Java Client"
+    ],
+    "size_min_mib": 1.0,
+    "size_max_mib": 5.0,
+    "limit_per_project": 20,
+    "max_elements_per_case": null,
+    "max_smells_per_case": null,
+    "elements_count": null,
+    "runtime_min_smells": 15,
+    "runtime_max_smells": 20,
+    "runtime_type_quotas": {
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2
+    },
+    "max_runtime_classes": 10,
+    "requires_baseline_verification": true,
+    "fail_if_quotas_unfilled": false,
+    "enrich_java_after_generation": true
+  },
+  "summary": {
+    "draft_cases": 20,
+    "accepted": 7,
+    "rejected": 14,
+    "accepted_by_runtime_type_count": {
+      "2": 1,
+      "5": 2,
+      "6": 2,
+      "3": 1
+    },
+    "quotas_filled": false
+  },
+  "accepted_cases": [
+    {
+      "case_id": "Drugis Common:bcbdecd601d0",
+      "project": "Drugis Common",
+      "start_commit": "ad2c8d07be208de22f61707ca64f5a4a04143d93",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Complex Class",
+          "Feature Envy"
+        ],
+        "smell_type_count": 2,
+        "class_count": 2,
+        "classes": [
+          "org.drugis.common.threading.TaskUtil",
+          "org.drugis.common.threading.ThreadHandlerIT"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.drugis.common.threading.TaskUtil",
+          "org.drugis.common.threading.ThreadHandlerIT"
+        ]
+      }
+    },
+    {
+      "case_id": "Drugis Common:6cd5f088448e",
+      "project": "Drugis Common",
+      "start_commit": "38091327be0c05b84fa0be863ee844ec698f7102",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 20,
+        "smell_types": [
+          "Class Data Should Be Private",
+          "Complex Class",
+          "Feature Envy",
+          "Lazy Class",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 5,
+        "class_count": 3,
+        "classes": [
+          "org.drugis.common.JUnitUtil",
+          "org.drugis.common.threading.status.TaskProgressModel",
+          "org.drugis.common.threading.status.TaskProgressModelTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.drugis.common.JUnitUtil",
+          "org.drugis.common.threading.status.TaskProgressModel",
+          "org.drugis.common.threading.status.TaskProgressModelTest"
+        ]
+      }
+    },
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):358b21bb264e",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "start_commit": "7499808a9350987dae8736560a632062f59d5423",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 15,
+        "smell_types": [
+          "Brain Method",
+          "Complex Class",
+          "Feature Envy",
+          "Intensive Coupling",
+          "Long Method",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 6,
+        "class_count": 4,
+        "classes": [
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCLogger",
+          "com.brewtab.irclog.IRCStatistics"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCLogger",
+          "com.brewtab.irclog.IRCStatistics"
+        ]
+      }
+    },
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):091c08525c3b",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "start_commit": "e1768f83ef8b4c940ef2e3cce00f91245bf9bbdd",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Brain Method",
+          "Complex Class",
+          "Feature Envy",
+          "Lazy Class",
+          "Long Method",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 6,
+        "class_count": 5,
+        "classes": [
+          "com.brewtab.irc.client.ClientFactory",
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.BashApplet",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCStatistics"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "com.brewtab.irc.client.ClientFactory",
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.BashApplet",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCStatistics"
+        ]
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:4e4f6e9da6ea",
+      "project": "PhiCode Philib",
+      "start_commit": "a132ad528a176bc7ba6082999c270549e7956c23",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 15,
+        "smell_types": [
+          "Class Data Should Be Private",
+          "Feature Envy",
+          "Lazy Class",
+          "Long Method",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 5,
+        "class_count": 2,
+        "classes": [
+          "ch.bind.philib.msg.Subscription",
+          "ch.bind.philib.msg.vm.PubSubVMTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "ch.bind.philib.msg.Subscription",
+          "ch.bind.philib.msg.vm.PubSubVMTest"
+        ]
+      }
+    },
+    {
+      "case_id": "Tap4j:462ab4c8c308",
+      "project": "Tap4j",
+      "start_commit": "fb2451c64b4d78d1db062eac6695dab2fe1af2a2",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Feature Envy",
+          "Long Method",
+          "Message Chains"
+        ],
+        "smell_type_count": 3,
+        "class_count": 3,
+        "classes": [
+          "org.tap4j.consumer.TestTap13Consumer",
+          "org.tap4j.model.BailOut",
+          "org.tap4j.producer.TestTap13YamlProducer"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.tap4j.consumer.TestTap13Consumer",
+          "org.tap4j.model.BailOut",
+          "org.tap4j.producer.TestTap13YamlProducer"
+        ]
+      }
+    },
+    {
+      "case_id": "Pusher Java Client:99ea5be9418d",
+      "project": "Pusher Java Client",
+      "start_commit": "c59fe762d71c3228d17e3826ec8dcbf4a8f14a34",
+      "reason": "graph_fallback_build_fail",
+      "runtime": null
+    }
+  ],
+  "rejected_cases": [
+    {
+      "case_id": "Alfred MPI:c6fc763649db",
+      "project": "Alfred MPI",
+      "start_commit": "c02c91bbd05e6d556df9b90943476d06560d339c",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/furio/alfred-mpi",
+        "project": "Alfred MPI",
+        "start_commit_order": 21,
+        "end_commit_order": 23,
+        "commit_count": 3,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Drugis Common:07f541ab8a79",
+      "project": "Drugis Common",
+      "start_commit": "0b468c832cd43e5fb627d6f077ff36c08edc1b7c",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/gertvv/drugis-common",
+        "project": "Drugis Common",
+        "start_commit_order": 30,
+        "end_commit_order": 31,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):f8bdbd87e7da",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "start_commit": "9e4692a6ebda7f61a447831c74f1eabf5f5a1450",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/c2nes/ircbot",
+        "project": "IRC Bot (c2nes/ircbot)",
+        "start_commit_order": 18,
+        "end_commit_order": 19,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 18,
+        "first_non_maven_hash": "9e4692a6ebda7f61a447831c74f1eabf5f5a1450",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Passsafe:97e3c3ffe159",
+      "project": "Passsafe",
+      "start_commit": "602ef67def806c4eb7c764e5963160b89aca7605",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/iweinzierl/passsafe",
+        "project": "Passsafe",
+        "start_commit_order": 117,
+        "end_commit_order": 118,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:76559b540d11",
+      "project": "PhiCode Philib",
+      "start_commit": "c74faab2b72f3d28e18672df1b245ca2d489a8d6",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 477,
+        "end_commit_order": 478,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:a28b73a42446",
+      "project": "PhiCode Philib",
+      "start_commit": "a0d5f9401296e5bf2fb379198657ddca232b5d4e",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 546,
+        "end_commit_order": 547,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:952c8f61e520",
+      "project": "PhiCode Philib",
+      "start_commit": "d09bfcd84388cfea46ae241b237d19478646650a",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 295,
+        "end_commit_order": 297,
+        "commit_count": 3,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:0af1a5112b8a",
+      "project": "PhiCode Philib",
+      "start_commit": "48174588095cafb110c2b34b116c4169e787e350",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 335,
+        "end_commit_order": 336,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:fa9d27c229dd",
+      "project": "PhiCode Philib",
+      "start_commit": "b20ef95301d47957129d4c2e21c91f67873799f1",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 204,
+        "end_commit_order": 206,
+        "commit_count": 3,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Pusher Java Client:99ea5be9418d",
+      "project": "Pusher Java Client",
+      "start_commit": "c59fe762d71c3228d17e3826ec8dcbf4a8f14a34",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/pusher/pusher-java-client",
+        "project": "Pusher Java Client",
+        "start_commit_order": 29,
+        "end_commit_order": 30,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Tap4j:7706f1f1c0df",
+      "project": "Tap4j",
+      "start_commit": "fb2451c64b4d78d1db062eac6695dab2fe1af2a2",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/tupilabs/tap4j",
+        "project": "Tap4j",
+        "start_commit_order": 85,
+        "end_commit_order": 86,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Whydah - UserAdminService:e376a0a66a32",
+      "project": "Whydah - UserAdminService",
+      "start_commit": "a1481805f02668626f33e588ed02a459c47c78f9",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/altran/Whydah-UserAdminService",
+        "project": "Whydah - UserAdminService",
+        "start_commit_order": 165,
+        "end_commit_order": 167,
+        "commit_count": 3,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Whydah - UserAdminService:ead0b7f23e07",
+      "project": "Whydah - UserAdminService",
+      "start_commit": "41e59cf559bcfa0292db1bc523f2ae6ff065390f",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/altran/Whydah-UserAdminService",
+        "project": "Whydah - UserAdminService",
+        "start_commit_order": 230,
+        "end_commit_order": 232,
+        "commit_count": 3,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Whydah - UserAdminService:499fef180771",
+      "project": "Whydah - UserAdminService",
+      "start_commit": "f7d28f896dbbb655aae5207dce720001a27f4360",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/altran/Whydah-UserAdminService",
+        "project": "Whydah - UserAdminService",
+        "start_commit_order": 233,
+        "end_commit_order": 234,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    }
+  ]
+}

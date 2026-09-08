@@ -2,29 +2,52 @@
 
 from __future__ import annotations
 
+import difflib
 import fnmatch
 import os
 import shutil
+import subprocess
+from dataclasses import dataclass, field
+from enum import StrEnum
 from pathlib import Path
-from typing import Type
+from typing import Type, assert_never
 
 from langchain_core.callbacks import CallbackManagerForToolRun
 from langchain_core.tools import BaseTool
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 INVALID_PATH_TEMPLATE = (
     "Error: Access denied to {arg_name}: {value}."
     " Permission granted exclusively to the current working directory"
 )
+GIT_COMMAND_TIMEOUT_SECONDS = 10
 
 
 class FileValidationError(ValueError):
     """Error for paths outside the root directory."""
 
 
+class PatchStage(StrEnum):
+    """Stages in the lifecycle of one patch attempt."""
+
+    CREATED = "created"
+    APPLIED = "applied"
+    VERIFIED = "verified"
+
+
+@dataclass(frozen=True)
+class PatchAttempt:
+    """A patch and its current lifecycle stage."""
+
+    patch_path: Path
+    source_path: Path
+    stage: PatchStage
+
+
 class BaseFileToolMixin(BaseModel):
     """Mixin for file system tools."""
 
+    model_config = ConfigDict(arbitrary_types_allowed=True)
     root_dir: str | None = None
     """The final path will be chosen relative to root_dir if specified."""
 
@@ -35,10 +58,108 @@ class BaseFileToolMixin(BaseModel):
         return get_validated_relative_path(Path(self.root_dir), file_path)
 
 
+@dataclass
+class PatchSequence:
+    """Track successful patch stages for one repair-agent run."""
+
+    attempts: list[PatchAttempt] = field(default_factory=list)
+
+    def pending_patch(self) -> Path | None:
+        """Return the newest created patch that has not been applied."""
+        for attempt in reversed(self.attempts):
+            if attempt.stage is PatchStage.CREATED:
+                return attempt.patch_path
+        return None
+
+    def latest_patch(self) -> Path | None:
+        """Return the newest successfully created patch."""
+        return self.attempts[-1].patch_path if self.attempts else None
+
+    def record_created(self, patch_path: Path, source_path: Path) -> None:
+        """Record a patch after it passes Git validation."""
+        self.attempts.append(
+            PatchAttempt(patch_path, source_path, PatchStage.CREATED)
+        )
+
+    def mark_applied(self, patch_path: Path) -> PatchAttempt | None:
+        """Advance a created patch to the applied stage."""
+        return self._transition(patch_path, PatchStage.APPLIED)
+
+    def mark_verified(self, patch_path: Path) -> PatchAttempt | None:
+        """Advance an applied patch to the verified stage."""
+        return self._transition(patch_path, PatchStage.VERIFIED)
+
+    def _transition(
+        self,
+        patch_path: Path,
+        target: PatchStage,
+    ) -> PatchAttempt | None:
+        """Advance one patch by exactly one valid lifecycle transition."""
+        for index in range(len(self.attempts) - 1, -1, -1):
+            attempt = self.attempts[index]
+            if attempt.patch_path != patch_path:
+                continue
+            match attempt.stage, target:
+                case PatchStage.CREATED, PatchStage.APPLIED:
+                    next_stage = PatchStage.APPLIED
+                case PatchStage.APPLIED, PatchStage.VERIFIED:
+                    next_stage = PatchStage.VERIFIED
+                case PatchStage.CREATED | PatchStage.APPLIED, _:
+                    return None
+                case PatchStage.VERIFIED, _:
+                    return None
+                case stage, _:
+                    assert_never(stage)
+            transitioned = PatchAttempt(
+                attempt.patch_path,
+                attempt.source_path,
+                next_stage,
+            )
+            self.attempts[index] = transitioned
+            return transitioned
+        return None
+
+    def source_for(self, patch_path: Path) -> Path | None:
+        """Return the source file associated with a known patch."""
+        for attempt in reversed(self.attempts):
+            if attempt.patch_path == patch_path:
+                return attempt.source_path
+        return None
+
+    def is_applied(self, patch_path: Path) -> bool:
+        """Return whether a patch has reached the applied stage."""
+        for attempt in reversed(self.attempts):
+            if attempt.patch_path != patch_path:
+                continue
+            match attempt.stage:
+                case PatchStage.CREATED:
+                    return False
+                case PatchStage.APPLIED | PatchStage.VERIFIED:
+                    return True
+                case stage:
+                    assert_never(stage)
+        return False
+
+    def is_verified(self, patch_path: Path) -> bool:
+        """Return whether a patch has reached the verified stage."""
+        for attempt in reversed(self.attempts):
+            if attempt.patch_path != patch_path:
+                continue
+            match attempt.stage:
+                case PatchStage.VERIFIED:
+                    return True
+                case PatchStage.CREATED | PatchStage.APPLIED:
+                    return False
+                case stage:
+                    assert_never(stage)
+        return False
+
+
 def get_validated_relative_path(root: Path, user_path: str) -> Path:
     """Resolve a relative path, raising an error if not within the root directory."""
     root = root.resolve()
-    full_path = (root / user_path).resolve()
+    path = Path(user_path)
+    full_path = (path if path.is_absolute() else root / path).resolve()
     if not full_path.is_relative_to(root):
         raise FileValidationError(
             f"Path {user_path} is outside of the allowed directory {root}"
@@ -50,6 +171,16 @@ class ReadFileInput(BaseModel):
     """Input for ReadFileTool."""
 
     file_path: str = Field(..., description="name of file")
+    start_line: int = Field(
+        default=1,
+        ge=1,
+        description="First 1-based line to return.",
+    )
+    end_line: int | None = Field(
+        default=None,
+        ge=1,
+        description="Last 1-based line to return, inclusive.",
+    )
 
 
 class ReadFileTool(BaseFileToolMixin, BaseTool):
@@ -62,9 +193,13 @@ class ReadFileTool(BaseFileToolMixin, BaseTool):
     def _run(
         self,
         file_path: str,
+        start_line: int = 1,
+        end_line: int | None = None,
         run_manager: CallbackManagerForToolRun | None = None,
     ) -> str:
         del run_manager
+        if end_line is not None and end_line < start_line:
+            return "Error: end_line must be greater than or equal to start_line."
         try:
             read_path = self.get_relative_path(file_path)
         except FileValidationError:
@@ -72,47 +207,209 @@ class ReadFileTool(BaseFileToolMixin, BaseTool):
         if not read_path.exists():
             return f"Error: no such file or directory: {file_path}"
         try:
-            return read_path.read_text(encoding="utf-8")
-        except OSError as exc:
+            content = read_path.read_text(encoding="utf-8")
+            lines = content.splitlines()
+            selected = lines[start_line - 1 : end_line]
+            return "\n".join(
+                f"{line_number} | {line}"
+                for line_number, line in enumerate(selected, start=start_line)
+            )
+        except (OSError, subprocess.SubprocessError) as exc:
             return f"Error: {exc}"
 
 
-class WriteFileInput(BaseModel):
-    """Input for WriteFileTool."""
+class CreatePatchInput(BaseModel):
+    """Input for CreatePatchTool."""
 
-    file_path: str = Field(..., description="name of file")
-    text: str = Field(..., description="text to write to file")
-    append: bool = Field(
-        default=False, description="Whether to append to an existing file."
+    file_path: str = Field(..., description="Path of the file to patch")
+    old_text: str = Field(..., description="Exact text to replace")
+    new_text: str = Field(..., description="Replacement text")
+
+
+class CreatePatchTool(BaseFileToolMixin, BaseTool):
+    """Create and validate a unified diff without changing source code."""
+
+    name: str = "create_patch"
+    args_schema: Type[BaseModel] = CreatePatchInput
+    description: str = (
+        "Create and validate a unified diff as <file>.patch. This does not "
+        "change the source file; call apply_patch next."
     )
-
-
-class WriteFileTool(BaseFileToolMixin, BaseTool):
-    """Tool that writes a file to disk."""
-
-    name: str = "write_file"
-    args_schema: Type[BaseModel] = WriteFileInput
-    description: str = "Write file to disk"
+    sequence: PatchSequence
 
     def _run(
         self,
         file_path: str,
-        text: str,
-        append: bool = False,
+        old_text: str,
+        new_text: str,
         run_manager: CallbackManagerForToolRun | None = None,
     ) -> str:
         del run_manager
         try:
-            write_path = self.get_relative_path(file_path)
+            source_path = self.get_relative_path(file_path)
         except FileValidationError:
             return INVALID_PATH_TEMPLATE.format(arg_name="file_path", value=file_path)
+        if not source_path.is_file():
+            return f"Error: no such file or directory: {file_path}"
+        if not old_text:
+            return "Error: old_text cannot be empty."
+        if old_text == new_text:
+            return "Error: old_text and new_text are identical."
         try:
-            write_path.parent.mkdir(exist_ok=True, parents=True)
-            mode = "a" if append else "w"
-            with write_path.open(mode, encoding="utf-8") as handle:
-                handle.write(text)
-            return f"File written successfully to {file_path}."
-        except OSError as exc:
+            original = source_path.read_text(encoding="utf-8")
+            occurrences = original.count(old_text)
+            if occurrences != 1:
+                return f"Error: expected one old_text match, found {occurrences}."
+            updated = original.replace(old_text, new_text, 1)
+            relative_source = source_path.relative_to(
+                Path(self.root_dir or ".").resolve()
+            ).as_posix()
+            patch = "".join(
+                difflib.unified_diff(
+                    original.splitlines(keepends=True),
+                    updated.splitlines(keepends=True),
+                    fromfile=f"a/{relative_source}",
+                    tofile=f"b/{relative_source}",
+                )
+            )
+            if not patch:
+                return "Error: difflib produced an empty patch."
+            patch_path = source_path.with_name(f"{source_path.name}.patch")
+            patch_path.write_text(patch, encoding="utf-8")
+            root = Path(self.root_dir or ".").resolve()
+            relative_patch = patch_path.relative_to(root)
+            check = subprocess.run(
+                ["git", "apply", "--check", "--", str(relative_patch)],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=GIT_COMMAND_TIMEOUT_SECONDS,
+            )
+            if check.returncode != 0:
+                patch_path.unlink()
+                return f"Error: patch validation failed: {check.stderr.strip()}"
+            self.sequence.record_created(patch_path, source_path)
+            return f"Created and validated patch {patch_path.name} for {file_path}."
+        except (OSError, subprocess.SubprocessError) as exc:
+            return f"Error: {exc}"
+
+
+class ApplyPatchInput(BaseModel):
+    """Input for ApplyPatchTool."""
+
+    patch_path: str = Field(..., description="Path of a successfully created .patch file")
+
+
+class ApplyPatchTool(BaseFileToolMixin, BaseTool):
+    """Apply a patch after successful creation."""
+
+    name: str = "apply_patch"
+    args_schema: Type[BaseModel] = ApplyPatchInput
+    description: str = "Apply a previously created .patch file after a dry-run check."
+    sequence: PatchSequence
+
+    def _run(
+        self,
+        patch_path: str,
+        run_manager: CallbackManagerForToolRun | None = None,
+    ) -> str:
+        del run_manager
+        try:
+            resolved_patch = self.get_relative_path(patch_path)
+        except FileValidationError:
+            return INVALID_PATH_TEMPLATE.format(arg_name="patch_path", value=patch_path)
+        if resolved_patch.suffix != ".patch":
+            return "Error: patch_path must have a .patch extension."
+        source_path = self.sequence.source_for(resolved_patch)
+        if source_path is None:
+            return "Error: create_patch must succeed before apply_patch."
+        root = Path(self.root_dir or ".").resolve()
+        relative_patch = resolved_patch.relative_to(root)
+        try:
+            check = subprocess.run(
+                ["git", "apply", "--check", "--", str(relative_patch)],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=GIT_COMMAND_TIMEOUT_SECONDS,
+            )
+            if check.returncode != 0:
+                return f"Error: patch validation failed: {check.stderr.strip()}"
+            applied = subprocess.run(
+                ["git", "apply", "--", str(relative_patch)],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=GIT_COMMAND_TIMEOUT_SECONDS,
+            )
+            if applied.returncode != 0:
+                return f"Error: patch application failed: {applied.stderr.strip()}"
+            self.sequence.mark_applied(resolved_patch)
+            return f"Applied patch {patch_path}."
+        except (OSError, subprocess.SubprocessError) as exc:
+            return f"Error: {exc}"
+
+
+class VerifyPatchInput(BaseModel):
+    """Input for VerifyPatchTool."""
+
+    patch_path: str = Field(..., description="Path of an applied .patch file")
+
+
+class VerifyPatchTool(BaseFileToolMixin, BaseTool):
+    """Verify the source diff produced by an applied patch."""
+
+    name: str = "verify_patch"
+    args_schema: Type[BaseModel] = VerifyPatchInput
+    description: str = "Verify the applied patch with git diff and git diff --check."
+    sequence: PatchSequence
+
+    def _run(
+        self,
+        patch_path: str,
+        run_manager: CallbackManagerForToolRun | None = None,
+    ) -> str:
+        del run_manager
+        try:
+            resolved_patch = self.get_relative_path(patch_path)
+        except FileValidationError:
+            return INVALID_PATH_TEMPLATE.format(arg_name="patch_path", value=patch_path)
+        source_path = self.sequence.source_for(resolved_patch)
+        if source_path is None:
+            return "Error: create_patch must succeed before verify_patch."
+        if not self.sequence.is_applied(resolved_patch):
+            return "Error: apply_patch must succeed before verify_patch."
+        root = Path(self.root_dir or ".").resolve()
+        relative_source = source_path.relative_to(root)
+        try:
+            check = subprocess.run(
+                ["git", "diff", "--check", "--", str(relative_source)],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=GIT_COMMAND_TIMEOUT_SECONDS,
+            )
+            if check.returncode != 0:
+                return f"Error: git diff check failed: {check.stderr.strip()}"
+            diff = subprocess.run(
+                ["git", "diff", "--", str(relative_source)],
+                cwd=root,
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=GIT_COMMAND_TIMEOUT_SECONDS,
+            )
+            if diff.returncode != 0:
+                return f"Error: could not read git diff: {diff.stderr.strip()}"
+            if not diff.stdout.strip():
+                return "Error: applied patch produced no source diff."
+            self.sequence.mark_verified(resolved_patch)
+            return f"Verified patch {patch_path}.\n{diff.stdout}"
+        except (OSError, subprocess.SubprocessError) as exc:
             return f"Error: {exc}"
 
 

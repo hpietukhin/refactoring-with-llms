@@ -5,7 +5,7 @@ from testing.surefire import (
     TestResult,
     TestRunSummary,
     parse_surefire_reports,
-    run_maven_tests,
+    run_gradle_tests,
 )
 
 __all__ = [
@@ -13,5 +13,5 @@ __all__ = [
     "TestResult",
     "TestRunSummary",
     "parse_surefire_reports",
-    "run_maven_tests",
+    "run_gradle_tests",
 ]

@@ -1,0 +1,1693 @@
+{
+  "generated_at": "2026-08-10T10:12:51.527080Z",
+  "filters": {
+    "config_name": "1_10mb_verified",
+    "requested_projects": [
+      "Alfred MPI",
+      "Dagger",
+      "Drugis Common",
+      "Facebook SDK for Android",
+      "IRC Bot (c2nes/ircbot)",
+      "JBoss Ballroom",
+      "JUnit4",
+      "Netflix Hystrix",
+      "Netflix SimianArmy",
+      "Passsafe",
+      "PhiCode Philib",
+      "Pusher Java Client",
+      "Tap4j",
+      "Whydah - UserAdminService"
+    ],
+    "projects": [
+      "Alfred MPI",
+      "Dagger",
+      "Drugis Common",
+      "Facebook SDK for Android",
+      "IRC Bot (c2nes/ircbot)",
+      "JBoss Ballroom",
+      "JUnit4",
+      "Netflix Hystrix",
+      "Netflix SimianArmy",
+      "Passsafe",
+      "PhiCode Philib",
+      "Pusher Java Client",
+      "Tap4j",
+      "Whydah - UserAdminService"
+    ],
+    "blocked_projects": {},
+    "graph_fallback_projects": [
+      "Pusher Java Client"
+    ],
+    "size_min_mib": 1.0,
+    "size_max_mib": 10.0,
+    "limit_per_project": 20,
+    "max_elements_per_case": null,
+    "max_smells_per_case": null,
+    "elements_count": null,
+    "runtime_min_smells": 15,
+    "runtime_max_smells": 20,
+    "runtime_type_quotas": {
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2
+    },
+    "max_runtime_classes": 10,
+    "requires_baseline_verification": true,
+    "fail_if_quotas_unfilled": false,
+    "enrich_java_after_generation": true
+  },
+  "summary": {
+    "draft_cases": 82,
+    "accepted": 6,
+    "rejected": 77,
+    "accepted_by_runtime_type_count": {
+      "2": 1,
+      "5": 1,
+      "6": 2,
+      "3": 1
+    },
+    "quotas_filled": false
+  },
+  "accepted_cases": [
+    {
+      "case_id": "Drugis Common:bcbdecd601d0",
+      "project": "Drugis Common",
+      "start_commit": "ad2c8d07be208de22f61707ca64f5a4a04143d93",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Complex Class",
+          "Feature Envy"
+        ],
+        "smell_type_count": 2,
+        "class_count": 2,
+        "classes": [
+          "org.drugis.common.threading.TaskUtil",
+          "org.drugis.common.threading.ThreadHandlerIT"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.drugis.common.threading.TaskUtil",
+          "org.drugis.common.threading.ThreadHandlerIT"
+        ]
+      }
+    },
+    {
+      "case_id": "Drugis Common:6cd5f088448e",
+      "project": "Drugis Common",
+      "start_commit": "38091327be0c05b84fa0be863ee844ec698f7102",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 20,
+        "smell_types": [
+          "Class Data Should Be Private",
+          "Complex Class",
+          "Feature Envy",
+          "Lazy Class",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 5,
+        "class_count": 3,
+        "classes": [
+          "org.drugis.common.JUnitUtil",
+          "org.drugis.common.threading.status.TaskProgressModel",
+          "org.drugis.common.threading.status.TaskProgressModelTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.drugis.common.JUnitUtil",
+          "org.drugis.common.threading.status.TaskProgressModel",
+          "org.drugis.common.threading.status.TaskProgressModelTest"
+        ]
+      }
+    },
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):358b21bb264e",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "start_commit": "7499808a9350987dae8736560a632062f59d5423",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 15,
+        "smell_types": [
+          "Brain Method",
+          "Complex Class",
+          "Feature Envy",
+          "Intensive Coupling",
+          "Long Method",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 6,
+        "class_count": 4,
+        "classes": [
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCLogger",
+          "com.brewtab.irclog.IRCStatistics"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCLogger",
+          "com.brewtab.irclog.IRCStatistics"
+        ]
+      }
+    },
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):091c08525c3b",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "start_commit": "e1768f83ef8b4c940ef2e3cce00f91245bf9bbdd",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Brain Method",
+          "Complex Class",
+          "Feature Envy",
+          "Lazy Class",
+          "Long Method",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 6,
+        "class_count": 5,
+        "classes": [
+          "com.brewtab.irc.client.ClientFactory",
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.BashApplet",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCStatistics"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "com.brewtab.irc.client.ClientFactory",
+          "com.brewtab.ircbot.Bot",
+          "com.brewtab.ircbot.applets.BashApplet",
+          "com.brewtab.ircbot.applets.StatsApplet",
+          "com.brewtab.irclog.IRCStatistics"
+        ]
+      }
+    },
+    {
+      "case_id": "Tap4j:462ab4c8c308",
+      "project": "Tap4j",
+      "start_commit": "fb2451c64b4d78d1db062eac6695dab2fe1af2a2",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Feature Envy",
+          "Long Method",
+          "Message Chains"
+        ],
+        "smell_type_count": 3,
+        "class_count": 3,
+        "classes": [
+          "org.tap4j.consumer.TestTap13Consumer",
+          "org.tap4j.model.BailOut",
+          "org.tap4j.producer.TestTap13YamlProducer"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.tap4j.consumer.TestTap13Consumer",
+          "org.tap4j.model.BailOut",
+          "org.tap4j.producer.TestTap13YamlProducer"
+        ]
+      }
+    },
+    {
+      "case_id": "Pusher Java Client:99ea5be9418d",
+      "project": "Pusher Java Client",
+      "start_commit": "c59fe762d71c3228d17e3826ec8dcbf4a8f14a34",
+      "reason": "graph_fallback_build_fail",
+      "runtime": null
+    }
+  ],
+  "rejected_cases": [
+    {
+      "case_id": "Alfred MPI:c6fc763649db",
+      "project": "Alfred MPI",
+      "start_commit": "c02c91bbd05e6d556df9b90943476d06560d339c",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/furio/alfred-mpi",
+        "project": "Alfred MPI",
+        "start_commit_order": 21,
+        "end_commit_order": 23,
+        "commit_count": 3,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Drugis Common:07f541ab8a79",
+      "project": "Drugis Common",
+      "start_commit": "0b468c832cd43e5fb627d6f077ff36c08edc1b7c",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/gertvv/drugis-common",
+        "project": "Drugis Common",
+        "start_commit_order": 30,
+        "end_commit_order": 31,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:d89198704da2",
+      "project": "Facebook SDK for Android",
+      "start_commit": "0d8d480cdf5f2c6a2328c16646d05364f9abd963",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 299,
+        "end_commit_order": 300,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 299,
+        "first_non_maven_hash": "0d8d480cdf5f2c6a2328c16646d05364f9abd963",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:b4e8942a1728",
+      "project": "Facebook SDK for Android",
+      "start_commit": "7b5c17e32f414998b10c3abe11777c1d3bfb45e5",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 147,
+        "end_commit_order": 150,
+        "commit_count": 4,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 147,
+        "first_non_maven_hash": "7b5c17e32f414998b10c3abe11777c1d3bfb45e5",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:d12e2a3a9051",
+      "project": "Facebook SDK for Android",
+      "start_commit": "351267aae201340fdb8efe3f208920e1f2c183e3",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 160,
+        "end_commit_order": 164,
+        "commit_count": 5,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 160,
+        "first_non_maven_hash": "351267aae201340fdb8efe3f208920e1f2c183e3",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:1bfa61cd7f0e",
+      "project": "Facebook SDK for Android",
+      "start_commit": "9883d1f97571608860cc81e715ca746e2b42c9ef",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 307,
+        "end_commit_order": 308,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 307,
+        "first_non_maven_hash": "9883d1f97571608860cc81e715ca746e2b42c9ef",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:7f50d19341f6",
+      "project": "Facebook SDK for Android",
+      "start_commit": "4e2e6b90fbc964ca51a81e83e802bb4a62711a78",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 430,
+        "end_commit_order": 431,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 430,
+        "first_non_maven_hash": "4e2e6b90fbc964ca51a81e83e802bb4a62711a78",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:8bd64f00b5e8",
+      "project": "Facebook SDK for Android",
+      "start_commit": "c526ceebb2633b688817ac92a56ed5f91a99c6ed",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 491,
+        "end_commit_order": 493,
+        "commit_count": 3,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 491,
+        "first_non_maven_hash": "c526ceebb2633b688817ac92a56ed5f91a99c6ed",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:c0a4437440bc",
+      "project": "Facebook SDK for Android",
+      "start_commit": "bda3d93d25ec38ee712eb4e10b7eb3c2c5ae7d10",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 187,
+        "end_commit_order": 192,
+        "commit_count": 6,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 187,
+        "first_non_maven_hash": "bda3d93d25ec38ee712eb4e10b7eb3c2c5ae7d10",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:f7ad670cfbb0",
+      "project": "Facebook SDK for Android",
+      "start_commit": "bdd7afe00df2913b355c3f3f3945da0f88148d55",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 354,
+        "end_commit_order": 355,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 354,
+        "first_non_maven_hash": "bdd7afe00df2913b355c3f3f3945da0f88148d55",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:c173dd6cc3ff",
+      "project": "Facebook SDK for Android",
+      "start_commit": "fd991d653ffd505e97280cb4c765b277d68657cb",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 271,
+        "end_commit_order": 272,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 271,
+        "first_non_maven_hash": "fd991d653ffd505e97280cb4c765b277d68657cb",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:ff6eced3aaaa",
+      "project": "Facebook SDK for Android",
+      "start_commit": "3afe006e2a2e8ac3843fbb788dbf7ac1cdd318fa",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 407,
+        "end_commit_order": 408,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 407,
+        "first_non_maven_hash": "3afe006e2a2e8ac3843fbb788dbf7ac1cdd318fa",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:3d7dd8c53ddd",
+      "project": "Facebook SDK for Android",
+      "start_commit": "ba47bbd1f38ac0667fd93ba8313e53723cbbf70d",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 297,
+        "end_commit_order": 298,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 297,
+        "first_non_maven_hash": "ba47bbd1f38ac0667fd93ba8313e53723cbbf70d",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:74cbf78cae35",
+      "project": "Facebook SDK for Android",
+      "start_commit": "4f15aaddb54af30b64a863944f7244b2a94cb7cc",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 396,
+        "end_commit_order": 397,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 396,
+        "first_non_maven_hash": "4f15aaddb54af30b64a863944f7244b2a94cb7cc",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:4d6393a8dc53",
+      "project": "Facebook SDK for Android",
+      "start_commit": "90598d4321e6fd8f4aad25a8cf499d0a5236627b",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 401,
+        "end_commit_order": 402,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 401,
+        "first_non_maven_hash": "90598d4321e6fd8f4aad25a8cf499d0a5236627b",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:ede069d5c15a",
+      "project": "Facebook SDK for Android",
+      "start_commit": "fbf3095cf6afb8c17f823d629838af206f4fd489",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 349,
+        "end_commit_order": 350,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 349,
+        "first_non_maven_hash": "fbf3095cf6afb8c17f823d629838af206f4fd489",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:54c492ed6c7f",
+      "project": "Facebook SDK for Android",
+      "start_commit": "7bd158f81cb9b77b681c43bdf9c13d03a3301282",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 209,
+        "end_commit_order": 210,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 209,
+        "first_non_maven_hash": "7bd158f81cb9b77b681c43bdf9c13d03a3301282",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:bc29082aa934",
+      "project": "Facebook SDK for Android",
+      "start_commit": "babb83869c9b4fe199c6097dc3271fa33ffb19dd",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 154,
+        "end_commit_order": 155,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 154,
+        "first_non_maven_hash": "babb83869c9b4fe199c6097dc3271fa33ffb19dd",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:b32935eb2da7",
+      "project": "Facebook SDK for Android",
+      "start_commit": "a039b6fff8562e30a11c227c646eb46dc047b4ad",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 149,
+        "end_commit_order": 150,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 149,
+        "first_non_maven_hash": "a039b6fff8562e30a11c227c646eb46dc047b4ad",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:ecc363d440db",
+      "project": "Facebook SDK for Android",
+      "start_commit": "3afe006e2a2e8ac3843fbb788dbf7ac1cdd318fa",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 407,
+        "end_commit_order": 408,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 407,
+        "first_non_maven_hash": "3afe006e2a2e8ac3843fbb788dbf7ac1cdd318fa",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:eef2b99fa6f1",
+      "project": "Facebook SDK for Android",
+      "start_commit": "9e99450b5ee7943470d1c1b34a98b421b63a61d3",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully unknown; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 16,
+        "end_commit_order": 17,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 16,
+        "first_non_maven_hash": "9e99450b5ee7943470d1c1b34a98b421b63a61d3",
+        "first_non_maven_primary": "unknown"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:b19d9105c55d",
+      "project": "Facebook SDK for Android",
+      "start_commit": "53bc4faeaee43b7febc6047a9318783ff68fd979",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 462,
+        "end_commit_order": 463,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 462,
+        "first_non_maven_hash": "53bc4faeaee43b7febc6047a9318783ff68fd979",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:49065937b0fb",
+      "project": "Facebook SDK for Android",
+      "start_commit": "2501c3ec3dc0e1650222bcff966f183b3afbb0c9",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 447,
+        "end_commit_order": 448,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 447,
+        "first_non_maven_hash": "2501c3ec3dc0e1650222bcff966f183b3afbb0c9",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:209cdc87803f",
+      "project": "Facebook SDK for Android",
+      "start_commit": "907807df95bb11a4fa29da193dc45767e76a1e32",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 586,
+        "end_commit_order": 588,
+        "commit_count": 3,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 586,
+        "first_non_maven_hash": "907807df95bb11a4fa29da193dc45767e76a1e32",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:a13a69cc13be",
+      "project": "Facebook SDK for Android",
+      "start_commit": "fbf3095cf6afb8c17f823d629838af206f4fd489",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 349,
+        "end_commit_order": 350,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 349,
+        "first_non_maven_hash": "fbf3095cf6afb8c17f823d629838af206f4fd489",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:13e1729424f2",
+      "project": "Facebook SDK for Android",
+      "start_commit": "c94a333ffe8c4abf2702ad89370a0db1c6ac78b9",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 252,
+        "end_commit_order": 253,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 252,
+        "first_non_maven_hash": "c94a333ffe8c4abf2702ad89370a0db1c6ac78b9",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:e46926eb308a",
+      "project": "Facebook SDK for Android",
+      "start_commit": "c94a333ffe8c4abf2702ad89370a0db1c6ac78b9",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 252,
+        "end_commit_order": 253,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 252,
+        "first_non_maven_hash": "c94a333ffe8c4abf2702ad89370a0db1c6ac78b9",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "Facebook SDK for Android:cce9e2527406",
+      "project": "Facebook SDK for Android",
+      "start_commit": "3c7dc26ef11f7274a9a4b8b440806eee3f3734bb",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/facebook/facebook-android-sdk",
+        "project": "Facebook SDK for Android",
+        "start_commit_order": 432,
+        "end_commit_order": 433,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 432,
+        "first_non_maven_hash": "3c7dc26ef11f7274a9a4b8b440806eee3f3734bb",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "IRC Bot (c2nes/ircbot):f8bdbd87e7da",
+      "project": "IRC Bot (c2nes/ircbot)",
+      "start_commit": "9e4692a6ebda7f61a447831c74f1eabf5f5a1450",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/c2nes/ircbot",
+        "project": "IRC Bot (c2nes/ircbot)",
+        "start_commit_order": 18,
+        "end_commit_order": 19,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 18,
+        "first_non_maven_hash": "9e4692a6ebda7f61a447831c74f1eabf5f5a1450",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JBoss Ballroom:0a13c3532bc4",
+      "project": "JBoss Ballroom",
+      "start_commit": "ae6a9047b46dc874bb39452ebd7e59ff99ece86e",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/hal/ballroom",
+        "project": "JBoss Ballroom",
+        "start_commit_order": 342,
+        "end_commit_order": 344,
+        "commit_count": 3,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:5def21bbf48a",
+      "project": "JUnit4",
+      "start_commit": "48af7e797dbefa1fc47e80394c7f74ef87c3c7ab",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 1627,
+        "end_commit_order": 1628,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:908106b16e81",
+      "project": "JUnit4",
+      "start_commit": "52e93b4fe3c4133118f33635ea8517a13ff05321",
+      "reason": "test_fail",
+      "details": "tests failed: failed=0 errors=1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 1718,
+        "end_commit_order": 1736,
+        "commit_count": 19,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:ad074b54ff0a",
+      "project": "JUnit4",
+      "start_commit": "1768d08d029dc3bf1ab88e26df0a9b40ae61227f",
+      "reason": "test_fail",
+      "details": "tests failed: failed=0 errors=1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 1620,
+        "end_commit_order": 1624,
+        "commit_count": 5,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:074f8ce352a0",
+      "project": "JUnit4",
+      "start_commit": "870289f3272917f312de6902b8b6bdc43552d4b7",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 751,
+        "end_commit_order": 753,
+        "commit_count": 3,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 751,
+        "first_non_maven_hash": "870289f3272917f312de6902b8b6bdc43552d4b7",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:8b85b29cfa7d",
+      "project": "JUnit4",
+      "start_commit": "752727de89a6bab731f49597c7ec3858ebb3e0a3",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 375,
+        "end_commit_order": 376,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 375,
+        "first_non_maven_hash": "752727de89a6bab731f49597c7ec3858ebb3e0a3",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:831a877fedea",
+      "project": "JUnit4",
+      "start_commit": "308768863b78f3a6345e25d7f9d35892c2de5a01",
+      "reason": "test_fail",
+      "details": "tests failed: failed=4 errors=3",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 818,
+        "end_commit_order": 820,
+        "commit_count": 3,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:c43250d092d7",
+      "project": "JUnit4",
+      "start_commit": "96af9a2a520a40404971968ee14a183d0aed1c4b",
+      "reason": "test_fail",
+      "details": "tests failed: failed=0 errors=1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 1548,
+        "end_commit_order": 1552,
+        "commit_count": 5,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:cee652cd8ed0",
+      "project": "JUnit4",
+      "start_commit": "f268f458843fc84e83c244a5c271cc71386eb1cf",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully unknown; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 6,
+        "end_commit_order": 7,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 6,
+        "first_non_maven_hash": "f268f458843fc84e83c244a5c271cc71386eb1cf",
+        "first_non_maven_primary": "unknown"
+      }
+    },
+    {
+      "case_id": "JUnit4:d5821d01e761",
+      "project": "JUnit4",
+      "start_commit": "039f6e8164fbe51fbbbf4b75ae025850c8cc158f",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 97,
+        "end_commit_order": 98,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 97,
+        "first_non_maven_hash": "039f6e8164fbe51fbbbf4b75ae025850c8cc158f",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:72e3758b6474",
+      "project": "JUnit4",
+      "start_commit": "d2dce1b179fc6481e4ee4534738924fa59088c13",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 124,
+        "end_commit_order": 125,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 124,
+        "first_non_maven_hash": "d2dce1b179fc6481e4ee4534738924fa59088c13",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:61a5c0d3399b",
+      "project": "JUnit4",
+      "start_commit": "0d6cd750d53486f01f12ddfee8657d94b5940574",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 331,
+        "end_commit_order": 332,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 331,
+        "first_non_maven_hash": "0d6cd750d53486f01f12ddfee8657d94b5940574",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:c7e9827e78a6",
+      "project": "JUnit4",
+      "start_commit": "2a6d6365c593149da094d7512028a2d008ea6cff",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 336,
+        "end_commit_order": 337,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 336,
+        "first_non_maven_hash": "2a6d6365c593149da094d7512028a2d008ea6cff",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:6172c4d6738d",
+      "project": "JUnit4",
+      "start_commit": "8088946a72634d8d6f91db157f4cbe9a2931d4ea",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 662,
+        "end_commit_order": 663,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 662,
+        "first_non_maven_hash": "8088946a72634d8d6f91db157f4cbe9a2931d4ea",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:29468a0ed8a0",
+      "project": "JUnit4",
+      "start_commit": "d3e86b059db787af5c0d58ddf3f69af5b42865b8",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 746,
+        "end_commit_order": 747,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 746,
+        "first_non_maven_hash": "d3e86b059db787af5c0d58ddf3f69af5b42865b8",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:72ca58a616c2",
+      "project": "JUnit4",
+      "start_commit": "4041354a3a7629b74970e0624b7564736c20e1e3",
+      "reason": "test_fail",
+      "details": "tests failed: failed=4 errors=3",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 816,
+        "end_commit_order": 817,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:21ca2f2717b3",
+      "project": "JUnit4",
+      "start_commit": "8ff0b44e3fb0c1c56a1dc6290c3b6828a5a8f9bf",
+      "reason": "test_fail",
+      "details": "tests failed: failed=4 errors=3",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 830,
+        "end_commit_order": 831,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:dda29259710f",
+      "project": "JUnit4",
+      "start_commit": "8672a83f51b183c756649a423b908271c894b8df",
+      "reason": "toolchain_fail",
+      "details": "No Java build system detected in /Users/havriil.pietukhin/uni/masterThesis/revamp/temp/eval_repos/runtime-organic/junit-team_junit4",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 1207,
+        "end_commit_order": 1208,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:1fa671790187",
+      "project": "JUnit4",
+      "start_commit": "979e8abbe974e8847668f5887403da78a6165ebc",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 423,
+        "end_commit_order": 424,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 423,
+        "first_non_maven_hash": "979e8abbe974e8847668f5887403da78a6165ebc",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:c5ddeef60b00",
+      "project": "JUnit4",
+      "start_commit": "c5ece65fe537092b9552f0efcca8a1e144ca4182",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully ant; all_maven=False all_gradle=False",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 438,
+        "end_commit_order": 439,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": false,
+        "first_non_maven_order": 438,
+        "first_non_maven_hash": "c5ece65fe537092b9552f0efcca8a1e144ca4182",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:06c39c5376c0",
+      "project": "JUnit4",
+      "start_commit": "dfaf332b4df0d98293ac135e5abf9de6a2623b14",
+      "reason": "toolchain_fail",
+      "details": "No Java build system detected in /Users/havriil.pietukhin/uni/masterThesis/revamp/temp/eval_repos/runtime-organic/junit-team_junit4",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 1314,
+        "end_commit_order": 1329,
+        "commit_count": 16,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Netflix Hystrix:893829f16081",
+      "project": "Netflix Hystrix",
+      "start_commit": "7c33691135b96281bccbe063f247b858515f394f",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/Hystrix",
+        "project": "Netflix Hystrix",
+        "start_commit_order": 1501,
+        "end_commit_order": 1502,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 1501,
+        "first_non_maven_hash": "7c33691135b96281bccbe063f247b858515f394f",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix Hystrix:27dab8a062b5",
+      "project": "Netflix Hystrix",
+      "start_commit": "0fef2002742431d57b1f58546199496a81b40bbd",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/Hystrix",
+        "project": "Netflix Hystrix",
+        "start_commit_order": 406,
+        "end_commit_order": 408,
+        "commit_count": 3,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 406,
+        "first_non_maven_hash": "0fef2002742431d57b1f58546199496a81b40bbd",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix Hystrix:c53cceff8ba0",
+      "project": "Netflix Hystrix",
+      "start_commit": "3d180d324f583174d9575840525fc8bd1e8678d0",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/Hystrix",
+        "project": "Netflix Hystrix",
+        "start_commit_order": 1471,
+        "end_commit_order": 1472,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 1471,
+        "first_non_maven_hash": "3d180d324f583174d9575840525fc8bd1e8678d0",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix Hystrix:1e68cef29cb0",
+      "project": "Netflix Hystrix",
+      "start_commit": "754bd602cf8aab8ac38fb085d17b2ec21dbe915d",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/Hystrix",
+        "project": "Netflix Hystrix",
+        "start_commit_order": 1268,
+        "end_commit_order": 1269,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 1268,
+        "first_non_maven_hash": "754bd602cf8aab8ac38fb085d17b2ec21dbe915d",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix Hystrix:5f759406156e",
+      "project": "Netflix Hystrix",
+      "start_commit": "0eb1589d85317b79874fcd9d62d6b8d598212c2f",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/Hystrix",
+        "project": "Netflix Hystrix",
+        "start_commit_order": 192,
+        "end_commit_order": 193,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 192,
+        "first_non_maven_hash": "0eb1589d85317b79874fcd9d62d6b8d598212c2f",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix Hystrix:7122dee6f1ca",
+      "project": "Netflix Hystrix",
+      "start_commit": "3404ae10f1ebe98a3a4309f6bef93fcae6db2305",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/Hystrix",
+        "project": "Netflix Hystrix",
+        "start_commit_order": 198,
+        "end_commit_order": 199,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 198,
+        "first_non_maven_hash": "3404ae10f1ebe98a3a4309f6bef93fcae6db2305",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix Hystrix:bbd7a7f14881",
+      "project": "Netflix Hystrix",
+      "start_commit": "3579733d0b1e9c782aaa0c7c05b33361bfe38bff",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/Hystrix",
+        "project": "Netflix Hystrix",
+        "start_commit_order": 1258,
+        "end_commit_order": 1259,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 1258,
+        "first_non_maven_hash": "3579733d0b1e9c782aaa0c7c05b33361bfe38bff",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix Hystrix:33327c29ac0b",
+      "project": "Netflix Hystrix",
+      "start_commit": "b716fe6dfa7375caff8d54bee3f1a1ac6d93174d",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/Hystrix",
+        "project": "Netflix Hystrix",
+        "start_commit_order": 888,
+        "end_commit_order": 889,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 888,
+        "first_non_maven_hash": "b716fe6dfa7375caff8d54bee3f1a1ac6d93174d",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix Hystrix:d89bf979a346",
+      "project": "Netflix Hystrix",
+      "start_commit": "eb2ede5d801fb94fe1d6290fb08850582f379168",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/Hystrix",
+        "project": "Netflix Hystrix",
+        "start_commit_order": 1462,
+        "end_commit_order": 1463,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 1462,
+        "first_non_maven_hash": "eb2ede5d801fb94fe1d6290fb08850582f379168",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix SimianArmy:f08a5517c7c8",
+      "project": "Netflix SimianArmy",
+      "start_commit": "206a7023fd0d3bef4fe94de1f89a0e8d8916c973",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/SimianArmy",
+        "project": "Netflix SimianArmy",
+        "start_commit_order": 98,
+        "end_commit_order": 108,
+        "commit_count": 11,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 98,
+        "first_non_maven_hash": "206a7023fd0d3bef4fe94de1f89a0e8d8916c973",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix SimianArmy:5af89968922d",
+      "project": "Netflix SimianArmy",
+      "start_commit": "0f201fe9722eecd9e0bbafb51c0ff7dca500acf4",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/SimianArmy",
+        "project": "Netflix SimianArmy",
+        "start_commit_order": 464,
+        "end_commit_order": 465,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 464,
+        "first_non_maven_hash": "0f201fe9722eecd9e0bbafb51c0ff7dca500acf4",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix SimianArmy:5431d8268769",
+      "project": "Netflix SimianArmy",
+      "start_commit": "01d7d8cc10706e83c136f36a4bcc09b57014198f",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/SimianArmy",
+        "project": "Netflix SimianArmy",
+        "start_commit_order": 85,
+        "end_commit_order": 88,
+        "commit_count": 4,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 85,
+        "first_non_maven_hash": "01d7d8cc10706e83c136f36a4bcc09b57014198f",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix SimianArmy:e8a500df1587",
+      "project": "Netflix SimianArmy",
+      "start_commit": "d73d2e9176ff10dffc1a9f6456668a8a62614c20",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/SimianArmy",
+        "project": "Netflix SimianArmy",
+        "start_commit_order": 343,
+        "end_commit_order": 344,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 343,
+        "first_non_maven_hash": "d73d2e9176ff10dffc1a9f6456668a8a62614c20",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix SimianArmy:778f94fefd78",
+      "project": "Netflix SimianArmy",
+      "start_commit": "e567c8e2b5b08f6003ad707a8357ebdcfd0e881d",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/SimianArmy",
+        "project": "Netflix SimianArmy",
+        "start_commit_order": 112,
+        "end_commit_order": 117,
+        "commit_count": 6,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 112,
+        "first_non_maven_hash": "e567c8e2b5b08f6003ad707a8357ebdcfd0e881d",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Netflix SimianArmy:8380fe4a4863",
+      "project": "Netflix SimianArmy",
+      "start_commit": "be2d955a2edcd15218210ad15a62b1bce9145d4a",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/Netflix/SimianArmy",
+        "project": "Netflix SimianArmy",
+        "start_commit_order": 107,
+        "end_commit_order": 108,
+        "commit_count": 2,
+        "all_maven": false,
+        "all_gradle": true,
+        "first_non_maven_order": 107,
+        "first_non_maven_hash": "be2d955a2edcd15218210ad15a62b1bce9145d4a",
+        "first_non_maven_primary": "gradle"
+      }
+    },
+    {
+      "case_id": "Passsafe:97e3c3ffe159",
+      "project": "Passsafe",
+      "start_commit": "602ef67def806c4eb7c764e5963160b89aca7605",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/iweinzierl/passsafe",
+        "project": "Passsafe",
+        "start_commit_order": 117,
+        "end_commit_order": 118,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:3b7222e9b466",
+      "project": "PhiCode Philib",
+      "start_commit": "a132ad528a176bc7ba6082999c270549e7956c23",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 748,
+        "end_commit_order": 749,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:76559b540d11",
+      "project": "PhiCode Philib",
+      "start_commit": "c74faab2b72f3d28e18672df1b245ca2d489a8d6",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 477,
+        "end_commit_order": 478,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:a28b73a42446",
+      "project": "PhiCode Philib",
+      "start_commit": "a0d5f9401296e5bf2fb379198657ddca232b5d4e",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 546,
+        "end_commit_order": 547,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:952c8f61e520",
+      "project": "PhiCode Philib",
+      "start_commit": "d09bfcd84388cfea46ae241b237d19478646650a",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 295,
+        "end_commit_order": 297,
+        "commit_count": 3,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:0af1a5112b8a",
+      "project": "PhiCode Philib",
+      "start_commit": "48174588095cafb110c2b34b116c4169e787e350",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 335,
+        "end_commit_order": 336,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:fa9d27c229dd",
+      "project": "PhiCode Philib",
+      "start_commit": "b20ef95301d47957129d4c2e21c91f67873799f1",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 204,
+        "end_commit_order": 206,
+        "commit_count": 3,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Pusher Java Client:99ea5be9418d",
+      "project": "Pusher Java Client",
+      "start_commit": "c59fe762d71c3228d17e3826ec8dcbf4a8f14a34",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/pusher/pusher-java-client",
+        "project": "Pusher Java Client",
+        "start_commit_order": 29,
+        "end_commit_order": 30,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Tap4j:7706f1f1c0df",
+      "project": "Tap4j",
+      "start_commit": "fb2451c64b4d78d1db062eac6695dab2fe1af2a2",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/tupilabs/tap4j",
+        "project": "Tap4j",
+        "start_commit_order": 85,
+        "end_commit_order": 86,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Whydah - UserAdminService:e376a0a66a32",
+      "project": "Whydah - UserAdminService",
+      "start_commit": "a1481805f02668626f33e588ed02a459c47c78f9",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/altran/Whydah-UserAdminService",
+        "project": "Whydah - UserAdminService",
+        "start_commit_order": 165,
+        "end_commit_order": 167,
+        "commit_count": 3,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Whydah - UserAdminService:ead0b7f23e07",
+      "project": "Whydah - UserAdminService",
+      "start_commit": "41e59cf559bcfa0292db1bc523f2ae6ff065390f",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/altran/Whydah-UserAdminService",
+        "project": "Whydah - UserAdminService",
+        "start_commit_order": 230,
+        "end_commit_order": 232,
+        "commit_count": 3,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Whydah - UserAdminService:499fef180771",
+      "project": "Whydah - UserAdminService",
+      "start_commit": "f7d28f896dbbb655aae5207dce720001a27f4360",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/altran/Whydah-UserAdminService",
+        "project": "Whydah - UserAdminService",
+        "start_commit_order": 233,
+        "end_commit_order": 234,
+        "commit_count": 2,
+        "all_maven": true,
+        "all_gradle": false,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    }
+  ]
+}

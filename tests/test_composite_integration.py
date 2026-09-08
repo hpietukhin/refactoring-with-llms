@@ -18,6 +18,7 @@ from repository.repo import Repo
 from smell.smell import Smell
 from testing.surefire import TestCounts, TestRunSummary
 from workflows.composite.graph import build_graph
+from workflows.composite.nodes.refactor import refactor_task_for_smell
 
 
 EXPECTED_NODES = (
@@ -33,6 +34,34 @@ EXPECTED_NODES = (
     "java_tests",
     "replan_after_action",
 )
+
+
+def test_refactor_task_contains_all_smell_context() -> None:
+    smell = Smell.at(
+        "Class Data Should Be Private",
+        "src/Main.java",
+        12,
+        end_line=15,
+        severity="HIGH",
+        detected_by="ORGANIC",
+        commit_hash="abc123",
+    )
+
+    task = refactor_task_for_smell(smell)
+
+    assert "type=Class Data Should Be Private" in task
+    assert "severity=HIGH" in task
+    assert "file_path=src/Main.java" in task
+    assert "location_uri=src/Main.java" in task
+    assert "start_line=12" in task
+    assert "end_line=15" in task
+    assert "start_character=0" in task
+    assert "end_character=0" in task
+    assert "detected_by=ORGANIC" in task
+    assert "commit_hash=abc123" in task
+    assert "target_symbol=" not in task
+    assert "candidate field:" not in task
+
 
 JAVA_SOURCE = """\
 package org.tap4j.model;
@@ -50,7 +79,7 @@ public class TapElement {
 def _tap4j_case() -> CaseRecord:
     cases = Dataset().load_cases()
     for case in cases:
-        if case.case_id == "range:Tap4j:ca64460a664c":
+        if case.case_id == "Tap4j:4413ab35b400":
             return case
     pytest.fail("Tap4j case missing from dataset/manifest.jsonl")
 
@@ -164,7 +193,7 @@ def test_composite_workflow_all_nodes_on_manifest_case(
     )
     monkeypatch.setattr("detection.organic.OrganicDetector.detect", fake_detect)
     monkeypatch.setattr(
-        "planning.planner.MavenRunner.inspect",
+        "planning.planner.GradleRunner.inspect",
         fake_ast_inspect,
     )
     def fake_ck_metrics(repo: object, **kwargs: object) -> object:

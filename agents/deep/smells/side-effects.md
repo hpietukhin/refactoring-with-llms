@@ -1,0 +1,153 @@
+---
+slug: 'side-effects'
+meta:
+  last_update_date: 2022-04-19
+  title: 'Side Effects'
+  description: 'setGold(amount) sounds simple enough. Except it also triggers a dancing animation and resets the payday timer. Methods that do more than their name promises hide behavior callers never asked for and debuggers never suspect.'
+  known_as:
+    - Impure Functions
+categories:
+  expanse: 'Within'
+  obstruction:
+    - Functional Abusers
+  occurrence:
+    - Responsibility
+  tags:
+    - ---
+  smell_hierarchies:
+    - Code Smell
+relations:
+  related_smells:
+    - name: Mutable Data
+      slug: mutable-data
+      type:
+        - caused
+    - name: Dubious Abstraction
+      slug: dubious-abstraction
+      type:
+        - causes
+    - name: Binary Operator in Name
+      slug: binary-operator-in-name
+      type:
+        - antagonistic
+    - name: Flag Arguments
+      slug: flag-argument
+      type:
+        - antagonistic
+problems:
+  general:
+    - ---
+  violation:
+    principles:
+      - Single Responsibility
+    patterns:
+      - ---
+refactors:
+  - Extract Method
+  - Extract Field
+history:
+  - author: 'Marcel Jerzyk'
+    type: 'origin'
+    named_as:
+      - Side Effects
+      - Impure Functions
+    regarded_as:
+      - Code Smell
+    source:
+      year: 2023
+      authors:
+        - Marcel Jerzyk
+      name: 'Code Smells: A Comprehensive Online Catalog and Taxonomy'
+      type: 'paper'
+      href:
+        direct_url: 'https://doi.org/10.1007/978-3-031-25695-0_24'
+---
+
+## Side Effects
+
+The first or second most essential functional programming principle (interchangeably, depending on how big we want to set the statement's tone) is that there be no side effects. Object-Oriented programming can apply this rule, too, with great benefits.
+
+In a perfect scenario, when looking at a higher abstraction set of method calls, even an inexperienced bystander could tell what is happening more or less. The [code example](#example) appears to receive a player object identified by _Marcel Jerzyk_, sets its gold to zero, and manageable health status. That is great because one can make reasonable assumptions about the code... unless one cannot due to the side effects, which make these methods impure. By taking a closer look at the `setGold(amount)` method, it turns out that, for some reason, this method triggers a dancing animation and resets the payday timer... of course, if one did not lose his trust yet, that the method names are representative of what they do.
+
+The method and function names should tell what they do and do only what is anticipated to maximize code comprehension. I want to note that developers should fix this by removing the side effects to separate methods and triggering them individually, not violating the Single Responsibility Principle. Changing the name to `setGoldAndResetPayday(amount)` would create [Binary Operator In Name](./binary-operator-in-name.md) Code Smell. Another possible bad solution, `setGold(int amount, boolean payday)`, would cause [Flag Arguments](./flag-argument.md) Code Smell.
+
+### Causation
+
+Developers added additional actions to existing functionalities, which usually took place in the context during typical use and are not explicitly related to the function itself.
+
+### Problems
+
+#### **Single Responsibility Principle Violation**
+
+The method is doing more than one thing.
+
+### Example
+
+<div class="example-block">
+
+#### Smelly
+
+```java
+final class Player {
+    private int gold;
+    private Health health;
+    private Job job;
+    private AnimationController animations;
+
+    void setGold(int amount) {
+        gold = amount;
+        animations.play(Animation.DANCING);
+        job.resetPaydayTimer();
+    }
+
+    void setHealth(Health health) {
+        this.health = health;
+    }
+}
+
+Player marcel = findPlayerByName("Marcel", "Jerzyk");
+marcel.setGold(0);
+marcel.setHealth(Health.DECENT);
+```
+
+#### Solution
+
+```java
+final class Player {
+    private int gold;
+    private Health health;
+    private Job job;
+    private AnimationController animations;
+
+    void runPayoutRoutine() {
+        animations.play(Animation.DANCING);
+        job.resetPaydayTimer();
+    }
+
+    void setGold(int amount) {
+        gold = amount;
+    }
+
+    void setHealth(Health health) {
+        this.health = health;
+    }
+}
+
+Player marcel = findPlayerByName("Marcel", "Jerzyk");
+marcel.setGold(0);
+marcel.runPayoutRoutine();
+marcel.setHealth(Health.DECENT);
+```
+
+</div>
+
+### Refactoring:
+
+- Extract Method
+- Extract Field
+
+---
+
+##### Sources
+
+- [Origin] - Marcel Jerzyk, _"Code Smells: A Comprehensive Online Catalog and Taxonomy"_ (2022)

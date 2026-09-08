@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Final
+from typing import Final, Literal, assert_never
 
 from planning.rules import (
     BRAIN_CLASS,
@@ -22,10 +22,17 @@ from planning.rules import (
     SHOTGUN_SURGERY,
     SPECULATIVE_GENERALITY,
     SPAGHETTI_CODE,
-    SmellType,
 )
 
-ORGANIC_RULE_MAP: Final[dict[str, SmellType]] = {
+type OrganicSmellType = Literal[
+    "Class Data Should Be Private", "Complex Class", "Feature Envy", "God Class",
+    "Lazy Class", "Long Method", "Long Parameter List", "Message Chains",
+    "Refused Bequest", "Speculative Generality", "Spaghetti Code",
+    "Dispersed Coupling", "Intensive Coupling", "Brain Class", "Shotgun Surgery",
+    "Brain Method", "Data Class",
+]
+
+ORGANIC_RULE_MAP: Final[dict[str, OrganicSmellType]] = {
     "ClassDataShouldBePrivate": CLASS_DATA_SHOULD_BE_PRIVATE,
     "ComplexClass": COMPLEX_CLASS,
     "FeatureEnvy": FEATURE_ENVY,
@@ -45,6 +52,28 @@ ORGANIC_RULE_MAP: Final[dict[str, SmellType]] = {
     "DataClass": DATA_CLASS,
 }
 
-ORGANIC_SMELL_TYPES: Final[frozenset[SmellType]] = frozenset(ORGANIC_RULE_MAP.values())
+ORGANIC_SMELL_TYPES: Final[frozenset[OrganicSmellType]] = frozenset(
+    ORGANIC_RULE_MAP.values()
+)
 
-__all__ = ["ORGANIC_RULE_MAP", "ORGANIC_SMELL_TYPES"]
+
+def assert_organic_smell_type(smell_type: OrganicSmellType) -> None:
+    """Assert that an ORGANIC mapping has an explicitly handled type."""
+    match smell_type:
+        case (
+            "Class Data Should Be Private" | "Complex Class" | "Feature Envy"
+            | "God Class" | "Lazy Class" | "Long Method" | "Long Parameter List"
+            | "Message Chains" | "Refused Bequest" | "Speculative Generality"
+            | "Spaghetti Code" | "Dispersed Coupling" | "Intensive Coupling"
+            | "Brain Class" | "Shotgun Surgery" | "Brain Method" | "Data Class"
+        ):
+            return
+        case unreachable:
+            assert_never(unreachable)
+
+__all__ = [
+    "OrganicSmellType",
+    "ORGANIC_RULE_MAP",
+    "ORGANIC_SMELL_TYPES",
+    "assert_organic_smell_type",
+]

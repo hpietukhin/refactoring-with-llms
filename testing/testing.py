@@ -30,30 +30,30 @@ def run_tests(
     clean: bool = False,
     test_args: tuple[str, ...] = (),
 ):
-    """Run Maven tests for a repository object or checkout path."""
-    from java.maven import MavenRunner
+    """Run Gradle tests for a repository object or checkout path."""
+    from java.gradle import GradleRunner
 
-    return MavenRunner(project).test(clean=clean, jacoco=False, test_args=test_args)
+    return GradleRunner(project).test(clean=clean, jacoco=False, test_args=test_args)
 
 
 def run_jacoco(project: Repo):
     """Generate JaCoCo's report from the latest test results."""
-    from java.maven import MavenRunner
+    from java.gradle import GradleRunner
 
-    return MavenRunner(project).jacoco_report()
+    return GradleRunner(project).jacoco_report()
 
 
 def run_tests_with_report(
     project: Repo,
     *,
     clean: bool = False,
-    report: str | Path = "target/site/jacoco/jacoco.xml",
+    report: str | Path = "build/reports/jacoco/test/jacocoTestReport.xml",
     test_args: tuple[str, ...] = (),
 ):
-    """Run Maven tests and return the command result and report path."""
-    from java.maven import MavenRunner
+    """Run Gradle tests and return the command result and report path."""
+    from java.gradle import GradleRunner
 
-    return MavenRunner(project).run_tests_with_report(
+    return GradleRunner(project).run_tests_with_report(
         clean=clean,
         report=report,
         test_args=test_args,

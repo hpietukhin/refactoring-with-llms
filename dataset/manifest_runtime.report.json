@@ -1,0 +1,680 @@
+{
+  "generated_at": "2026-08-09T19:30:23.984260Z",
+  "filters": {
+    "requested_projects": [
+      "JUnit4",
+      "Lyra",
+      "PhiCode Philib",
+      "Tap4j"
+    ],
+    "projects": [
+      "JUnit4",
+      "Lyra",
+      "PhiCode Philib",
+      "Tap4j"
+    ],
+    "blocked_projects": {},
+    "limit_per_project": 5,
+    "max_elements_per_case": null,
+    "max_smells_per_case": null,
+    "elements_count": null,
+    "runtime_min_smells": 15,
+    "runtime_max_smells": 20,
+    "runtime_type_quotas": {
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2
+    },
+    "max_runtime_classes": 10,
+    "requires_baseline_verification": true
+  },
+  "summary": {
+    "draft_cases": 34,
+    "accepted": 2,
+    "rejected": 32,
+    "accepted_by_runtime_type_count": {
+      "6": 2
+    },
+    "quotas_filled": false
+  },
+  "accepted_cases": [
+    {
+      "case_id": "Tap4j:f6ce96fb3213",
+      "project": "Tap4j",
+      "start_commit": "fb2451c64b4d78d1db062eac6695dab2fe1af2a2",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 15,
+        "smell_types": [
+          "Brain Method",
+          "Feature Envy",
+          "Intensive Coupling",
+          "Long Method",
+          "Long Parameter List",
+          "Message Chains"
+        ],
+        "smell_type_count": 6,
+        "class_count": 2,
+        "classes": [
+          "org.tap4j.parser.Tap13Parser",
+          "org.tap4j.parser.TestTap13Parser"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.tap4j.parser.Tap13Parser",
+          "org.tap4j.parser.TestTap13Parser"
+        ]
+      }
+    },
+    {
+      "case_id": "Tap4j:59a49ba1feef",
+      "project": "Tap4j",
+      "start_commit": "fb2451c64b4d78d1db062eac6695dab2fe1af2a2",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 19,
+        "smell_types": [
+          "Brain Method",
+          "Feature Envy",
+          "Intensive Coupling",
+          "Long Method",
+          "Long Parameter List",
+          "Message Chains"
+        ],
+        "smell_type_count": 6,
+        "class_count": 3,
+        "classes": [
+          "org.tap4j.consumer.TestTap13Consumer",
+          "org.tap4j.model.BailOut",
+          "org.tap4j.parser.Tap13Parser"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "org.tap4j.consumer.TestTap13Consumer",
+          "org.tap4j.model.BailOut",
+          "org.tap4j.parser.Tap13Parser"
+        ]
+      }
+    }
+  ],
+  "rejected_cases": [
+    {
+      "case_id": "JUnit4:1875bdf74403",
+      "project": "JUnit4",
+      "start_commit": "d3b3a19c78435ef6b0d1c8832bcdb1a8d5ed6a4e",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 108 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 108,
+        "end_commit_order": 109,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 108,
+        "first_non_maven_hash": "d3b3a19c78435ef6b0d1c8832bcdb1a8d5ed6a4e",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:5def21bbf48a",
+      "project": "JUnit4",
+      "start_commit": "48af7e797dbefa1fc47e80394c7f74ef87c3c7ab",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 1627,
+        "end_commit_order": 1628,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:908106b16e81",
+      "project": "JUnit4",
+      "start_commit": "52e93b4fe3c4133118f33635ea8517a13ff05321",
+      "reason": "test_fail",
+      "details": "tests failed: failed=0 errors=1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 1718,
+        "end_commit_order": 1736,
+        "commit_count": 19,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:ad074b54ff0a",
+      "project": "JUnit4",
+      "start_commit": "1768d08d029dc3bf1ab88e26df0a9b40ae61227f",
+      "reason": "test_fail",
+      "details": "tests failed: failed=0 errors=1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 1620,
+        "end_commit_order": 1624,
+        "commit_count": 5,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:074f8ce352a0",
+      "project": "JUnit4",
+      "start_commit": "870289f3272917f312de6902b8b6bdc43552d4b7",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 751 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 751,
+        "end_commit_order": 753,
+        "commit_count": 3,
+        "all_maven": false,
+        "first_non_maven_order": 751,
+        "first_non_maven_hash": "870289f3272917f312de6902b8b6bdc43552d4b7",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:8b85b29cfa7d",
+      "project": "JUnit4",
+      "start_commit": "752727de89a6bab731f49597c7ec3858ebb3e0a3",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 375 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 375,
+        "end_commit_order": 376,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 375,
+        "first_non_maven_hash": "752727de89a6bab731f49597c7ec3858ebb3e0a3",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:831a877fedea",
+      "project": "JUnit4",
+      "start_commit": "308768863b78f3a6345e25d7f9d35892c2de5a01",
+      "reason": "test_fail",
+      "details": "tests failed: failed=4 errors=3",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 818,
+        "end_commit_order": 820,
+        "commit_count": 3,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:c43250d092d7",
+      "project": "JUnit4",
+      "start_commit": "96af9a2a520a40404971968ee14a183d0aed1c4b",
+      "reason": "test_fail",
+      "details": "tests failed: failed=0 errors=1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 1548,
+        "end_commit_order": 1552,
+        "commit_count": 5,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:cee652cd8ed0",
+      "project": "JUnit4",
+      "start_commit": "f268f458843fc84e83c244a5c271cc71386eb1cf",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 6 uses unknown",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 6,
+        "end_commit_order": 7,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 6,
+        "first_non_maven_hash": "f268f458843fc84e83c244a5c271cc71386eb1cf",
+        "first_non_maven_primary": "unknown"
+      }
+    },
+    {
+      "case_id": "JUnit4:d5821d01e761",
+      "project": "JUnit4",
+      "start_commit": "039f6e8164fbe51fbbbf4b75ae025850c8cc158f",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 97 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 97,
+        "end_commit_order": 98,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 97,
+        "first_non_maven_hash": "039f6e8164fbe51fbbbf4b75ae025850c8cc158f",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:72e3758b6474",
+      "project": "JUnit4",
+      "start_commit": "d2dce1b179fc6481e4ee4534738924fa59088c13",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 124 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 124,
+        "end_commit_order": 125,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 124,
+        "first_non_maven_hash": "d2dce1b179fc6481e4ee4534738924fa59088c13",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:61a5c0d3399b",
+      "project": "JUnit4",
+      "start_commit": "0d6cd750d53486f01f12ddfee8657d94b5940574",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 331 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 331,
+        "end_commit_order": 332,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 331,
+        "first_non_maven_hash": "0d6cd750d53486f01f12ddfee8657d94b5940574",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:c7e9827e78a6",
+      "project": "JUnit4",
+      "start_commit": "2a6d6365c593149da094d7512028a2d008ea6cff",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 336 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 336,
+        "end_commit_order": 337,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 336,
+        "first_non_maven_hash": "2a6d6365c593149da094d7512028a2d008ea6cff",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:6172c4d6738d",
+      "project": "JUnit4",
+      "start_commit": "8088946a72634d8d6f91db157f4cbe9a2931d4ea",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 662 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 662,
+        "end_commit_order": 663,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 662,
+        "first_non_maven_hash": "8088946a72634d8d6f91db157f4cbe9a2931d4ea",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:29468a0ed8a0",
+      "project": "JUnit4",
+      "start_commit": "d3e86b059db787af5c0d58ddf3f69af5b42865b8",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 746 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 746,
+        "end_commit_order": 747,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 746,
+        "first_non_maven_hash": "d3e86b059db787af5c0d58ddf3f69af5b42865b8",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:72ca58a616c2",
+      "project": "JUnit4",
+      "start_commit": "4041354a3a7629b74970e0624b7564736c20e1e3",
+      "reason": "test_fail",
+      "details": "tests failed: failed=4 errors=3",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 816,
+        "end_commit_order": 817,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:21ca2f2717b3",
+      "project": "JUnit4",
+      "start_commit": "8ff0b44e3fb0c1c56a1dc6290c3b6828a5a8f9bf",
+      "reason": "test_fail",
+      "details": "tests failed: failed=4 errors=3",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 830,
+        "end_commit_order": 831,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:dda29259710f",
+      "project": "JUnit4",
+      "start_commit": "8672a83f51b183c756649a423b908271c894b8df",
+      "reason": "toolchain_fail",
+      "details": "No Java build system detected in /Users/havriil.pietukhin/uni/masterThesis/revamp/temp/eval_repos/runtime-organic/junit-team_junit4",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 1207,
+        "end_commit_order": 1208,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "JUnit4:1fa671790187",
+      "project": "JUnit4",
+      "start_commit": "979e8abbe974e8847668f5887403da78a6165ebc",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 423 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 423,
+        "end_commit_order": 424,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 423,
+        "first_non_maven_hash": "979e8abbe974e8847668f5887403da78a6165ebc",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:c5ddeef60b00",
+      "project": "JUnit4",
+      "start_commit": "c5ece65fe537092b9552f0efcca8a1e144ca4182",
+      "reason": "unsupported_commit_build_system_window",
+      "details": "commit window is not fully maven; first non-maven commit at order 438 uses ant",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 438,
+        "end_commit_order": 439,
+        "commit_count": 2,
+        "all_maven": false,
+        "first_non_maven_order": 438,
+        "first_non_maven_hash": "c5ece65fe537092b9552f0efcca8a1e144ca4182",
+        "first_non_maven_primary": "ant"
+      }
+    },
+    {
+      "case_id": "JUnit4:06c39c5376c0",
+      "project": "JUnit4",
+      "start_commit": "dfaf332b4df0d98293ac135e5abf9de6a2623b14",
+      "reason": "toolchain_fail",
+      "details": "No Java build system detected in /Users/havriil.pietukhin/uni/masterThesis/revamp/temp/eval_repos/runtime-organic/junit-team_junit4",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/junit-team/junit4",
+        "project": "JUnit4",
+        "start_commit_order": 1314,
+        "end_commit_order": 1329,
+        "commit_count": 16,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Lyra:9368bf738706",
+      "project": "Lyra",
+      "start_commit": "3f49cbffff020134239962f1001b168c43c58acb",
+      "reason": "test_fail",
+      "details": "tests failed: failed=4 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/jhalterman/lyra",
+        "project": "Lyra",
+        "start_commit_order": 20,
+        "end_commit_order": 21,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Lyra:cf812fbdc152",
+      "project": "Lyra",
+      "start_commit": "3f49cbffff020134239962f1001b168c43c58acb",
+      "reason": "test_fail",
+      "details": "tests failed: failed=4 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/jhalterman/lyra",
+        "project": "Lyra",
+        "start_commit_order": 20,
+        "end_commit_order": 21,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Lyra:83defdb92419",
+      "project": "Lyra",
+      "start_commit": "6ef3a5cd54cfacf43038706d15e37acd14e741c3",
+      "reason": "test_fail",
+      "details": "tests failed: failed=5 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/jhalterman/lyra",
+        "project": "Lyra",
+        "start_commit_order": 48,
+        "end_commit_order": 54,
+        "commit_count": 7,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Lyra:aba8438ca93d",
+      "project": "Lyra",
+      "start_commit": "3f49cbffff020134239962f1001b168c43c58acb",
+      "reason": "test_fail",
+      "details": "tests failed: failed=4 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/jhalterman/lyra",
+        "project": "Lyra",
+        "start_commit_order": 20,
+        "end_commit_order": 21,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:f83784bb7e5c",
+      "project": "PhiCode Philib",
+      "start_commit": "03f07951ac1fbdcc1ecc2c3921e04b6dac445acf",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 365,
+        "end_commit_order": 366,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:3b7222e9b466",
+      "project": "PhiCode Philib",
+      "start_commit": "a132ad528a176bc7ba6082999c270549e7956c23",
+      "reason": "test_fail",
+      "details": "tests failed: failed=1 errors=0",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 748,
+        "end_commit_order": 749,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:76559b540d11",
+      "project": "PhiCode Philib",
+      "start_commit": "c74faab2b72f3d28e18672df1b245ca2d489a8d6",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 477,
+        "end_commit_order": 478,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:a28b73a42446",
+      "project": "PhiCode Philib",
+      "start_commit": "a0d5f9401296e5bf2fb379198657ddca232b5d4e",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 546,
+        "end_commit_order": 547,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:952c8f61e520",
+      "project": "PhiCode Philib",
+      "start_commit": "d09bfcd84388cfea46ae241b237d19478646650a",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 295,
+        "end_commit_order": 297,
+        "commit_count": 3,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:0af1a5112b8a",
+      "project": "PhiCode Philib",
+      "start_commit": "48174588095cafb110c2b34b116c4169e787e350",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 335,
+        "end_commit_order": 336,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "PhiCode Philib:fa9d27c229dd",
+      "project": "PhiCode Philib",
+      "start_commit": "b20ef95301d47957129d4c2e21c91f67873799f1",
+      "reason": "build_fail",
+      "details": "command exited with code 1",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/PhiCode/philib",
+        "project": "PhiCode Philib",
+        "start_commit_order": 204,
+        "end_commit_order": 206,
+        "commit_count": 3,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    }
+  ]
+}

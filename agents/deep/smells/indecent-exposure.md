@@ -1,0 +1,148 @@
+---
+slug: 'indecent-exposure'
+meta:
+  last_update_date: 2022-04-19
+  title: 'Indecent Exposure'
+  description: "Everything's public. Nothing's hidden. Other modules couple to implementation details they were never meant to see, and now you can't change a private algorithm without breaking six callers who shouldn't have known it existed."
+  known_as:
+    - Excessive Exposure
+categories:
+  expanse: 'Within'
+  obstruction:
+    - Couplers
+  occurrence:
+    - Data
+  tags:
+    - ---
+  smell_hierarchies:
+    - Code Smell
+relations:
+  related_smells:
+    - name: Insider Trading
+      slug: insider-trading
+      type:
+        - causes
+    - name: Feature Envy
+      slug: feature-envy
+      type:
+        - causes
+    - name: Message Chain
+      slug: message-chain
+      type:
+        - causes
+    - name: Mutable Data
+      slug: mutable-data
+      type:
+        - co-exist
+problems:
+  general:
+    - Error Prone
+    - Information Overload
+  violation:
+    principles:
+      - ---
+    patterns:
+      - ---
+refactors:
+  - Choose Proper Access Control
+  - Encapsulate Field
+  - Encapsulate Collection
+  - Hide Behind Method
+  - Hide Behind Abstract Class
+  - Hide Behind Interface
+history:
+  - author: 'Joshua Kerievsky'
+    type: 'origin'
+    named_as:
+      - Indecent Exposure
+    regarded_as:
+      - Code Smell
+    source:
+      year: 2005
+      authors:
+        - Joshua Kerievsky
+      name: 'Smells to Refactorings Cheatsheet'
+      type: 'cheatsheet'
+      href:
+        direct_url: 'https://www.industriallogic.com/img/blog/2005/09/smellstorefactorings.pdf'
+---
+
+## Indecent Exposure
+
+Unnecessarily exposing internal details is an _Indecent Exposure_ code smell. The methods and variables of a class that works only with other same class methods should be kept private.
+
+Otherwise, it might lead to [Insider Trading](./insider-trading.md) or [Feature Envy](./feature-envy.md) code smells. One should always strive to hide as many variables and methods from other classes as possible. Exposing irrelevant code contributes to the complexity of a design.
+
+### Causation
+
+The developer could have a habit of creating all the methods public at first but then forgets to change the access levels to appropriate ones.
+
+### Problems
+
+#### **Error-Prone**
+
+Fields accessible from outside the class baits for unnecessary coupling issues.
+
+#### **Information Overload**
+
+There is no need to expose all information to everyone.
+
+### Example
+
+<div class="example-block">
+
+#### Smelly
+
+Variable `count` is accessible by its name and can be freely changed.
+
+```java
+final class Counter {
+    public int count;
+
+    public void bump() {
+        count++;
+    }
+}
+
+Counter counter = new Counter();
+counter.bump();
+System.out.println("Count: " + counter.count);
+```
+
+#### Solution
+
+Variable `count` is accessible only through public methods and cannot be changed directly from outside the class.
+
+```java
+final class Counter {
+    private int count;
+
+    public int count() {
+        return count;
+    }
+
+    public void bump() {
+        count++;
+    }
+}
+
+Counter counter = new Counter();
+counter.bump();
+System.out.println("Count: " + counter.count());
+```
+
+</div>
+
+### Refactoring
+
+- Choose Proper Access Control
+- Encapsulate Field
+- Encapsulate Collection
+- Hide Behind Method
+- Hide Behind Abstract Class or Interface
+
+---
+
+##### Sources
+
+- [Origin] - Joshua Kerievsky, _"Refactoring to Patterns"_ (2005)

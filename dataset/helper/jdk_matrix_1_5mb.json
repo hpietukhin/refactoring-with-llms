@@ -1,0 +1,63 @@
+{
+  "tested_at": "2026-08-10",
+  "jdk_manager": "sdkman",
+  "requested_jdks": [6, 8, 12],
+  "notes": {
+    "java_6": "Not available in SDKMAN on macOS ARM64",
+    "java_12": "Not available in SDKMAN; closest tested is 11.0.32-tem",
+    "mise_java": "Removed from mise.toml (was temurin-17)"
+  },
+  "installed_jdks": ["8.0.472-amzn", "11.0.32-tem"],
+  "projects": [
+    {
+      "project": "Whydah - UserAdminService",
+      "slug": "altran_Whydah-UserAdminService",
+      "build": "maven",
+      "jdk_8": "pass",
+      "jdk_11": "pass",
+      "root_cause_if_fail": null
+    },
+    {
+      "project": "Dagger",
+      "slug": "square_dagger",
+      "build": "maven",
+      "jdk_8": "partial",
+      "jdk_11": "partial",
+      "details": "Core modules: 186 tests pass on JDK 8. Full reactor fails on example/android-simple (ANDROID_HOME missing).",
+      "root_cause_if_fail": "Android submodule + legacy Java 1.6; not a missing JDK for core jar tests"
+    },
+    {
+      "project": "Tap4j",
+      "slug": "tupilabs_tap4j",
+      "build": "maven",
+      "jdk_8": "fail",
+      "jdk_11": "fail",
+      "root_cause_if_fail": "HEAD pom targets java.version=25 (JDK 11: release 25 not supported). JDK 8: compilation errors on modernized HEAD sources."
+    },
+    {
+      "project": "Passsafe",
+      "slug": "iweinzierl_passsafe",
+      "build": "maven",
+      "jdk_8": "fail",
+      "jdk_11": "fail",
+      "root_cause_if_fail": "Broken pom: module java-gui missing (directory is swing-gui). JDK change does not help."
+    },
+    {
+      "project": "Alfred MPI",
+      "slug": "furio_alfred-mpi",
+      "build": "maven",
+      "jdk_8": "fail",
+      "jdk_11": "fail",
+      "root_cause_if_fail": "alf-core:0.0.6-SNAPSHOT unavailable from dead maven.java.net repo. JDK change does not help."
+    },
+    {
+      "project": "Pusher Java Client",
+      "slug": "pusher_pusher-java-client",
+      "build": "gradle",
+      "jdk_8": "pass",
+      "jdk_11": "untested_after_fix",
+      "details": "Removed org.ajoberstar.github-pages plugin (pulled missing grgit:1.9.3). gradle test -x signMavenJavaPublication passes on JDK 8.",
+      "root_cause_if_fail": "Legacy github-pages Gradle plugin dependency, not JDK"
+    }
+  ]
+}

@@ -11,6 +11,7 @@ from planning.planner import (
     NoPriorityPlanner,
     PriorityPlanner,
     best_first_smell_plan,
+    planner_from_config,
     smell_burden,
     state_from_smells,
 )
@@ -186,6 +187,23 @@ def test_no_priority_planner_preserves_detector_order() -> None:
         )
         == long_method
     )
+
+
+def test_planner_from_config_defaults_to_greedy() -> None:
+    from config import load_settings
+    from planning.greedy import GreedyPlanner
+
+    load_settings.cache_clear()
+    planner = planner_from_config()
+    assert isinstance(planner, GreedyPlanner)
+
+
+def test_planner_from_config_topo_env(monkeypatch) -> None:
+    from planning.topo import TopoPlanner
+
+    monkeypatch.setenv("PLANNING_PLANNER", "topo")
+    planner = planner_from_config()
+    assert isinstance(planner, TopoPlanner)
 
 
 def test_transitions_keep_distinct_actions_with_same_successor() -> None:

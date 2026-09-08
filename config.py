@@ -2,18 +2,29 @@
 
 from __future__ import annotations
 
+import json
+import os
+import sys
 import tomllib
 from functools import lru_cache, partial
 from pathlib import Path
 from typing import Any, BinaryIO, TextIO
 
-from eliot import to_file
+from eliot import add_destinations, to_file
 
 ROOT = Path(__file__).resolve().parent
 DEFAULT_CONFIG_PATH = ROOT / "config.toml"
 
 type Settings = dict[str, Any]
 type LogFile = BinaryIO | TextIO
+
+_stderr_destination_attached = False
+
+
+def _write_eliot_to_stderr(message: dict[str, object]) -> None:
+    """Mirror one Eliot message to stderr as a JSON line."""
+    sys.stderr.write(json.dumps(message, default=str, ensure_ascii=False) + "\n")
+    sys.stderr.flush()
 
 
 @lru_cache
@@ -35,8 +46,19 @@ dataset_config = partial(section, "dataset")
 neo4j_config = partial(section, "neo4j")
 experiments_config = partial(section, "experiments")
 langgraph_config = partial(section, "langgraph")
-openrouter_config = partial(section, "openrouter")
 planning_config = partial(section, "planning")
+
+
+def neo4j_password(cfg: Settings | None = None) -> str:
+    """Return the Neo4j password from the environment."""
+    del cfg
+    password = os.environ.get("NEO4J_PASSWORD")
+    if password:
+        return password
+    raise RuntimeError(
+        "Neo4j password is required; set NEO4J_PASSWORD in the environment "
+        "(e.g. in mise.toml [env])"
+    )
 
 
 def langgraph_model(cfg: Settings | None = None) -> str:
@@ -86,8 +108,21 @@ def logging_file_path(cfg: Settings | None = None) -> Path | None:
 
 
 def configure_eliot(cfg: Settings) -> Path:
-    """Send Eliot JSON logs to the file from ``[logging]`` in ``config.toml``."""
+    """Send Eliot JSON logs to the ``[logging]`` file and also to stderr."""
     path = logging_file_path(cfg)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    to_file(open(path, "ab"))
-    return path
+    if path is None:
+        raise RuntimeError("logging.file is required to configure Eliot")
+    return configure_eliot_for_path(path)
+
+
+def configure_eliot_for_path(log_path: Path) -> Path:
+    """Send Eliot JSON logs to ``log_path`` and also to stderr."""
+    global _stderr_destination_attached
+    if not log_path.is_absolute():
+        log_path = ROOT / log_path
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    to_file(open(log_path, "ab"))
+    if not _stderr_destination_attached:
+        add_destinations(_write_eliot_to_stderr)
+        _stderr_destination_attached = True
+    return log_path
