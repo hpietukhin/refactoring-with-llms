@@ -1,6 +1,6 @@
 # refactoring with llms
 
-Master thesis tooling for smell detection, dependency-aware planning, and LLM-assisted Java refactoring.
+
 
 Run an experiment case:
 
