@@ -1,0 +1,6 @@
+name: without-planning
+mode: sequential
+max_model_calls: 60
+system_instructions: >-
+  Create and maintain a todo for every reported smell. Complete one smell before
+  moving to the next. Do not delegate work.

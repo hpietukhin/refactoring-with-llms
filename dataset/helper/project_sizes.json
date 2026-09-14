@@ -1,0 +1,461 @@
+{
+  "generated_at": "2026-08-09T20:59:46.231210+00:00",
+  "projects_root": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects",
+  "summary": {
+    "total": 50,
+    "cloned": 45,
+    "failed_or_missing": 5
+  },
+  "by_size": [
+    {
+      "project": "ArgoUML",
+      "repo_url": "",
+      "clone_path": "",
+      "size_kib": 0,
+      "size_mib": 0.0,
+      "clone_status": "skip_no_url",
+      "clone_details": "Neo4j project has no repository URL"
+    },
+    {
+      "project": "Dynamic Collections",
+      "repo_url": "https://github.com/jnape/Dynamic-Collections",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/jnape_Dynamic-Collections",
+      "size_kib": 0,
+      "size_mib": 0.0,
+      "clone_status": "clone_fail",
+      "clone_details": "Cmd('git') failed due to: exit code(128)\n  cmdline: git clone -v --depth=1 -- https://github.com/jnape/Dynamic-Collections /Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/jnape_Dynamic-Collections\n  stderr: 'Cloning into '/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/jnape_Dynamic-Collections'...\nremote: Repository not found.\nfatal: repository 'https://github.com/jnape/Dynamic-Collections/' not found\n'"
+    },
+    {
+      "project": "JBoss Xerces",
+      "repo_url": "",
+      "clone_path": "",
+      "size_kib": 0,
+      "size_mib": 0.0,
+      "clone_status": "skip_no_url",
+      "clone_details": "Neo4j project has no repository URL"
+    },
+    {
+      "project": "Market-monitor",
+      "repo_url": "https://github.com/localstorm/market-monitor",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/localstorm_market-monitor",
+      "size_kib": 0,
+      "size_mib": 0.0,
+      "clone_status": "clone_fail",
+      "clone_details": "Cmd('git') failed due to: exit code(128)\n  cmdline: git clone -v --depth=1 -- https://github.com/localstorm/market-monitor /Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/localstorm_market-monitor\n  stderr: 'Cloning into '/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/localstorm_market-monitor'...\nremote: Repository not found.\nfatal: repository 'https://github.com/localstorm/market-monitor/' not found\n'"
+    },
+    {
+      "project": "Media Magpie",
+      "repo_url": "https://github.com/rwe17/MediaMagpie",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/rwe17_MediaMagpie",
+      "size_kib": 0,
+      "size_mib": 0.0,
+      "clone_status": "clone_fail",
+      "clone_details": "Cmd('git') failed due to: exit code(128)\n  cmdline: git clone -v --depth=1 -- https://github.com/rwe17/MediaMagpie /Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/rwe17_MediaMagpie\n  stderr: 'Cloning into '/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/rwe17_MediaMagpie'...\nremote: Repository not found.\nfatal: repository 'https://github.com/rwe17/MediaMagpie/' not found\n'"
+    },
+    {
+      "project": "JARA",
+      "repo_url": "https://github.com/moobid/JARA",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/moobid_JARA",
+      "size_kib": 80,
+      "size_mib": 0.1,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Android Bootstrap",
+      "repo_url": "https://github.com/AndroidBootstrap/android-bootstrap",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/AndroidBootstrap_android-bootstrap",
+      "size_kib": 128,
+      "size_mib": 0.1,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Elasticsearch Transport Thrift",
+      "repo_url": "https://github.com/elasticsearch/elasticsearch-transport-thrift",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/elasticsearch_elasticsearch-transport-thrift",
+      "size_kib": 364,
+      "size_mib": 0.4,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "OpenConext-crunche",
+      "repo_url": "https://github.com/OpenConext/OpenConext-cruncher",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/OpenConext_OpenConext-cruncher",
+      "size_kib": 496,
+      "size_mib": 0.5,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Lyra",
+      "repo_url": "https://github.com/jhalterman/lyra",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/jhalterman_lyra",
+      "size_kib": 560,
+      "size_mib": 0.5,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "GitHub Pull Request Builder",
+      "repo_url": "https://github.com/mdelapenya/ghprb-plugin",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/mdelapenya_ghprb-plugin",
+      "size_kib": 892,
+      "size_mib": 0.9,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Orhanobut Logger",
+      "repo_url": "https://github.com/orhanobut/logger",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/orhanobut_logger",
+      "size_kib": 972,
+      "size_mib": 0.9,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Pusher Java Client",
+      "repo_url": "https://github.com/pusher/pusher-java-client",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/pusher_pusher-java-client",
+      "size_kib": 1028,
+      "size_mib": 1.0,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "IRC Bot (c2nes/ircbot)",
+      "repo_url": "https://github.com/c2nes/ircbot",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/c2nes_ircbot",
+      "size_kib": 1120,
+      "size_mib": 1.1,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Passsafe",
+      "repo_url": "https://github.com/iweinzierl/passsafe",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/iweinzierl_passsafe",
+      "size_kib": 1312,
+      "size_mib": 1.3,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Alfred MPI",
+      "repo_url": "https://github.com/furio/alfred-mpi",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/furio_alfred-mpi",
+      "size_kib": 1368,
+      "size_mib": 1.3,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Whydah - UserAdminService",
+      "repo_url": "https://github.com/altran/Whydah-UserAdminService",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/altran_Whydah-UserAdminService",
+      "size_kib": 2392,
+      "size_mib": 2.3,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Drugis Common",
+      "repo_url": "https://github.com/gertvv/drugis-common",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/gertvv_drugis-common",
+      "size_kib": 2784,
+      "size_mib": 2.7,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "PhiCode Philib",
+      "repo_url": "https://github.com/PhiCode/philib",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/PhiCode_philib",
+      "size_kib": 3788,
+      "size_mib": 3.7,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Dagger",
+      "repo_url": "https://github.com/square/dagger",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/square_dagger",
+      "size_kib": 4260,
+      "size_mib": 4.2,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Tap4j",
+      "repo_url": "https://github.com/tupilabs/tap4j",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/tupilabs_tap4j",
+      "size_kib": 5016,
+      "size_mib": 4.9,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "JUnit4",
+      "repo_url": "https://github.com/junit-team/junit4",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/junit-team_junit4",
+      "size_kib": 5396,
+      "size_mib": 5.3,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Netflix SimianArmy",
+      "repo_url": "https://github.com/Netflix/SimianArmy",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/Netflix_SimianArmy",
+      "size_kib": 5552,
+      "size_mib": 5.4,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Netflix Hystrix",
+      "repo_url": "https://github.com/Netflix/Hystrix",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/Netflix_Hystrix",
+      "size_kib": 5680,
+      "size_mib": 5.5,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "JBoss Ballroom",
+      "repo_url": "https://github.com/hal/ballroom",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/hal_ballroom",
+      "size_kib": 6884,
+      "size_mib": 6.7,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Facebook SDK for Android",
+      "repo_url": "https://github.com/facebook/facebook-android-sdk",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/facebook_facebook-android-sdk",
+      "size_kib": 9432,
+      "size_mib": 9.2,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Retrofit",
+      "repo_url": "https://github.com/square/retrofit",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/square_retrofit",
+      "size_kib": 10436,
+      "size_mib": 10.2,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Google I/O Sched App",
+      "repo_url": "https://github.com/google/iosched",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/google_iosched",
+      "size_kib": 10468,
+      "size_mib": 10.2,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "OkHttp",
+      "repo_url": "https://github.com/square/okhttp",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/square_okhttp",
+      "size_kib": 12244,
+      "size_mib": 12.0,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "PhilJay MPAndroidChart",
+      "repo_url": "https://github.com/PhilJay/MPAndroidChart",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/PhilJay_MPAndroidChart",
+      "size_kib": 15504,
+      "size_mib": 15.1,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Realm Java",
+      "repo_url": "https://github.com/realm/realm-java",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/realm_realm-java",
+      "size_kib": 18400,
+      "size_mib": 18.0,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Apache Ant",
+      "repo_url": "https://github.com/apache/ant",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/apache_ant",
+      "size_kib": 28676,
+      "size_mib": 28.0,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "WhatsUp (MarvinBellmann)",
+      "repo_url": "https://github.com/MarvinBellmann/WhatsUp",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/MarvinBellmann_WhatsUp",
+      "size_kib": 45896,
+      "size_mib": 44.8,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Bublag Confetti",
+      "repo_url": "https://github.com/bublag/confetti",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/bublag_confetti",
+      "size_kib": 46100,
+      "size_mib": 45.0,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Apache Tomcat",
+      "repo_url": "https://github.com/apache/tomcat",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/apache_tomcat",
+      "size_kib": 56152,
+      "size_mib": 54.8,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Mayhem and Hell",
+      "repo_url": "https://github.com/alvyxaz/mayhem-and-hell",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/alvyxaz_mayhem-and-hell",
+      "size_kib": 58868,
+      "size_mib": 57.5,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Apache Dubbo",
+      "repo_url": "https://github.com/alibaba/dubbo",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/alibaba_dubbo",
+      "size_kib": 67836,
+      "size_mib": 66.2,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Sen Word-Builder",
+      "repo_url": "https://github.com/Sen-Word-Builder/Word-Builder",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/Sen-Word-Builder_Word-Builder",
+      "size_kib": 71268,
+      "size_mib": 69.6,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Spring Boot",
+      "repo_url": "https://github.com/spring-projects/spring-boot",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/spring-projects_spring-boot",
+      "size_kib": 81328,
+      "size_mib": 79.4,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "TUBAME Migration Tool",
+      "repo_url": "https://github.com/TUBAME/migration-tool",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/TUBAME_migration-tool",
+      "size_kib": 81744,
+      "size_mib": 79.8,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Apache Derby",
+      "repo_url": "https://github.com/apache/derby",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/apache_derby",
+      "size_kib": 101756,
+      "size_mib": 99.4,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Spring Framework",
+      "repo_url": "https://github.com/spring-projects/spring-framework",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/spring-projects_spring-framework",
+      "size_kib": 103784,
+      "size_mib": 101.4,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Containing",
+      "repo_url": "https://github.com/robertdj20/Containing",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/robertdj20_Containing",
+      "size_kib": 110008,
+      "size_mib": 107.4,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Facebook Fresco",
+      "repo_url": "https://github.com/facebook/fresco",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/facebook_fresco",
+      "size_kib": 122328,
+      "size_mib": 119.5,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Achilles",
+      "repo_url": "https://github.com/doanduyhai/Achilles",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/doanduyhai_Achilles",
+      "size_kib": 147040,
+      "size_mib": 143.6,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Google J2ObjC",
+      "repo_url": "https://github.com/google/j2objc",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/google_j2objc",
+      "size_kib": 169024,
+      "size_mib": 165.1,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Presto DB",
+      "repo_url": "https://github.com/prestodb/presto",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/prestodb_presto",
+      "size_kib": 185744,
+      "size_mib": 181.4,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "LeakCanary",
+      "repo_url": "https://github.com/square/leakcanary",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/square_leakcanary",
+      "size_kib": 267044,
+      "size_mib": 260.8,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Ikasan",
+      "repo_url": "https://github.com/ikasanEIP/ikasan",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/ikasanEIP_ikasan",
+      "size_kib": 343748,
+      "size_mib": 335.7,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    },
+    {
+      "project": "Elasticsearch",
+      "repo_url": "https://github.com/elastic/elasticsearch",
+      "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/elastic_elasticsearch",
+      "size_kib": 696224,
+      "size_mib": 679.9,
+      "clone_status": "cloned",
+      "clone_details": "checkout present"
+    }
+  ]
+}

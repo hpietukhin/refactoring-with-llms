@@ -1,0 +1,77 @@
+# Project-wide configuration.
+[git]
+repo_path = "."
+worktrees_dir = "experiments/worktrees"
+java_only = true
+include_untracked = false
+
+[planning]
+default_transition_cost = 1.0
+# none = detector/FIFO order
+# greedy = max positive side-effects (NZ ignored)
+# topo = scored topo sorts over pos/neg/unspecified AST-local preference edges
+# bfs = best-first search over full dependency rules (incl. NZ)
+planner = "greedy"
+locality = "none"
+token_budget = 200000
+
+[smell]
+default_detector = "ORGANIC"
+
+[java]
+build_tool = "maven"
+maven_command = "mvn"
+legacy_sdkman_java = "8.0.442-amzn"
+jacoco_report = "target/site/jacoco/jacoco.xml"
+ck_dir = "java/metrics/ck"
+
+[dataset]
+root = "dataset"
+manifest = "dataset/manifest.jsonl"
+
+[neo4j]
+uri = "http://127.0.0.1:7474"
+user = "neo4j"
+timeout_seconds = 30
+startup_timeout_seconds = 120
+cypher_path = "/db/data/cypher"
+start_script = "dataset/scripts/start_neo4j.sh"
+stop_script = "dataset/scripts/stop_neo4j.sh"
+
+[detection]
+backend = "organic"
+timeout_seconds = 120
+organic_dir = "detection/organic-standalone"
+elements = ""
+
+[experiments]
+root = "experiments"
+output_dir = "data/experiments/output"
+
+[pi]
+worktrees_dir = "experiments/pi/worktrees"
+output_dir = "data/pi"
+
+[langgraph]
+# Provider prefixes: "ollama/..." for local, "cerebras/..." for Cerebras, bare id for OpenRouter.
+model = "qwen/qwen3.7-flash"
+# The rubric grader needs reliable structured output, so it runs on a stronger model.
+grader_model = "openai/gpt-4.1-mini"
+temperature = 0.0
+reasoning_effort = "high"
+timeout_seconds = 120
+# Per-HTTP-request budget for chat model calls; the provider SDK default is 600s.
+request_timeout_seconds = 180
+request_max_retries = 2
+max_steps = 5
+repair_step_limit = 4
+repair_max_attempts = 3
+
+[testing]
+root = "testing"
+jacoco_report = "target/site/jacoco/jacoco.xml"
+min_line_coverage = 0.8
+
+[logging]
+level = "INFO"
+file = "data/all.log"

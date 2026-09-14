@@ -1,0 +1,42 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Java build output
+target/
+build/
+.gradle/
+*.class
+
+# OS/editor
+.DS_Store
+.idea/
+*.iml
+.vscode/
+
+# Runtime artifacts
+*.log
+temp/
+
+# Generated/runtime data
+data/
+
+# Vendored third-party code
+java/metrics/ck/
+detection/organic-standalone/
+
+# Cloned experiment repositories
+experiments/worktrees/
+experiments/pi/worktrees/
+dataset/projects/
+
+# JS deps for experiments/pi_batch.ts
+experiments/node_modules/
+node_modules/
+
+# Local credentials (tracked mise.toml contains safe defaults only)
+mise.local.toml

@@ -1,0 +1,7 @@
+[tools]
+python = "3.13"
+
+[env]
+OPENROUTER_API_KEY = ""
+NEO4J_PASSWORD = ""
+CEREBRAS_API_KEY = ""

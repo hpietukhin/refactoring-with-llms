@@ -1,0 +1,651 @@
+{
+  "aggregate_trajectories": {
+    "cumulativeIntroduced": [
+      {
+        "n": 6,
+        "planner": "detector_order",
+        "score": 10.833333333333334,
+        "x": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0
+        ],
+        "y": [
+          0.16666666666666666,
+          6.333333333333333,
+          6.5,
+          7.166666666666667,
+          8.0,
+          8.333333333333334,
+          8.666666666666666,
+          8.833333333333334,
+          9.5,
+          9.833333333333334,
+          10.833333333333334
+        ]
+      },
+      {
+        "n": 6,
+        "planner": "daps",
+        "score": 10.5,
+        "x": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0
+        ],
+        "y": [
+          0.16666666666666666,
+          4.666666666666667,
+          5.166666666666667,
+          6.0,
+          6.5,
+          7.333333333333333,
+          7.833333333333333,
+          9.0,
+          9.5,
+          10.166666666666666,
+          10.5
+        ]
+      },
+      {
+        "n": 6,
+        "planner": "topological",
+        "score": 9.666666666666666,
+        "x": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0
+        ],
+        "y": [
+          0.16666666666666666,
+          5.5,
+          5.833333333333333,
+          6.333333333333333,
+          6.666666666666667,
+          7.666666666666667,
+          8.5,
+          9.166666666666666,
+          9.166666666666666,
+          9.333333333333334,
+          9.666666666666666
+        ]
+      },
+      {
+        "n": 2,
+        "planner": "befs",
+        "score": 15.0,
+        "x": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0
+        ],
+        "y": [
+          0.0,
+          9.5,
+          10.0,
+          11.0,
+          11.0,
+          11.5,
+          12.0,
+          12.5,
+          13.5,
+          14.0,
+          15.0
+        ]
+      }
+    ],
+    "editSuccessRate": [
+      {
+        "n": 6,
+        "planner": "detector_order",
+        "score": 68.68814664867297,
+        "x": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0
+        ],
+        "y": [
+          80.55555555555556,
+          80.0,
+          78.86904761904762,
+          80.63131313131314,
+          77.77056277056276,
+          76.53580542037811,
+          77.26158645276293,
+          72.63631005010315,
+          69.88896228585938,
+          70.4703548085901,
+          68.68814664867297
+        ]
+      },
+      {
+        "n": 6,
+        "planner": "daps",
+        "score": 78.09826452924764,
+        "x": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0
+        ],
+        "y": [
+          91.66666666666667,
+          94.44444444444444,
+          92.06349206349206,
+          92.46632996632997,
+          82.89669267930138,
+          80.55069930069929,
+          75.1983147361838,
+          77.09034792368125,
+          76.88986640599543,
+          77.49211977935381,
+          78.09826452924764
+        ]
+      },
+      {
+        "n": 6,
+        "planner": "topological",
+        "score": 74.08201058201058,
+        "x": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0
+        ],
+        "y": [
+          80.55555555555556,
+          78.01587301587301,
+          81.19859307359307,
+          76.85425685425686,
+          78.25571895424837,
+          68.91742291742291,
+          70.6796223100571,
+          72.29630422883797,
+          71.85778068023116,
+          72.20102189899326,
+          74.08201058201058
+        ]
+      },
+      {
+        "n": 2,
+        "planner": "befs",
+        "score": 86.04651162790697,
+        "x": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0
+        ],
+        "y": [
+          100.0,
+          100.0,
+          93.75,
+          95.45454545454545,
+          84.21052631578948,
+          82.6086956521739,
+          84.0,
+          84.48275862068965,
+          85.71428571428572,
+          84.61538461538461,
+          86.04651162790697
+        ]
+      }
+    ],
+    "introducedPerFix": [
+      {
+        "n": 6,
+        "planner": "detector_order",
+        "score": 0.5606060606060607,
+        "x": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0
+        ],
+        "y": [
+          0.16666666666666666,
+          2.5,
+          0.5,
+          0.5,
+          0.5,
+          0.3333333333333333,
+          0.0,
+          0.16666666666666666,
+          0.5,
+          0.3333333333333333,
+          0.6666666666666666
+        ]
+      },
+      {
+        "n": 6,
+        "planner": "daps",
+        "score": 0.5454545454545454,
+        "x": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0
+        ],
+        "y": [
+          0.16666666666666666,
+          0.6666666666666666,
+          0.6666666666666666,
+          0.6666666666666666,
+          0.5,
+          0.8333333333333334,
+          0.5,
+          1.0,
+          0.16666666666666666,
+          0.5,
+          0.3333333333333333
+        ]
+      },
+      {
+        "n": 6,
+        "planner": "topological",
+        "score": 0.36363636363636365,
+        "x": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0
+        ],
+        "y": [
+          0.16666666666666666,
+          1.1666666666666667,
+          0.3333333333333333,
+          0.3333333333333333,
+          0.16666666666666666,
+          0.8333333333333334,
+          0.16666666666666666,
+          0.3333333333333333,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666
+        ]
+      },
+      {
+        "n": 2,
+        "planner": "befs",
+        "score": 0.22727272727272727,
+        "x": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0,
+          80.0,
+          90.0,
+          100.0
+        ],
+        "y": [
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          0.5,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  "final_metrics": [
+    {
+      "cbo": 2.8,
+      "classes": 251,
+      "episode": "C1",
+      "lcom": 7.59,
+      "loc": 7753,
+      "methods": 1021,
+      "planner": "detector_order",
+      "project": "Drugis Common:bcbdecd601d0",
+      "wmc": 5.72
+    },
+    {
+      "cbo": 2.8,
+      "classes": 251,
+      "episode": "C1",
+      "lcom": 7.63,
+      "loc": 7731,
+      "methods": 1018,
+      "planner": "daps",
+      "project": "Drugis Common:bcbdecd601d0",
+      "wmc": 5.69
+    },
+    {
+      "cbo": 2.8,
+      "classes": 251,
+      "episode": "C1",
+      "lcom": 6.61,
+      "loc": 7722,
+      "methods": 1017,
+      "planner": "topological",
+      "project": "Drugis Common:bcbdecd601d0",
+      "wmc": 5.7
+    },
+    {
+      "cbo": 2.8,
+      "classes": 251,
+      "episode": "C1",
+      "lcom": 8.05,
+      "loc": 7745,
+      "methods": 1019,
+      "planner": "befs",
+      "project": "Drugis Common:bcbdecd601d0",
+      "wmc": 5.71
+    },
+    {
+      "cbo": 2.86,
+      "classes": 254,
+      "episode": "C2",
+      "lcom": 7.66,
+      "loc": 7911,
+      "methods": 1032,
+      "planner": "detector_order",
+      "project": "Drugis Common:6cd5f088448e",
+      "wmc": 5.8
+    },
+    {
+      "cbo": 2.87,
+      "classes": 253,
+      "episode": "C2",
+      "lcom": 7.75,
+      "loc": 7838,
+      "methods": 1034,
+      "planner": "daps",
+      "project": "Drugis Common:6cd5f088448e",
+      "wmc": 5.78
+    },
+    {
+      "cbo": 2.87,
+      "classes": 253,
+      "episode": "C2",
+      "lcom": 7.63,
+      "loc": 7833,
+      "methods": 1031,
+      "planner": "topological",
+      "project": "Drugis Common:6cd5f088448e",
+      "wmc": 5.76
+    },
+    {
+      "cbo": 4.22,
+      "classes": 86,
+      "episode": "C3",
+      "lcom": 8.03,
+      "loc": 3848,
+      "methods": 361,
+      "planner": "detector_order",
+      "project": "IRC Bot (c2nes/ircbot):358b21bb264e",
+      "wmc": 9.52
+    },
+    {
+      "cbo": 4.14,
+      "classes": 83,
+      "episode": "C3",
+      "lcom": 8.37,
+      "loc": 3813,
+      "methods": 355,
+      "planner": "daps",
+      "project": "IRC Bot (c2nes/ircbot):358b21bb264e",
+      "wmc": 9.78
+    },
+    {
+      "cbo": 4.14,
+      "classes": 83,
+      "episode": "C3",
+      "lcom": 8.36,
+      "loc": 3816,
+      "methods": 355,
+      "planner": "topological",
+      "project": "IRC Bot (c2nes/ircbot):358b21bb264e",
+      "wmc": 9.81
+    },
+    {
+      "cbo": 4.07,
+      "classes": 96,
+      "episode": "C4",
+      "lcom": 8.77,
+      "loc": 4131,
+      "methods": 409,
+      "planner": "detector_order",
+      "project": "IRC Bot (c2nes/ircbot):091c08525c3b",
+      "wmc": 9.28
+    },
+    {
+      "cbo": 3.9,
+      "classes": 87,
+      "episode": "C4",
+      "lcom": 11.07,
+      "loc": 4107,
+      "methods": 400,
+      "planner": "daps",
+      "project": "IRC Bot (c2nes/ircbot):091c08525c3b",
+      "wmc": 10.09
+    },
+    {
+      "cbo": 3.95,
+      "classes": 88,
+      "episode": "C4",
+      "lcom": 11.2,
+      "loc": 4072,
+      "methods": 405,
+      "planner": "topological",
+      "project": "IRC Bot (c2nes/ircbot):091c08525c3b",
+      "wmc": 10.02
+    },
+    {
+      "cbo": 3.03,
+      "classes": 172,
+      "episode": "C5",
+      "lcom": 30.59,
+      "loc": 9976,
+      "methods": 1164,
+      "planner": "detector_order",
+      "project": "PhiCode Philib:4e4f6e9da6ea",
+      "wmc": 12.21
+    },
+    {
+      "cbo": 3.06,
+      "classes": 171,
+      "episode": "C5",
+      "lcom": 30.87,
+      "loc": 9953,
+      "methods": 1164,
+      "planner": "daps",
+      "project": "PhiCode Philib:4e4f6e9da6ea",
+      "wmc": 12.27
+    },
+    {
+      "cbo": 3.02,
+      "classes": 172,
+      "episode": "C5",
+      "lcom": 31.78,
+      "loc": 9932,
+      "methods": 1166,
+      "planner": "topological",
+      "project": "PhiCode Philib:4e4f6e9da6ea",
+      "wmc": 12.19
+    },
+    {
+      "cbo": 3.04,
+      "classes": 171,
+      "episode": "C5",
+      "lcom": 31.08,
+      "loc": 9921,
+      "methods": 1162,
+      "planner": "befs",
+      "project": "PhiCode Philib:4e4f6e9da6ea",
+      "wmc": 12.23
+    },
+    {
+      "cbo": 4.69,
+      "classes": 131,
+      "episode": "C7",
+      "lcom": 27.77,
+      "loc": 5144,
+      "methods": 711,
+      "planner": "detector_order",
+      "project": "Tap4j:462ab4c8c308",
+      "wmc": 8.66
+    },
+    {
+      "cbo": 4.69,
+      "classes": 131,
+      "episode": "C7",
+      "lcom": 28.64,
+      "loc": 5175,
+      "methods": 717,
+      "planner": "daps",
+      "project": "Tap4j:462ab4c8c308",
+      "wmc": 8.75
+    },
+    {
+      "cbo": 4.69,
+      "classes": 131,
+      "episode": "C7",
+      "lcom": 28.64,
+      "loc": 5134,
+      "methods": 711,
+      "planner": "topological",
+      "project": "Tap4j:462ab4c8c308",
+      "wmc": 8.67
+    }
+  ],
+  "fixed_smells": {
+    "befs": {
+      "completed_runs": 2,
+      "introduced_fixed": 30,
+      "introduced_observed": 30,
+      "original_fixed": 32,
+      "original_observed": 32,
+      "total_fixed": 62
+    },
+    "daps": {
+      "completed_runs": 6,
+      "introduced_fixed": 67,
+      "introduced_observed": 67,
+      "original_fixed": 106,
+      "original_observed": 106,
+      "total_fixed": 173
+    },
+    "detector_order": {
+      "completed_runs": 6,
+      "introduced_fixed": 65,
+      "introduced_observed": 65,
+      "original_fixed": 106,
+      "original_observed": 106,
+      "total_fixed": 171
+    },
+    "topological": {
+      "completed_runs": 6,
+      "introduced_fixed": 58,
+      "introduced_observed": 58,
+      "original_fixed": 106,
+      "original_observed": 106,
+      "total_fixed": 164
+    }
+  },
+  "planner_labels": {
+    "befs": "BeFS",
+    "daps": "DAPS",
+    "detector_order": "Detector order",
+    "topological": "Topological"
+  },
+  "planner_order": [
+    "detector_order",
+    "daps",
+    "topological",
+    "befs"
+  ],
+  "schema_version": 1
+}

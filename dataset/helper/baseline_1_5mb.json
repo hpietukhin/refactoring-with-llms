@@ -1,0 +1,92 @@
+[
+  {
+    "project": "Pusher Java Client",
+    "repo_url": "https://github.com/pusher/pusher-java-client",
+    "size_mib": 1.0,
+    "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/pusher_pusher-java-client",
+    "build_system": null,
+    "baseline_status": "failed",
+    "exit_code": null,
+    "command": null
+  },
+  {
+    "project": "IRC Bot (c2nes/ircbot)",
+    "repo_url": "https://github.com/c2nes/ircbot",
+    "size_mib": 1.1,
+    "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/c2nes_ircbot",
+    "build_system": "maven",
+    "baseline_status": "passed",
+    "exit_code": 0,
+    "command": "mvn clean test"
+  },
+  {
+    "project": "Passsafe",
+    "repo_url": "https://github.com/iweinzierl/passsafe",
+    "size_mib": 1.3,
+    "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/iweinzierl_passsafe",
+    "build_system": "maven",
+    "baseline_status": "failed",
+    "exit_code": 1,
+    "command": "mvn test"
+  },
+  {
+    "project": "Alfred MPI",
+    "repo_url": "https://github.com/furio/alfred-mpi",
+    "size_mib": 1.3,
+    "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/furio_alfred-mpi",
+    "build_system": "maven",
+    "baseline_status": "failed",
+    "exit_code": 1,
+    "command": "mvn test"
+  },
+  {
+    "project": "Whydah - UserAdminService",
+    "repo_url": "https://github.com/altran/Whydah-UserAdminService",
+    "size_mib": 2.3,
+    "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/altran_Whydah-UserAdminService",
+    "build_system": "maven",
+    "baseline_status": "failed",
+    "exit_code": 1,
+    "command": "mvn test"
+  },
+  {
+    "project": "Drugis Common",
+    "repo_url": "https://github.com/gertvv/drugis-common",
+    "size_mib": 2.7,
+    "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/gertvv_drugis-common",
+    "build_system": "maven",
+    "baseline_status": "passed",
+    "exit_code": 0,
+    "command": "mvn clean test"
+  },
+  {
+    "project": "PhiCode Philib",
+    "repo_url": "https://github.com/PhiCode/philib",
+    "size_mib": 3.7,
+    "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/PhiCode_philib",
+    "build_system": "maven",
+    "baseline_status": "passed",
+    "exit_code": 0,
+    "command": "mvn clean test"
+  },
+  {
+    "project": "Dagger",
+    "repo_url": "https://github.com/square/dagger",
+    "size_mib": 4.2,
+    "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/square_dagger",
+    "build_system": "maven",
+    "baseline_status": "failed",
+    "exit_code": 1,
+    "command": "mvn test"
+  },
+  {
+    "project": "Tap4j",
+    "repo_url": "https://github.com/tupilabs/tap4j",
+    "size_mib": 4.9,
+    "clone_path": "/Users/havriil.pietukhin/uni/masterThesis/revamp/dataset/projects/tupilabs_tap4j",
+    "build_system": "maven",
+    "baseline_status": "failed",
+    "exit_code": 1,
+    "command": "mvn test"
+  }
+]

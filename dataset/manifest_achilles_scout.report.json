@@ -1,0 +1,406 @@
+{
+  "generated_at": "2026-08-09T19:13:41.588141Z",
+  "filters": {
+    "requested_projects": [
+      "Achilles"
+    ],
+    "projects": [
+      "Achilles"
+    ],
+    "blocked_projects": {},
+    "limit_per_project": 5,
+    "max_elements_per_case": null,
+    "max_smells_per_case": null,
+    "elements_count": null,
+    "runtime_min_smells": 15,
+    "runtime_max_smells": 20,
+    "runtime_type_quotas": {
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2
+    },
+    "max_runtime_classes": 10,
+    "requires_baseline_verification": false
+  },
+  "summary": {
+    "draft_cases": 76,
+    "accepted": 10,
+    "rejected": 5,
+    "accepted_by_runtime_type_count": {
+      "2": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2,
+      "3": 2
+    },
+    "quotas_filled": true
+  },
+  "accepted_cases": [
+    {
+      "case_id": "Achilles:42bd7e84ecd1",
+      "project": "Achilles",
+      "start_commit": "c3e3868f03af81460637e69db56a4602eefaabb6",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 19,
+        "smell_types": [
+          "Feature Envy",
+          "Message Chains"
+        ],
+        "smell_type_count": 2,
+        "class_count": 2,
+        "classes": [
+          "info.archinnov.achilles.entity.manager.ThriftEntityManager",
+          "integration.tests.CounterIT"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "info.archinnov.achilles.entity.manager.ThriftEntityManager",
+          "integration.tests.CounterIT"
+        ]
+      }
+    },
+    {
+      "case_id": "Achilles:0ab7badd47b2",
+      "project": "Achilles",
+      "start_commit": "077361f914cebf0ce625f776dad4da4b192fcbc7",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 15,
+        "smell_types": [
+          "Data Class",
+          "Feature Envy",
+          "Long Method",
+          "Message Chains"
+        ],
+        "smell_type_count": 4,
+        "class_count": 2,
+        "classes": [
+          "fr.doan.achilles.entity.metadata.MapMeta",
+          "fr.doan.achilles.entity.parser.PropertyParserTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "fr.doan.achilles.entity.metadata.MapMeta",
+          "fr.doan.achilles.entity.parser.PropertyParserTest"
+        ]
+      }
+    },
+    {
+      "case_id": "Achilles:21dc2eb5f2d3",
+      "project": "Achilles",
+      "start_commit": "067bc4cbd2910cafd06e9c0e8d655f9d6e16ed40",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Long Parameter List",
+          "Message Chains"
+        ],
+        "smell_type_count": 2,
+        "class_count": 2,
+        "classes": [
+          "fr.doan.achilles.wrapper.factory.DynamicCompositeKeyFactory",
+          "fr.doan.achilles.wrapper.factory.DynamicCompositeKeyFactoryTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "fr.doan.achilles.wrapper.factory.DynamicCompositeKeyFactory",
+          "fr.doan.achilles.wrapper.factory.DynamicCompositeKeyFactoryTest"
+        ]
+      }
+    },
+    {
+      "case_id": "Achilles:a497789b0ef1",
+      "project": "Achilles",
+      "start_commit": "78d011f533dedc716c94e35d59b5d260fe8375fb",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 19,
+        "smell_types": [
+          "Feature Envy",
+          "Long Method",
+          "Long Parameter List",
+          "Message Chains"
+        ],
+        "smell_type_count": 4,
+        "class_count": 3,
+        "classes": [
+          "fr.doan.achilles.composite.factory.CompositeKeyFactory",
+          "fr.doan.achilles.composite.factory.DynamicCompositeKeyFactoryTest",
+          "fr.doan.achilles.helper.CompositeHelper"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "fr.doan.achilles.composite.factory.CompositeKeyFactory",
+          "fr.doan.achilles.composite.factory.DynamicCompositeKeyFactoryTest",
+          "fr.doan.achilles.helper.CompositeHelper"
+        ]
+      }
+    },
+    {
+      "case_id": "Achilles:5cb4910e0cde",
+      "project": "Achilles",
+      "start_commit": "0dd54bd9e15a0f85457cfb407421898f4ee65025",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 15,
+        "smell_types": [
+          "Dispersed Coupling",
+          "Feature Envy",
+          "Long Method",
+          "Long Parameter List",
+          "Message Chains"
+        ],
+        "smell_type_count": 5,
+        "class_count": 3,
+        "classes": [
+          "info.archinnov.achilles.entity.manager.ThriftEntityManagerTest",
+          "info.archinnov.achilles.entity.operations.ThriftEntityLoader",
+          "info.archinnov.achilles.entity.operations.ThriftEntityMerger"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "info.archinnov.achilles.entity.manager.ThriftEntityManagerTest",
+          "info.archinnov.achilles.entity.operations.ThriftEntityLoader",
+          "info.archinnov.achilles.entity.operations.ThriftEntityMerger"
+        ]
+      }
+    },
+    {
+      "case_id": "Achilles:d4f0e286fbd9",
+      "project": "Achilles",
+      "start_commit": "28753eecc8338a925c987ccf5a577931ffa0f0b1",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 16,
+        "smell_types": [
+          "Dispersed Coupling",
+          "Feature Envy",
+          "Long Method",
+          "Long Parameter List",
+          "Message Chains",
+          "Shotgun Surgery"
+        ],
+        "smell_type_count": 6,
+        "class_count": 2,
+        "classes": [
+          "info.archinnov.achilles.entity.operations.EntityLoader",
+          "info.archinnov.achilles.entity.operations.EntityPersisterTest"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "info.archinnov.achilles.entity.operations.EntityLoader",
+          "info.archinnov.achilles.entity.operations.EntityPersisterTest"
+        ]
+      }
+    },
+    {
+      "case_id": "Achilles:4f7d9a925e03",
+      "project": "Achilles",
+      "start_commit": "429c142097888b459a68d55836506d79609c1aa1",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 16,
+        "smell_types": [
+          "Feature Envy",
+          "Long Parameter List",
+          "Message Chains"
+        ],
+        "smell_type_count": 3,
+        "class_count": 3,
+        "classes": [
+          "info.archinnov.achilles.entity.context.PersistenceContext",
+          "info.archinnov.achilles.iterator.factory.CompositeTransformerTest",
+          "info.archinnov.achilles.wrapper.CounterWideMapWrapper"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "info.archinnov.achilles.entity.context.PersistenceContext",
+          "info.archinnov.achilles.iterator.factory.CompositeTransformerTest",
+          "info.archinnov.achilles.wrapper.CounterWideMapWrapper"
+        ]
+      }
+    },
+    {
+      "case_id": "Achilles:3679706a5355",
+      "project": "Achilles",
+      "start_commit": "ca6589a91aab4a2cda2626c9c3c02356f3c08967",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 19,
+        "smell_types": [
+          "Data Class",
+          "Dispersed Coupling",
+          "Long Parameter List"
+        ],
+        "smell_type_count": 3,
+        "class_count": 3,
+        "classes": [
+          "fr.doan.achilles.entity.metadata.MapMeta",
+          "fr.doan.achilles.wrapper.WideMapWrapper",
+          "fr.doan.achilles.wrapper.factory.DynamicCompositeKeyFactory"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "fr.doan.achilles.entity.metadata.MapMeta",
+          "fr.doan.achilles.wrapper.WideMapWrapper",
+          "fr.doan.achilles.wrapper.factory.DynamicCompositeKeyFactory"
+        ]
+      }
+    },
+    {
+      "case_id": "Achilles:a004692a6624",
+      "project": "Achilles",
+      "start_commit": "c2795b058146c5008e13f308e69b056d9bedc737",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 17,
+        "smell_types": [
+          "Feature Envy",
+          "Intensive Coupling",
+          "Long Method",
+          "Long Parameter List",
+          "Message Chains"
+        ],
+        "smell_type_count": 5,
+        "class_count": 2,
+        "classes": [
+          "info.archinnov.achilles.composite.factory.CompositeFactory",
+          "info.archinnov.achilles.proxy.interceptor.JpaEntityInterceptor"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "info.archinnov.achilles.composite.factory.CompositeFactory",
+          "info.archinnov.achilles.proxy.interceptor.JpaEntityInterceptor"
+        ]
+      }
+    },
+    {
+      "case_id": "Achilles:e32c6add9ab4",
+      "project": "Achilles",
+      "start_commit": "067bc4cbd2910cafd06e9c0e8d655f9d6e16ed40",
+      "reason": "baseline_verified",
+      "runtime": {
+        "smells_total": 19,
+        "smell_types": [
+          "Dispersed Coupling",
+          "Feature Envy",
+          "Long Method",
+          "Long Parameter List",
+          "Message Chains",
+          "Shotgun Surgery"
+        ],
+        "smell_type_count": 6,
+        "class_count": 4,
+        "classes": [
+          "fr.doan.achilles.entity.metadata.PropertyMeta",
+          "fr.doan.achilles.entity.parser.EntityParser",
+          "fr.doan.achilles.entity.parser.EntityParserTest",
+          "fr.doan.achilles.wrapper.MultiKeyWideRowWrapper"
+        ],
+        "classes_connected": true,
+        "elements": [
+          "fr.doan.achilles.entity.metadata.PropertyMeta",
+          "fr.doan.achilles.entity.parser.EntityParser",
+          "fr.doan.achilles.entity.parser.EntityParserTest",
+          "fr.doan.achilles.wrapper.MultiKeyWideRowWrapper"
+        ]
+      }
+    }
+  ],
+  "rejected_cases": [
+    {
+      "case_id": "Achilles:fc7fecac46ed",
+      "project": "Achilles",
+      "start_commit": "6d20d6f9d483232f8106893680ecfe74ed9589a8",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 401,
+        "end_commit_order": 406,
+        "commit_count": 6,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:62b81cbfc35c",
+      "project": "Achilles",
+      "start_commit": "4801f993f010cdc5acf95994df2eb5c869985d73",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 424,
+        "end_commit_order": 480,
+        "commit_count": 57,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:481548aa8c94",
+      "project": "Achilles",
+      "start_commit": "373dbd65393af41ec7c6d0285e9fda01a099c1f3",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type EmOperationsIT is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 532,
+        "end_commit_order": 555,
+        "commit_count": 24,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:7ec388cf4e32",
+      "project": "Achilles",
+      "start_commit": "9b6d9b15f889cb0025c4f1b17c08cb850d84d983",
+      "reason": "ast_fail",
+      "details": "Spoon AST indexer failed: SLF4J(W): No SLF4J providers were found.\nSLF4J(W): Defaulting to no-operation (NOP) logger implementation\nSLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.\nException in thread \"main\" spoon.compiler.ModelBuildingException: The type AbstractCassandraDaoTest is already defined\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblem(JDTBasedSpoonCompiler.java:615)\n\tat spoon.support.compiler.jdt.TreeBuilderRequestor.acceptResult(TreeBuilderRequestor.java:29)\n\tat spoon.support.compiler.jdt.TreeBuilderCompiler.buildUnits(TreeBuilderCompiler.java:110)\n\tat spoon.support.compiler.jdt.JDTBatchCompiler.getUnits(JDTBatchCompiler.java:282)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnits(JDTBasedSpoonCompiler.java:442)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildUnitsAndModel(JDTBasedSpoonCompiler.java:386)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.buildSources(JDTBasedSpoonCompiler.java:347)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:118)\n\tat spoon.support.compiler.jdt.JDTBasedSpoonCompiler.build(JDTBasedSpoonCompiler.java:101)\n\tat spoon.Launcher.buildModel(Launcher.java:781)\n\tat planning.ast.SpoonAstIndexer.build(SpoonAstIndexer.java:66)\n\tat planning.ast.SpoonAstIndexer.main(SpoonAstIndexer.java:53)\n",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 400,
+        "end_commit_order": 401,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    },
+    {
+      "case_id": "Achilles:571805ea0235",
+      "project": "Achilles",
+      "start_commit": "81da310a9655b0e4a2c3506e877bca9264c7bdf2",
+      "reason": "runtime_scope_not_found",
+      "details": "no connected class scope satisfies runtime quotas",
+      "commit_build_system_window": {
+        "repo_url": "https://github.com/doanduyhai/Achilles",
+        "project": "Achilles",
+        "start_commit_order": 282,
+        "end_commit_order": 283,
+        "commit_count": 2,
+        "all_maven": true,
+        "first_non_maven_order": null,
+        "first_non_maven_hash": null,
+        "first_non_maven_primary": null
+      }
+    }
+  ]
+}

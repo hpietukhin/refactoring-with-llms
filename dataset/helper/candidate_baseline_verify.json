@@ -1,0 +1,900 @@
+[
+  {
+    "case_id": "JUnit4:0db62cbefe67",
+    "project": "JUnit4",
+    "repo_url": "https://github.com/junit-team/junit4",
+    "start_commit": "48af7e797dbefa1fc47e80394c7f74ef87c3c7ab",
+    "elements": [
+      "org.junit.Assert",
+      "org.junit.runners.ParentRunner",
+      "org.junit.tests.experimental.theories.runner.UnsuccessfulWithDataPointFields"
+    ],
+    "start_commit_order": 1627,
+    "end_commit": "85f9d8397bfd96261c3214284672180c522e2d38",
+    "end_commit_order": 1628,
+    "start_state": {
+      "smells_total": 17,
+      "smell_types": [
+        "Class Data Should Be Private",
+        "Feature Envy",
+        "Long Parameter List",
+        "Message Chains"
+      ],
+      "smell_type_count": 4,
+      "class_count": 3,
+      "classes": [
+        "org.junit.Assert",
+        "org.junit.runners.ParentRunner",
+        "org.junit.tests.experimental.theories.runner.UnsuccessfulWithDataPointFields"
+      ],
+      "classes_connected": true
+    },
+    "selection": {
+      "anchor": "org.junit.runners.ParentRunner",
+      "developer": "ricky@dius.com.au",
+      "refactorings": 4,
+      "ref_ids": [
+        "72117e80bfe995b6d619ecb3697aee6e",
+        "b8f3e8de0904377a4a2ceac8d8e71be4",
+        "f09eb0a5008c873ec1a8cbb0ab8725f0",
+        "fa98d93970fab66fd6a814ad26ee9519"
+      ],
+      "ref_types": [
+        "Extract Method",
+        "Inline Method"
+      ],
+      "smells_after": 5,
+      "smell_delta": 2
+    },
+    "commit_build_system_window": {
+      "repo_url": "https://github.com/junit-team/junit4",
+      "project": "JUnit4",
+      "start_commit_order": 1627,
+      "end_commit_order": 1628,
+      "commit_count": 2,
+      "all_maven": true,
+      "first_non_maven_order": null,
+      "first_non_maven_hash": null,
+      "first_non_maven_primary": null
+    },
+    "verify_status": "build_fail",
+    "verify_details": "command exited with code 1",
+    "size_mib": 5.3,
+    "in_1_5mb": false,
+    "baseline": {
+      "command": "mvn test",
+      "exit_code": 1,
+      "tests_total": 0,
+      "tests_failed": 0,
+      "tests_errors": 0
+    }
+  },
+  {
+    "case_id": "JUnit4:07f823509bb7",
+    "project": "JUnit4",
+    "repo_url": "https://github.com/junit-team/junit4",
+    "start_commit": "52e93b4fe3c4133118f33635ea8517a13ff05321",
+    "elements": [
+      "org.junit.runners.model.TestClass",
+      "org.junit.tests.experimental.rules.RuleFieldValidatorTest"
+    ],
+    "start_commit_order": 1718,
+    "end_commit": "9d3821f6411ad85a683b8d38e4d42411229f2eec",
+    "end_commit_order": 1736,
+    "start_state": {
+      "smells_total": 15,
+      "smell_types": [
+        "Class Data Should Be Private",
+        "Lazy Class"
+      ],
+      "smell_type_count": 2,
+      "class_count": 2,
+      "classes": [
+        "org.junit.runners.model.TestClass",
+        "org.junit.tests.experimental.rules.RuleFieldValidatorTest"
+      ],
+      "classes_connected": true
+    },
+    "selection": {
+      "anchor": "org.junit.runners.model.FrameworkMember",
+      "developer": "mail@stefan-birkner.de",
+      "refactorings": 4,
+      "ref_ids": [
+        "3fa73c71d33d06f879a9500c4c84e73f",
+        "43acdbe75c174641bdd988822cf848bf",
+        "7f97b31a0db7b9ef74ac4117653882d0",
+        "04edb280629dcc8dac2bbe0672cfa818"
+      ],
+      "ref_types": [
+        "Extract Interface",
+        "Pull Up Method"
+      ],
+      "smells_after": 2,
+      "smell_delta": 1
+    },
+    "commit_build_system_window": {
+      "repo_url": "https://github.com/junit-team/junit4",
+      "project": "JUnit4",
+      "start_commit_order": 1718,
+      "end_commit_order": 1736,
+      "commit_count": 19,
+      "all_maven": true,
+      "first_non_maven_order": null,
+      "first_non_maven_hash": null,
+      "first_non_maven_primary": null
+    },
+    "verify_status": "test_fail",
+    "verify_details": "tests failed: failed=0 errors=1",
+    "size_mib": 5.3,
+    "in_1_5mb": false,
+    "baseline": {
+      "command": "mvn test",
+      "exit_code": 1,
+      "tests_total": 794,
+      "tests_failed": 0,
+      "tests_errors": 1
+    }
+  },
+  {
+    "case_id": "JUnit4:64519a293ba0",
+    "project": "JUnit4",
+    "repo_url": "https://github.com/junit-team/junit4",
+    "start_commit": "1768d08d029dc3bf1ab88e26df0a9b40ae61227f",
+    "elements": [
+      "org.junit.Assert",
+      "org.junit.internal.runners.statements.FailOnTimeout",
+      "org.junit.runners.BlockJUnit4ClassRunner",
+      "org.junit.tests.running.methods.TestMethodTest"
+    ],
+    "start_commit_order": 1620,
+    "end_commit": "fba19ba73a93dcc2d18942b3cf4992ce010afdb2",
+    "end_commit_order": 1624,
+    "start_state": {
+      "smells_total": 15,
+      "smell_types": [
+        "Complex Class",
+        "Lazy Class",
+        "Long Method",
+        "Long Parameter List",
+        "Refused Bequest"
+      ],
+      "smell_type_count": 5,
+      "class_count": 4,
+      "classes": [
+        "org.junit.Assert",
+        "org.junit.internal.runners.statements.FailOnTimeout",
+        "org.junit.runners.BlockJUnit4ClassRunner",
+        "org.junit.tests.running.methods.TestMethodTest"
+      ],
+      "classes_connected": true
+    },
+    "selection": {
+      "anchor": "org.junit.internal.runners.statements.FailOnTimeout",
+      "developer": "adambeneschan@aol.com",
+      "refactorings": 3,
+      "ref_ids": [
+        "6559067257835d4b666209527fd0b836",
+        "7f2842216a837df220f6e49c5d49cd92",
+        "b5dd9e236127bdd05672245dc9f2c60f"
+      ],
+      "ref_types": [
+        "Extract Method"
+      ],
+      "smells_after": 3,
+      "smell_delta": 0
+    },
+    "commit_build_system_window": {
+      "repo_url": "https://github.com/junit-team/junit4",
+      "project": "JUnit4",
+      "start_commit_order": 1620,
+      "end_commit_order": 1624,
+      "commit_count": 5,
+      "all_maven": true,
+      "first_non_maven_order": null,
+      "first_non_maven_hash": null,
+      "first_non_maven_primary": null
+    },
+    "verify_status": "test_fail",
+    "verify_details": "tests failed: failed=0 errors=1",
+    "size_mib": 5.3,
+    "in_1_5mb": false,
+    "baseline": {
+      "command": "mvn test",
+      "exit_code": 1,
+      "tests_total": 774,
+      "tests_failed": 0,
+      "tests_errors": 1
+    }
+  },
+  {
+    "case_id": "JUnit4:0f220ce86a22",
+    "project": "JUnit4",
+    "repo_url": "https://github.com/junit-team/junit4",
+    "start_commit": "308768863b78f3a6345e25d7f9d35892c2de5a01",
+    "elements": [
+      "org.junit.runners.BlockJUnit4ClassRunner",
+      "org.junit.tests.experimental.categories.CategoryTest",
+      "org.junit.tests.experimental.categories.SuiteBuilderTest"
+    ],
+    "start_commit_order": 818,
+    "end_commit": "81b50e9f3bdb66543d07e7349026bd3b447f433e",
+    "end_commit_order": 820,
+    "start_state": {
+      "smells_total": 18,
+      "smell_types": [
+        "Class Data Should Be Private",
+        "Feature Envy",
+        "Lazy Class",
+        "Message Chains"
+      ],
+      "smell_type_count": 4,
+      "class_count": 3,
+      "classes": [
+        "org.junit.runners.BlockJUnit4ClassRunner",
+        "org.junit.tests.experimental.categories.CategoryTest",
+        "org.junit.tests.experimental.categories.SuiteBuilderTest"
+      ],
+      "classes_connected": true
+    },
+    "selection": {
+      "anchor": "org.junit.runners.BlockJUnit4ClassRunner",
+      "developer": "david@saff.net",
+      "refactorings": 3,
+      "ref_ids": [
+        "2d54fcb0ef3f84d6c9582ce6cb09cc8a",
+        "8c364d1be53ab846d0445895536b3f79",
+        "8e4b30726c54a4d8a0cc8c8a85e649ed"
+      ],
+      "ref_types": [
+        "Extract Method"
+      ],
+      "smells_after": 2,
+      "smell_delta": 0
+    },
+    "commit_build_system_window": {
+      "repo_url": "https://github.com/junit-team/junit4",
+      "project": "JUnit4",
+      "start_commit_order": 818,
+      "end_commit_order": 820,
+      "commit_count": 3,
+      "all_maven": true,
+      "first_non_maven_order": null,
+      "first_non_maven_hash": null,
+      "first_non_maven_primary": null
+    },
+    "verify_status": "test_fail",
+    "verify_details": "tests failed: failed=4 errors=3",
+    "size_mib": 5.3,
+    "in_1_5mb": false,
+    "baseline": {
+      "command": "mvn test",
+      "exit_code": 1,
+      "tests_total": 232,
+      "tests_failed": 4,
+      "tests_errors": 3
+    }
+  },
+  {
+    "case_id": "JUnit4:8e6fd00bad61",
+    "project": "JUnit4",
+    "repo_url": "https://github.com/junit-team/junit4",
+    "start_commit": "96af9a2a520a40404971968ee14a183d0aed1c4b",
+    "elements": [
+      "org.junit.experimental.categories.Categories",
+      "org.junit.runners.ParentRunner",
+      "org.junit.tests.experimental.theories.runner.UnsuccessfulWithDataPointFields"
+    ],
+    "start_commit_order": 1548,
+    "end_commit": "0ce71108da6f487d76c0f4dc46cde41e11dd3daa",
+    "end_commit_order": 1552,
+    "start_state": {
+      "smells_total": 15,
+      "smell_types": [
+        "Class Data Should Be Private",
+        "Complex Class",
+        "Feature Envy",
+        "Long Parameter List",
+        "Message Chains"
+      ],
+      "smell_type_count": 5,
+      "class_count": 3,
+      "classes": [
+        "org.junit.experimental.categories.Categories",
+        "org.junit.runners.ParentRunner",
+        "org.junit.tests.experimental.theories.runner.UnsuccessfulWithDataPointFields"
+      ],
+      "classes_connected": true
+    },
+    "selection": {
+      "anchor": "org.junit.runners.ParentRunner",
+      "developer": "tibor17@lycos.com",
+      "refactorings": 3,
+      "ref_ids": [
+        "74176a2c92f716c9d4824abcf451e0d5",
+        "8cc21396abf5eb66ef90a4d3344a414e",
+        "ca19e6fc0e887607ff952ae33fb39acf"
+      ],
+      "ref_types": [
+        "Inline Method"
+      ],
+      "smells_after": 4,
+      "smell_delta": 1
+    },
+    "commit_build_system_window": {
+      "repo_url": "https://github.com/junit-team/junit4",
+      "project": "JUnit4",
+      "start_commit_order": 1548,
+      "end_commit_order": 1552,
+      "commit_count": 5,
+      "all_maven": true,
+      "first_non_maven_order": null,
+      "first_non_maven_hash": null,
+      "first_non_maven_primary": null
+    },
+    "verify_status": "test_fail",
+    "verify_details": "tests failed: failed=0 errors=1",
+    "size_mib": 5.3,
+    "in_1_5mb": false,
+    "baseline": {
+      "command": "mvn test",
+      "exit_code": 1,
+      "tests_total": 733,
+      "tests_failed": 0,
+      "tests_errors": 1
+    }
+  },
+  {
+    "case_id": "JUnit4:d145a09c9dbb",
+    "project": "JUnit4",
+    "repo_url": "https://github.com/junit-team/junit4",
+    "start_commit": "4041354a3a7629b74970e0624b7564736c20e1e3",
+    "elements": [
+      "org.junit.Assert",
+      "org.junit.runners.BlockJUnit4ClassRunner",
+      "org.junit.tests.experimental.categories.SuiteBuilderTest",
+      "org.junit.tests.running.methods.TestMethodTest"
+    ],
+    "start_commit_order": 816,
+    "end_commit": "d21d4edb6a5c55a3d8930dd26762a26cad67d827",
+    "end_commit_order": 817,
+    "start_state": {
+      "smells_total": 20,
+      "smell_types": [
+        "Class Data Should Be Private",
+        "Feature Envy",
+        "Lazy Class",
+        "Long Parameter List",
+        "Message Chains",
+        "Refused Bequest"
+      ],
+      "smell_type_count": 6,
+      "class_count": 4,
+      "classes": [
+        "org.junit.Assert",
+        "org.junit.runners.BlockJUnit4ClassRunner",
+        "org.junit.tests.experimental.categories.SuiteBuilderTest",
+        "org.junit.tests.running.methods.TestMethodTest"
+      ],
+      "classes_connected": true
+    },
+    "selection": {
+      "anchor": "org.junit.runners.BlockJUnit4ClassRunner",
+      "developer": "david@saff.net",
+      "refactorings": 2,
+      "ref_ids": [
+        "099fee9ea3c8db14e47198b47448830d",
+        "860b272f536e7261eb54a4dc2c54b32f"
+      ],
+      "ref_types": [
+        "Extract Method"
+      ],
+      "smells_after": 2,
+      "smell_delta": 1
+    },
+    "commit_build_system_window": {
+      "repo_url": "https://github.com/junit-team/junit4",
+      "project": "JUnit4",
+      "start_commit_order": 816,
+      "end_commit_order": 817,
+      "commit_count": 2,
+      "all_maven": true,
+      "first_non_maven_order": null,
+      "first_non_maven_hash": null,
+      "first_non_maven_primary": null
+    },
+    "verify_status": "test_fail",
+    "verify_details": "tests failed: failed=4 errors=3",
+    "size_mib": 5.3,
+    "in_1_5mb": false,
+    "baseline": {
+      "command": "mvn test",
+      "exit_code": 1,
+      "tests_total": 232,
+      "tests_failed": 4,
+      "tests_errors": 3
+    }
+  },
+  {
+    "case_id": "JUnit4:cec947916fd1",
+    "project": "JUnit4",
+    "repo_url": "https://github.com/junit-team/junit4",
+    "start_commit": "8ff0b44e3fb0c1c56a1dc6290c3b6828a5a8f9bf",
+    "elements": [
+      "org.junit.runners.BlockJUnit4ClassRunner",
+      "org.junit.tests.experimental.categories.CategoryTest",
+      "org.junit.tests.running.methods.ParameterizedTestMethodTest",
+      "org.junit.tests.running.methods.TestMethodTest"
+    ],
+    "start_commit_order": 830,
+    "end_commit": "bed58a573c373d57d64fa369f58b2a8f0dbee3d7",
+    "end_commit_order": 831,
+    "start_state": {
+      "smells_total": 18,
+      "smell_types": [
+        "Feature Envy",
+        "Lazy Class",
+        "Refused Bequest"
+      ],
+      "smell_type_count": 3,
+      "class_count": 4,
+      "classes": [
+        "org.junit.runners.BlockJUnit4ClassRunner",
+        "org.junit.tests.experimental.categories.CategoryTest",
+        "org.junit.tests.running.methods.ParameterizedTestMethodTest",
+        "org.junit.tests.running.methods.TestMethodTest"
+      ],
+      "classes_connected": true
+    },
+    "selection": {
+      "anchor": "org.junit.runners.BlockJUnit4ClassRunner",
+      "developer": "kcooney@google.com",
+      "refactorings": 2,
+      "ref_ids": [
+        "af988130c4418a07f7141e0899d5fa07",
+        "f686bee9607204c3b9da4448a716f06b"
+      ],
+      "ref_types": [
+        "Inline Method"
+      ],
+      "smells_after": 1,
+      "smell_delta": 0
+    },
+    "commit_build_system_window": {
+      "repo_url": "https://github.com/junit-team/junit4",
+      "project": "JUnit4",
+      "start_commit_order": 830,
+      "end_commit_order": 831,
+      "commit_count": 2,
+      "all_maven": true,
+      "first_non_maven_order": null,
+      "first_non_maven_hash": null,
+      "first_non_maven_primary": null
+    },
+    "verify_status": "test_fail",
+    "verify_details": "tests failed: failed=4 errors=3",
+    "size_mib": 5.3,
+    "in_1_5mb": false,
+    "baseline": {
+      "command": "mvn test",
+      "exit_code": 1,
+      "tests_total": 232,
+      "tests_failed": 4,
+      "tests_errors": 3
+    }
+  },
+  {
+    "case_id": "JUnit4:09df596913de",
+    "project": "JUnit4",
+    "repo_url": "https://github.com/junit-team/junit4",
+    "start_commit": "8672a83f51b183c756649a423b908271c894b8df",
+    "elements": [
+      "org.junit.runners.Parameterized",
+      "org.junit.runners.ParentRunner",
+      "org.junit.tests.running.classes.ParameterizedTestTest"
+    ],
+    "start_commit_order": 1207,
+    "end_commit": "0215c66179ed2c04da2e53f67aefc97b6db5782a",
+    "end_commit_order": 1208,
+    "start_state": {
+      "smells_total": 17,
+      "smell_types": [
+        "Class Data Should Be Private",
+        "Feature Envy",
+        "Message Chains"
+      ],
+      "smell_type_count": 3,
+      "class_count": 3,
+      "classes": [
+        "org.junit.runners.Parameterized",
+        "org.junit.runners.ParentRunner",
+        "org.junit.tests.running.classes.ParameterizedTestTest"
+      ],
+      "classes_connected": true
+    },
+    "selection": {
+      "anchor": "org.junit.runners.Parameterized.TestClassRunnerForParameters",
+      "developer": "jeremy.herault@gmail.com",
+      "refactorings": 2,
+      "ref_ids": [
+        "4a20f011fc2a9e3535637c6e22094b4d",
+        "5654bb4ed82015ce39f004654effb742"
+      ],
+      "ref_types": [
+        "Extract Method"
+      ],
+      "smells_after": 2,
+      "smell_delta": 1
+    },
+    "commit_build_system_window": {
+      "repo_url": "https://github.com/junit-team/junit4",
+      "project": "JUnit4",
+      "start_commit_order": 1207,
+      "end_commit_order": 1208,
+      "commit_count": 2,
+      "all_maven": true,
+      "first_non_maven_order": null,
+      "first_non_maven_hash": null,
+      "first_non_maven_primary": null
+    },
+    "verify_status": "toolchain_fail",
+    "verify_details": "No Java build system detected in /private/var/folders/6l/w6s1ycpj7b39mfmkmv2n2p080000gn/T/verify-di5gsusj/junit-team_junit4/8672a83f51b1-JUnit4_09df596913de",
+    "size_mib": 5.3,
+    "in_1_5mb": false,
+    "baseline": {
+      "command": null,
+      "exit_code": null,
+      "tests_total": null,
+      "tests_failed": null,
+      "tests_errors": null
+    }
+  },
+  {
+    "case_id": "JUnit4:521ce86ddd69",
+    "project": "JUnit4",
+    "repo_url": "https://github.com/junit-team/junit4",
+    "start_commit": "dfaf332b4df0d98293ac135e5abf9de6a2623b14",
+    "elements": [
+      "junit.framework.TestSuite",
+      "org.junit.Assert",
+      "org.junit.internal.MethodSorterTest",
+      "org.junit.tests.running.methods.AnnotationTest"
+    ],
+    "start_commit_order": 1314,
+    "end_commit": "fb812b11c575fcf7bbe411a876903acd21ad04ea",
+    "end_commit_order": 1329,
+    "start_state": {
+      "smells_total": 20,
+      "smell_types": [
+        "Feature Envy",
+        "Intensive Coupling",
+        "Lazy Class",
+        "Long Parameter List",
+        "Message Chains",
+        "Refused Bequest"
+      ],
+      "smell_type_count": 6,
+      "class_count": 4,
+      "classes": [
+        "junit.framework.TestSuite",
+        "org.junit.Assert",
+        "org.junit.internal.MethodSorterTest",
+        "org.junit.tests.running.methods.AnnotationTest"
+      ],
+      "classes_connected": true
+    },
+    "selection": {
+      "anchor": "org.junit.internal.MethodSorterTest.getMethodsNullSorterSelf",
+      "developer": "arie.vandeursen@tudelft.nl",
+      "refactorings": 2,
+      "ref_ids": [
+        "fbffebea15b6c2b77997b8a6acf1d6ce",
+        "9aa27607b7999869cd868112af74d533"
+      ],
+      "ref_types": [
+        "Rename Method"
+      ],
+      "smells_after": 1,
+      "smell_delta": 0
+    },
+    "commit_build_system_window": {
+      "repo_url": "https://github.com/junit-team/junit4",
+      "project": "JUnit4",
+      "start_commit_order": 1314,
+      "end_commit_order": 1329,
+      "commit_count": 16,
+      "all_maven": true,
+      "first_non_maven_order": null,
+      "first_non_maven_hash": null,
+      "first_non_maven_primary": null
+    },
+    "verify_status": "toolchain_fail",
+    "verify_details": "No Java build system detected in /private/var/folders/6l/w6s1ycpj7b39mfmkmv2n2p080000gn/T/verify-z_756p7a/junit-team_junit4/dfaf332b4df0-JUnit4_521ce86ddd69",
+    "size_mib": 5.3,
+    "in_1_5mb": false,
+    "baseline": {
+      "command": null,
+      "exit_code": null,
+      "tests_total": null,
+      "tests_failed": null,
+      "tests_errors": null
+    }
+  },
+  {
+    "case_id": "Lyra:814e7ea1c2f1",
+    "project": "Lyra",
+    "repo_url": "https://github.com/jhalterman/lyra",
+    "start_commit": "3f49cbffff020134239962f1001b168c43c58acb",
+    "elements": [
+      "net.jodah.lyra.internal.AbstractFunctionalTest",
+      "net.jodah.lyra.internal.ChannelRecoveryTest",
+      "net.jodah.lyra.internal.ConnectionFactoryInvocationTest",
+      "net.jodah.lyra.internal.ConnectionInvocationTest"
+    ],
+    "start_commit_order": 20,
+    "end_commit": "36bac28f84e84010e9592acd7c96cfc5d10d290b",
+    "end_commit_order": 21,
+    "start_state": {
+      "smells_total": 18,
+      "smell_types": [
+        "Feature Envy",
+        "Message Chains"
+      ],
+      "smell_type_count": 2,
+      "class_count": 4,
+      "classes": [
+        "net.jodah.lyra.internal.AbstractFunctionalTest",
+        "net.jodah.lyra.internal.ChannelRecoveryTest",
+        "net.jodah.lyra.internal.ConnectionFactoryInvocationTest",
+        "net.jodah.lyra.internal.ConnectionInvocationTest"
+      ],
+      "classes_connected": true
+    },
+    "selection": {
+      "anchor": "net.jodah.lyra.internal.ChannelRecoveryTest",
+      "developer": "jhalterman@gmail.com",
+      "refactorings": 4,
+      "ref_ids": [
+        "3019d4c7e6641732039fbf1d522a7dca",
+        "4ee67700a33c340f8543db23f162eb36",
+        "784ae652b344773873067e3c5247ec00",
+        "cdc7bbb23323b085f7217d0da7baa5aa"
+      ],
+      "ref_types": [
+        "Extract Method"
+      ],
+      "smells_after": 2,
+      "smell_delta": 2
+    },
+    "commit_build_system_window": {
+      "repo_url": "https://github.com/jhalterman/lyra",
+      "project": "Lyra",
+      "start_commit_order": 20,
+      "end_commit_order": 21,
+      "commit_count": 2,
+      "all_maven": true,
+      "first_non_maven_order": null,
+      "first_non_maven_hash": null,
+      "first_non_maven_primary": null
+    },
+    "verify_status": "test_fail",
+    "verify_details": "tests failed: failed=4 errors=0",
+    "size_mib": 0.5,
+    "in_1_5mb": false,
+    "baseline": {
+      "command": "mvn test",
+      "exit_code": 1,
+      "tests_total": 59,
+      "tests_failed": 4,
+      "tests_errors": 0
+    }
+  },
+  {
+    "case_id": "PhiCode Philib:4e4f6e9da6ea",
+    "project": "PhiCode Philib",
+    "repo_url": "https://github.com/PhiCode/philib",
+    "start_commit": "a132ad528a176bc7ba6082999c270549e7956c23",
+    "elements": [
+      "ch.bind.philib.msg.Subscription",
+      "ch.bind.philib.msg.vm.PubSubVMTest"
+    ],
+    "start_commit_order": 748,
+    "end_commit": "a3552e5191b78bf528cf3b0f74dda8067710eaea",
+    "end_commit_order": 749,
+    "start_state": {
+      "smells_total": 15,
+      "smell_types": [
+        "Class Data Should Be Private",
+        "Feature Envy",
+        "Lazy Class",
+        "Long Method",
+        "Long Parameter List"
+      ],
+      "smell_type_count": 5,
+      "class_count": 2,
+      "classes": [
+        "ch.bind.philib.msg.Subscription",
+        "ch.bind.philib.msg.vm.PubSubVMTest"
+      ],
+      "classes_connected": true
+    },
+    "selection": {
+      "anchor": "ch.bind.philib.msg.vm.PubSubVMTest",
+      "developer": "philipp@bind.ch",
+      "refactorings": 4,
+      "ref_ids": [
+        "2fc9f611b4b90f9d77e0c3ea8f6648f8",
+        "6949f761ed4501ef4646e37bc828e5d3",
+        "78baacb3bdf02ecc9a538af5ddec5f17",
+        "9df370dfb6ca2486a1809275dc27aa67"
+      ],
+      "ref_types": [
+        "Rename Method"
+      ],
+      "smells_after": 2,
+      "smell_delta": 1
+    },
+    "commit_build_system_window": {
+      "repo_url": "https://github.com/PhiCode/philib",
+      "project": "PhiCode Philib",
+      "start_commit_order": 748,
+      "end_commit_order": 749,
+      "commit_count": 2,
+      "all_maven": true,
+      "first_non_maven_order": null,
+      "first_non_maven_hash": null,
+      "first_non_maven_primary": null
+    },
+    "baseline": {
+      "command": "mvn clean test",
+      "exit_code": 0,
+      "tests_total": 362,
+      "tests_failed": 0,
+      "tests_errors": 0
+    },
+    "verify_status": "passed",
+    "verify_details": "baseline build/test passed",
+    "size_mib": 3.7,
+    "in_1_5mb": true
+  },
+  {
+    "case_id": "Tap4j:f6ce96fb3213",
+    "project": "Tap4j",
+    "repo_url": "https://github.com/tupilabs/tap4j",
+    "start_commit": "fb2451c64b4d78d1db062eac6695dab2fe1af2a2",
+    "elements": [
+      "org.tap4j.parser.Tap13Parser",
+      "org.tap4j.parser.TestTap13Parser"
+    ],
+    "start_commit_order": 85,
+    "end_commit": "f444bc29badff0d0302872b7d6d262410426b366",
+    "end_commit_order": 86,
+    "start_state": {
+      "smells_total": 15,
+      "smell_types": [
+        "Brain Method",
+        "Feature Envy",
+        "Intensive Coupling",
+        "Long Method",
+        "Long Parameter List",
+        "Message Chains"
+      ],
+      "smell_type_count": 6,
+      "class_count": 2,
+      "classes": [
+        "org.tap4j.parser.Tap13Parser",
+        "org.tap4j.parser.TestTap13Parser"
+      ],
+      "classes_connected": true
+    },
+    "selection": {
+      "anchor": "org.tap4j.parser.Tap13Parser",
+      "developer": "jakub.podlesak@oracle.com",
+      "refactorings": 5,
+      "ref_ids": [
+        "4552ca710bd6f51f38072b3e8dd3ffaf",
+        "56c8f66fbca72510736b2e529ec61e78",
+        "ae3aa2ba2b184150790ff6b0653eb736",
+        "ae85c0505ef031e9159a34d05207eb7b",
+        "be2a887bfb55a2878bab7e3d3f2abaa9"
+      ],
+      "ref_types": [
+        "Inline Method"
+      ],
+      "smells_after": 5,
+      "smell_delta": 3
+    },
+    "commit_build_system_window": {
+      "repo_url": "https://github.com/tupilabs/tap4j",
+      "project": "Tap4j",
+      "start_commit_order": 85,
+      "end_commit_order": 86,
+      "commit_count": 2,
+      "all_maven": true,
+      "first_non_maven_order": null,
+      "first_non_maven_hash": null,
+      "first_non_maven_primary": null
+    },
+    "baseline": {
+      "command": "mvn clean test",
+      "exit_code": 0,
+      "tests_total": 160,
+      "tests_failed": 0,
+      "tests_errors": 0
+    },
+    "verify_status": "passed",
+    "verify_details": "baseline build/test passed",
+    "size_mib": 4.9,
+    "in_1_5mb": true
+  },
+  {
+    "case_id": "Tap4j:59a49ba1feef",
+    "project": "Tap4j",
+    "repo_url": "https://github.com/tupilabs/tap4j",
+    "start_commit": "fb2451c64b4d78d1db062eac6695dab2fe1af2a2",
+    "elements": [
+      "org.tap4j.consumer.TestTap13Consumer",
+      "org.tap4j.model.BailOut",
+      "org.tap4j.parser.Tap13Parser"
+    ],
+    "start_commit_order": 85,
+    "end_commit": "f444bc29badff0d0302872b7d6d262410426b366",
+    "end_commit_order": 86,
+    "start_state": {
+      "smells_total": 19,
+      "smell_types": [
+        "Brain Method",
+        "Feature Envy",
+        "Intensive Coupling",
+        "Long Method",
+        "Long Parameter List",
+        "Message Chains"
+      ],
+      "smell_type_count": 6,
+      "class_count": 3,
+      "classes": [
+        "org.tap4j.consumer.TestTap13Consumer",
+        "org.tap4j.model.BailOut",
+        "org.tap4j.parser.Tap13Parser"
+      ],
+      "classes_connected": true
+    },
+    "selection": {
+      "anchor": "org.tap4j.model.TapElement",
+      "developer": "jakub.podlesak@oracle.com",
+      "refactorings": 4,
+      "ref_ids": [
+        "011259bf3fe73640c1631208a78f8fe0",
+        "6f56832987a3c9383798de388ec61fa1",
+        "7f83e9c346ea816f127087a9f38c596e",
+        "b482d412e25a42a3c761dad462807638"
+      ],
+      "ref_types": [
+        "Move Attribute"
+      ],
+      "smells_after": 1,
+      "smell_delta": 0
+    },
+    "commit_build_system_window": {
+      "repo_url": "https://github.com/tupilabs/tap4j",
+      "project": "Tap4j",
+      "start_commit_order": 85,
+      "end_commit_order": 86,
+      "commit_count": 2,
+      "all_maven": true,
+      "first_non_maven_order": null,
+      "first_non_maven_hash": null,
+      "first_non_maven_primary": null
+    },
+    "baseline": {
+      "command": "mvn clean test",
+      "exit_code": 0,
+      "tests_total": 160,
+      "tests_failed": 0,
+      "tests_errors": 0
+    },
+    "verify_status": "passed",
+    "verify_details": "baseline build/test passed",
+    "size_mib": 4.9,
+    "in_1_5mb": true
+  }
+]

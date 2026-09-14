@@ -1,0 +1,309 @@
+import org.gradle.api.JavaVersion
+import org.gradle.api.tasks.compile.JavaCompile
+import org.gradle.api.tasks.javadoc.Javadoc
+import org.gradle.api.tasks.testing.Test
+import org.gradle.jvm.toolchain.JavaLanguageVersion
+
+// JEP 182: javac drops old -source/-target/--release values.
+// JDK 9 dropped 5, JDK 12 dropped 6, JDK 20 dropped 7.
+int minSourceForCompiler(int compilerMajor) {
+    if (compilerMajor >= 20) {
+        return 8
+    }
+    if (compilerMajor >= 12) {
+        return 7
+    }
+    if (compilerMajor >= 9) {
+        return 6
+    }
+    return 1
+}
+
+boolean compilerSupports(int compilerMajor, int sourceMajor) {
+    return sourceMajor <= compilerMajor && sourceMajor >= minSourceForCompiler(compilerMajor)
+}
+
+int sourceMajor(String raw) {
+    return Integer.parseInt(JavaVersion.toVersion(raw).majorVersion)
+}
+
+boolean looksLikeSource(String raw) {
+    if (raw == null || raw.isEmpty() || raw.contains("\${")) {
+        return false
+    }
+    if (raw.matches("1\\.\\d+")) {
+        return true
+    }
+    if (raw.matches("\\d+")) {
+        int major = raw.toInteger()
+        return major >= 5 && major <= 25
+    }
+    return false
+}
+
+String resolvePomProperties(String raw, Map props) {
+    def resolved = raw
+    props.size().times {
+        def matcher = (resolved =~ /\$\{([^}]+)\}/)
+        if (!matcher.find()) {
+            return
+        }
+        def value = props[matcher.group(1)]
+        if (value == null) {
+            return
+        }
+        resolved = resolved.substring(0, matcher.start()) + value + resolved.substring(matcher.end())
+    }
+    return resolved.trim()
+}
+
+String readPomSource(File pomFile) {
+    def pom = new XmlParser(false, false).parse(pomFile)
+    Map props = [:]
+    pom.properties?.'*'?.each { node ->
+        def value = node.text()?.trim()
+        if (value) {
+            props[node.name().toString()] = value
+        }
+    }
+    for (key in ["maven.compiler.release", "maven.compiler.source", "java.version"]) {
+        def raw = props[key]
+        if (raw && looksLikeSource(resolvePomProperties(raw, props))) {
+            return resolvePomProperties(raw, props)
+        }
+    }
+    def hit = pom.depthFirst().find { node ->
+        def name = node.name().toString()
+        if (name != "source" && name != "release") {
+            return false
+        }
+        def raw = node.text()?.trim()
+        return raw && looksLikeSource(resolvePomProperties(raw, props))
+    }
+    return hit == null ? null : resolvePomProperties(hit.text().trim(), props)
+}
+
+Integer detectSourceMajor(project) {
+    def seen = [] as Set
+    def poms = []
+    def dir = project.projectDir
+    while (dir != null) {
+        def pom = new File(dir, "pom.xml")
+        if (pom.isFile() && seen.add(pom.canonicalPath)) {
+            poms << pom
+        }
+        if (dir == project.rootProject.projectDir) {
+            break
+        }
+        dir = dir.parentFile
+    }
+    def rootPom = project.rootProject.file("pom.xml")
+    if (rootPom.isFile() && seen.add(rootPom.canonicalPath)) {
+        poms << rootPom
+    }
+    for (pom in poms) {
+        def raw = readPomSource(pom)
+        if (raw != null) {
+            return sourceMajor(raw)
+        }
+    }
+    def javaExt = project.extensions.findByName("java")
+    if (javaExt?.sourceCompatibility != null) {
+        return Integer.parseInt(javaExt.sourceCompatibility.majorVersion)
+    }
+    return null
+}
+
+List<Integer> installedSdkmanMajors() {
+    def dir = new File(System.getProperty("user.home"), ".sdkman/candidates/java")
+    if (!dir.directory) {
+        return []
+    }
+    def majors = [] as Set
+    dir.eachDir { candidate ->
+        if (candidate.name == "current") {
+            return
+        }
+        def head = candidate.name.split("\\.", 2)[0]
+        if (head.isInteger()) {
+            majors << head.toInteger()
+        }
+    }
+    return majors as List
+}
+
+int pickToolchainMajor(int needed) {
+    def capable = installedSdkmanMajors().findAll { compilerSupports(it, needed) }
+    if (capable) {
+        return capable.min()
+    }
+    return needed < 8 ? 8 : needed
+}
+
+File sdkmanHomeForMajor(int major) {
+    def dir = new File(System.getProperty("user.home"), ".sdkman/candidates/java")
+    if (!dir.directory) {
+        return null
+    }
+    def matches = []
+    dir.eachDir { candidate ->
+        if (candidate.name == "current") {
+            return
+        }
+        def head = candidate.name.split("\\.", 2)[0]
+        if (head.isInteger() && head.toInteger() == major) {
+            matches << candidate
+        }
+    }
+    if (!matches) {
+        return null
+    }
+    matches.sort { it.name }
+    return matches[0]
+}
+
+void applyJaxbXjc(project, int toolMajor) {
+    def pomFile = project.file("pom.xml")
+    if (!pomFile.isFile()) {
+        return
+    }
+    def pom = new XmlParser(false, false).parse(pomFile)
+    def pluginNode = pom.depthFirst().find { node ->
+        node.name().toString() == "plugin" && node.artifactId.text() == "jaxb2-maven-plugin"
+    }
+    if (pluginNode == null) {
+        return
+    }
+    def config = pluginNode.configuration[0]
+    def schemaFiles = config?.schemaFiles?.text()?.trim() ?: "*.xsd"
+    def packageName = config?.packageName?.text()?.trim()
+    def schemaDirectory = config?.schemaDirectory?.text()?.trim() ?: "src/main/xsd"
+    def schema = project.file("${schemaDirectory}/${schemaFiles}")
+    if (!schema.isFile()) {
+        return
+    }
+    def jdkHome = sdkmanHomeForMajor(toolMajor)
+    if (jdkHome == null) {
+        return
+    }
+    def xjc = new File(jdkHome, "bin/xjc")
+    if (!xjc.isFile()) {
+        xjc = new File(jdkHome, "bin/xjc.exe")
+    }
+    if (!xjc.isFile()) {
+        return
+    }
+    def dest = new File(project.buildDir, "generated/sources/xjc")
+    project.tasks.register("xjc") { task ->
+        task.inputs.file(schema)
+        task.outputs.dir(dest)
+        task.doLast {
+            dest.mkdirs()
+            def command = [xjc.absolutePath, "-d", dest.absolutePath, "-nv"]
+            if (packageName) {
+                command.addAll(["-p", packageName])
+            }
+            command.add(schema.absolutePath)
+            project.exec { spec ->
+                spec.commandLine(command)
+            }
+        }
+    }
+    project.sourceSets.main.java.srcDir(dest)
+    project.tasks.named("compileJava").configure { compile ->
+        compile.dependsOn("xjc")
+    }
+}
+
+void applyJavaToolchain(project) {
+    def needed = detectSourceMajor(project)
+    if (needed == null) {
+        return
+    }
+    def daemon = Integer.parseInt(JavaVersion.current().majorVersion)
+    def tool = pickToolchainMajor(needed)
+    if (tool == daemon) {
+        project.tasks.withType(JavaCompile).configureEach { compile ->
+            compile.options.release.set(needed)
+        }
+        applyJaxbXjc(project, tool)
+        return
+    }
+    project.tasks.withType(JavaCompile).configureEach { compile ->
+        compile.javaCompiler = project.javaToolchains.compilerFor {
+            languageVersion.set(JavaLanguageVersion.of(tool))
+        }
+        def compat = needed <= 8 ? "1.${needed}" : "${needed}"
+        compile.sourceCompatibility = compat
+        compile.targetCompatibility = compat
+    }
+    project.tasks.withType(Test).configureEach { testTask ->
+        testTask.javaLauncher = project.javaToolchains.launcherFor {
+            languageVersion.set(JavaLanguageVersion.of(tool))
+        }
+    }
+    project.tasks.withType(Javadoc).configureEach { javadocTask ->
+        javadocTask.javadocTool = project.javaToolchains.javadocToolFor {
+            languageVersion.set(JavaLanguageVersion.of(tool))
+        }
+    }
+    applyJaxbXjc(project, tool)
+}
+
+void applyMavenProvidedOnTestClasspath(project) {
+    def testImplementation = project.configurations.findByName("testImplementation")
+    def compileOnly = project.configurations.findByName("compileOnly")
+    if (testImplementation != null && compileOnly != null) {
+        testImplementation.extendsFrom(compileOnly)
+    }
+}
+
+void applySurefireTestIncludes(project) {
+    def suite = project.file("src/test/resources/testng.xml")
+    def runBenchmarks = "false"
+    def maxMemory = null
+    def pomFile = project.file("pom.xml")
+    if (pomFile.isFile()) {
+        def pom = new XmlParser(false, false).parse(pomFile)
+        def bench = pom.properties?.runBenchmarks?.text()?.trim()
+        if (bench) {
+            runBenchmarks = bench
+        }
+        def mem = pom.properties?.testMaxMemory?.text()?.trim()
+        if (mem) {
+            maxMemory = mem
+        }
+    }
+    project.tasks.withType(Test).configureEach { testTask ->
+        testTask.filter {
+            it.includeTestsMatching("Test*")
+            it.includeTestsMatching("*Test")
+            it.includeTestsMatching("*TestCase")
+        }
+        testTask.filter.setFailOnNoMatchingTests(false)
+        testTask.systemProperty("runBenchmarks", runBenchmarks)
+        if (maxMemory) {
+            testTask.maxHeapSize = "${maxMemory}m"
+        }
+        if (suite.isFile()) {
+            testTask.useTestNG { options ->
+                options.suites(suite.absolutePath)
+            }
+        }
+    }
+}
+
+gradle.beforeProject { project ->
+    project.tasks.configureEach { task ->
+        if (task.name.startsWith("sign")) {
+            task.enabled = false
+        }
+    }
+    project.afterEvaluate {
+        if (project.pluginManager.hasPlugin("java")) {
+            applyMavenProvidedOnTestClasspath(project)
+            applyJavaToolchain(project)
+            applySurefireTestIncludes(project)
+        }
+    }
+}
